@@ -41,7 +41,7 @@ FreeBSD
 
 See `buttery -help` for more information.
 
-## Recommended
+# SEE ALSO
 
 * [ffmpeg](https://ffmpeg.org/) edits and converts videos
 * [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
