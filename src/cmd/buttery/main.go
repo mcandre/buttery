@@ -14,8 +14,8 @@ import (
 )
 
 var flagIn = flag.String("in", "", "path to a .gif source file (required)")
-var flagStart = flag.Int("trimStart", 0, "the number of frames to remove from the loop start in [0,frames - trim end)")
-var flagEnd = flag.Int("trimEnd", 0, "the number of frames to remove from the loop end in [0, frames - trim start)")
+var flagStart = flag.Int("trimStart", 0, "the number of frames to remove from the loop start")
+var flagEnd = flag.Int("trimEnd", 0, "the number of frames to remove from the loop end")
 
 func getDimensions(paletteds []*image.Paletted) (int, int) {
 	var xMin int
@@ -78,14 +78,14 @@ func main() {
 	trimStart := *flagStart
 
 	if trimStart < 0 {
-		flag.PrintDefaults()
+		panic("trim start cannot be negative")
 		os.Exit(1)
 	}
 
 	trimEnd := *flagEnd
 
 	if trimEnd < 0 {
-		flag.PrintDefaults()
+		panic("trim end cannot be negative")
 		os.Exit(1)
 	}
 
@@ -104,7 +104,7 @@ func main() {
 	sourcePaletteds := sourceGif.Image
 
 	if trimStart+trimEnd >= len(sourcePaletteds) {
-		flag.PrintDefaults()
+		panic("minimum 1 output frame")
 		os.Exit(1)
 	}
 

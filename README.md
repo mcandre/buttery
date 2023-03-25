@@ -14,6 +14,12 @@ homer.gif
 homer.buttery.gif
 ```
 
-See `buttery -help` for more options.
+## Common options
+
+`-trimStart`: drop frames from the start of the loop. Useful for cleaning up long animations.
+
+* `-trimEnd`: drop frames from the end of the loop. Useful for generating smoother loops.
+
+See `buttery -help` for more detail.
 
 🧈
