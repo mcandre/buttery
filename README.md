@@ -12,16 +12,9 @@
 $ buttery -in homer.gif
 ```
 
-## Features
+# DOWNLOAD
 
-`-trimStart` / `-trimEnd` drop frames from the far sides of the input animation sequence.
-
-* Trimming animations reduces file size.
-* Trimming highlights your favorite motions.
-* Trimming also helps to smooth over awkward motions at the start, middle, or end of an animation.
-* Trimming can generate unique motion effects, by gluing together animation loops with unexpected timings.
-
-See `buttery -help` for more information.
+https://github.com/mcandre/buttery/releases
 
 # INSTALL FROM SOURCE
 
@@ -36,6 +29,17 @@ FreeBSD
 # RUNTIME REQUIREMENTS
 
 (None)
+
+# COMMON FEATURES
+
+`-trimStart` / `-trimEnd` drop frames from the far sides of the input animation sequence.
+
+* Trimming animations reduces file size.
+* Trimming highlights your favorite motions.
+* Trimming also helps to smooth over awkward motions at the start, middle, or end of an animation.
+* Trimming can generate unique motion effects, by gluing together animation loops with unexpected timings.
+
+See `buttery -help` for more information.
 
 ## Recommended
 
