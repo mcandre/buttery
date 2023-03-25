@@ -7,13 +7,7 @@
 `buttery` generates smoothe GIF loops.
 
 ```console
-$ cd examples
-
 $ buttery -in homer.gif
-
-$ ls
-homer.gif
-homer.buttery.gif
 ```
 
 ## Common options
