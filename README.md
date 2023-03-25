@@ -16,9 +16,7 @@ homer.buttery.gif
 
 ## Common options
 
-`-trimStart <frames>`: drop a number of frames from the start of the loop. Useful for cleaning up long animations.
-
-`-trimEnd <frames>`: drop a number of frames from the end of the loop. Useful for generating smoother loops.
+`-trimStart` / `-trimEnd` can drop frames from sides of the input GIF sequence. Trimming is useful for cutting down long animations to a specific subsequence. Trimming may facilitate motion smoothing. When used artfully, trimming can even generate unique motion.
 
 See `buttery -help` for more detail.
 
