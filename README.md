@@ -16,10 +16,10 @@ $ buttery -in homer.gif
 
 `-trimStart` / `-trimEnd` drop frames from the far sides of the input animation sequence.
 
-* Trimming animation sequences reduces file size.
-* Trimming cuts down time from quite long animations, to highlight a specific subsequence.
-* Trimming also helps to smooth over awkward motions that may occur at the start, middle, or end of an animation.
-* Trimming can generate unique motion effects, by gluing together animation loops at unexpected timings.
+* Trimming animations reduces file size.
+* Trimming highlights your favorite motions.
+* Trimming also helps to smooth over awkward motions at the start, middle, or end of an animation.
+* Trimming can generate unique motion effects, by gluing together animation loops with unexpected timings.
 
 See `buttery -help` for more information.
 
