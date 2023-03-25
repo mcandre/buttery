@@ -37,7 +37,7 @@ FreeBSD
 * Trimming animations reduces file size.
 * Trimming highlights your favorite motions.
 * Trimming also helps to smooth over awkward motions at the start, middle, or end of an animation.
-* Trimming can generate unique motion effects, by gluing together animation loops with unexpected timings.
+* Trimming can generate creative motion effects, by gluing together animation loops at serendipitious frame timings.
 
 See `buttery -help` for more information.
 
