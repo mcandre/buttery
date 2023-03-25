@@ -30,6 +30,7 @@ FreeBSD
 
 ## Recommended
 
-* [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's.
+* [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
+* [karp](https://github.com/mcandre/karp) for conveniently browsing files and directories
 
 🧈
