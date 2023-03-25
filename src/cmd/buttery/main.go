@@ -119,6 +119,9 @@ func main() {
 		os.Exit(1)
 	}
 
+	sourcePaletteds = sourcePaletteds[:sourcePalettedsLen-trimEnd]
+	sourcePalettedsLen = len(sourcePaletteds)
+
 	sourceDelays := sourceGif.Delay
 	sourceWidth, sourceHeight := getDimensions(sourcePaletteds)
 	canvasImage := image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
@@ -135,10 +138,8 @@ func main() {
 	}
 
 	clonePaletteds = clonePaletteds[trimStart:]
-	clonePaletteds = clonePaletteds[:len(clonePaletteds)-trimEnd]
 	clonePalettedsLen := len(clonePaletteds)
 	sourceDelays = sourceDelays[trimStart:]
-	sourceDelays = sourceDelays[:len(sourceDelays)-trimEnd]
 	butteryPalettedsLen := 2*(clonePalettedsLen-1)
 	butteryPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 	butteryDelays := make([]int, butteryPalettedsLen)
