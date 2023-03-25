@@ -4,9 +4,9 @@
 
 # ABOUT
 
-The popular [GIF](https://en.wikipedia.org/wiki/GIF) format has technically supported infinitely looping animations for a long time. However, many GIF images do not take advantage of the full capabilities of this image format.
+The popular [GIF](https://en.wikipedia.org/wiki/GIF) format has *technically* supported animation loops for a long time. However, many GIF creators do not take full advantage of the capabilities of the image format. `buttery` helps to edit GIF files into smoother animation sequences.
 
-For example, some GIF's may consist of a single frame. Some GIF's may animate for a few seconds but then terminate. Still other GIF's may loop endlessly, but with jerky motion. `buttery` helps to edit these sequences into smoother, more pleasing animations.
+For example, some GIF's may consist of a single frame. Some GIF's may animate for a few seconds but then terminate. Still other GIF's may loop endlessly, but with jerky motion along the sequence. `buttery` can help resolve many of these quirks.
 
 # EXAMPLE
 
@@ -36,7 +36,10 @@ FreeBSD
 
 ## Recommended
 
+* [ffmpeg](https://ffmpeg.org/) edits and converts videos
 * [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
 * [karp](https://github.com/mcandre/karp) for conveniently browsing files and directories
+* [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
+* [webm](https://www.webmproject.org/) supports audio in animation loops
 
 🧈
