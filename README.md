@@ -1,4 +1,4 @@
-# buttery: a GIF looper
+# buttery: a GIF editor for generating smoother animation loops
 
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
@@ -18,7 +18,7 @@ homer.buttery.gif
 
 `-trimStart` / `-trimEnd` can drop frames from sides of the input GIF sequence. Trimming is useful for cutting down long animations to a specific subsequence. Trimming may facilitate motion smoothing. When used artfully, trimming can even generate unique motion.
 
-See `buttery -help` for more detail.
+See `buttery -help` for more information.
 
 # LICENSE
 
