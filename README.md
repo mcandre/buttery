@@ -30,6 +30,10 @@ FreeBSD
 
 (None)
 
+# CONTRIBUTING
+
+For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
+
 # COMMON FEATURES
 
 `-trimStart` / `-trimEnd` drop frames from the far sides of the input animation sequence.
@@ -48,9 +52,5 @@ See `buttery -help` for more information.
 * [karp](https://github.com/mcandre/karp) for conveniently browsing files and directories
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
 * [webm](https://www.webmproject.org/) supports audio in animation loops
-
-# CONTRIBUTING
-
-For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 🧈
