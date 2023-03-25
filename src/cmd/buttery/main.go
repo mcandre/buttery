@@ -24,46 +24,46 @@ func getDimensions(paletteds []*image.Paletted) (int, int) {
 	var yMin int
 	var yMax int
 
-    for _, paletted := range paletteds {
+	for _, paletted := range paletteds {
 		rect := paletted.Rect
 		rectXMin := rect.Min.X
 		rectXMax := rect.Max.X
 		rectYMin := rect.Min.Y
 		rectYMax := rect.Max.Y
 
-        if rectXMin < xMin {
-            xMin = rectXMin
-        }
+		if rectXMin < xMin {
+			xMin = rectXMin
+		}
 
-        if rectXMax > xMax {
-            xMax = rectXMax
-        }
+		if rectXMax > xMax {
+			xMax = rectXMax
+		}
 
-        if rectYMin < yMin {
-            yMin = rectYMin
-        }
+		if rectYMin < yMin {
+			yMin = rectYMin
+		}
 
-        if rectYMax > yMax {
-            yMax = rectYMax
-        }
-    }
+		if rectYMax > yMax {
+			yMax = rectYMax
+		}
+	}
 
-    return xMax - xMin, yMax - yMin
+	return xMax - xMin, yMax - yMin
 }
 
 func getPaletteSize(paletteds []*image.Paletted) int {
 	var maxPaletteSize int
 
-    for _, paletted := range paletteds {
+	for _, paletted := range paletteds {
 		palette := paletted.Palette
 		paletteSize := len(palette)
 
 		if paletteSize > maxPaletteSize {
 			maxPaletteSize = paletteSize
 		}
-    }
+	}
 
-    return maxPaletteSize
+	return maxPaletteSize
 }
 
 func main() {
@@ -140,7 +140,7 @@ func main() {
 	clonePaletteds = clonePaletteds[trimStart:]
 	clonePalettedsLen := len(clonePaletteds)
 	sourceDelays = sourceDelays[trimStart:]
-	butteryPalettedsLen := 2*(clonePalettedsLen-1)
+	butteryPalettedsLen := 2 * (clonePalettedsLen - 1)
 	butteryPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 	butteryDelays := make([]int, butteryPalettedsLen)
 	var r int
@@ -149,7 +149,7 @@ func main() {
 		butteryPaletteds[i] = clonePaletteds[r]
 		butteryDelays[i] = sourceDelays[r]
 
-		if i < clonePalettedsLen - 1 {
+		if i < clonePalettedsLen-1 {
 			r++
 		} else {
 			r--
@@ -157,12 +157,12 @@ func main() {
 	}
 
 	butteryGif := gif.GIF{
-		LoopCount: 0,
+		LoopCount:       0,
 		BackgroundIndex: sourceGif.BackgroundIndex,
-		Config: sourceGif.Config,
-		Image: butteryPaletteds,
-		Delay: butteryDelays,
-		Disposal: nil,
+		Config:          sourceGif.Config,
+		Image:           butteryPaletteds,
+		Delay:           butteryDelays,
+		Disposal:        nil,
 	}
 
 	sourceBasename := strings.TrimSuffix(sourcePth, filepath.Ext(sourcePth))

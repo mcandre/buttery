@@ -23,6 +23,12 @@ $ buttery -in homer.gif
 
 See `buttery -help` for more information.
 
+# INSTALL FROM SOURCE
+
+```console
+$ go install github.com/mcandre/buttery/cmd/buttery@latest
+```
+
 # LICENSE
 
 FreeBSD
@@ -38,5 +44,9 @@ FreeBSD
 * [karp](https://github.com/mcandre/karp) for conveniently browsing files and directories
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
 * [webm](https://www.webmproject.org/) supports audio in animation loops
+
+# CONTRIBUTING
+
+For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 🧈

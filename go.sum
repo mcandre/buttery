@@ -1,2 +1,12 @@
 github.com/andybons/gogif v0.0.0-20140526152223-16d573594812 h1:WBBv0ka2SO7Ut4bpskb87E9cHNnJabqA6VoBTex0Jng=
 github.com/andybons/gogif v0.0.0-20140526152223-16d573594812/go.mod h1:lkVwYUDYv/mJZK69J7BP7HRUhHEAone7OQHFBRnhQdQ=
+github.com/jhoonb/archivex v0.0.0-20201016144719-6a343cdae81d h1:q7n+5taxmM+9T2Q7Ydo7YN90FkoDuR5bbzByZwkQqPo=
+github.com/jhoonb/archivex v0.0.0-20201016144719-6a343cdae81d/go.mod h1:GN1Mg/uXQ6qwXA0HypnUO3xlcQJS9/y68EsHNeuuRa4=
+github.com/magefile/mage v1.14.0 h1:6QDX3g6z1YvJ4olPhT1wksUcSa/V0a1B+pJb73fBjyo=
+github.com/magefile/mage v1.14.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=
+github.com/mcandre/factorio v0.0.3 h1:Btvt75LUiqz9KR/bLPzQm1JkYYys8E7lBoA0PVjaTd4=
+github.com/mcandre/factorio v0.0.3/go.mod h1:5bwnhNtdM7IyVMhwNHpbZdUgxX799lLM5LS6wwSEUng=
+github.com/mcandre/mage-extras v0.0.11 h1:vJq8diLnAXy7j3+aUzBPVI/bzHoFe+Y9qUJhZ4BlYd0=
+github.com/mcandre/mage-extras v0.0.11/go.mod h1:Q2tXIHq3wfVxrpucaR4mnXSXrAEpprzZwGR/WejfrJA=
+github.com/mcandre/zipc v0.0.7 h1:P5f4pB80jG0UFnn/C5Ex3gG2eilDAXtzgPmPXd+oUE8=
+github.com/mcandre/zipc v0.0.7/go.mod h1:oSG7tdqkZKlcTwzTmE5QXXM8TBkO2xwVzsOabVJ00KU=
