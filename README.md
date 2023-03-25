@@ -1,21 +1,22 @@
-# buttery: a video editor for smoother GIF loops
+# buttery: a video editor for smoother animations
 
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
 # ABOUT
 
-Animators have enjoyed creating digital animations for many years, thanks to the popular [GIF](https://en.wikipedia.org/wiki/GIF) format. In fact, GIF as a *technical* subject has not been the easiest for artists to consume.
+Artists have enjoyed creating digital animations for many years, thanks to popular file formats like the legendary [GIF](https://en.wikipedia.org/wiki/GIF). Woohoo!
 
-Take a tour of available GIF's online, and you may find:
+File formats as a *technical subject* turn out to offer interesting tradeoffs, including errors as well as amazing features. `buttery` is here to help artists navigate these tradeoffs. We want you to enjoy the full power of modern, programmable editing technology.
 
-* File corruption
-* Very long animations
-* Animations too long or too short
-* Animations that halt after a few seconds
-* GIF's consisting of a single frame
+For example, browsing assorted GIF's online reveals:
+
 * Jerky motion
+* File corruption
+* Animations too long or too short
+* GIF's consisting of a single frame
+* Animations that halt after a few seconds
 
-`buttery` treat many of these issues with simple, programmable edits. Our goal is to make the GIF format manipulation process easier, and to generate more pleasing images. Showcase your craft!
+`buttery` treat many of these issues with simple, programmable commands. Our goals include making animation easier and more *expressive*, so that you can focus less on technicals and more on showcasing your work.
 
 # EXAMPLE
 
