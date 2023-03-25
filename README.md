@@ -20,6 +20,8 @@ For example, browsing assorted GIF's online reveals:
 
 # EXAMPLE
 
+`buttery` enables continuous animation loops.
+
 ```console
 $ cd examples
 
