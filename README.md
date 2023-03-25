@@ -4,7 +4,7 @@
 
 # ABOUT
 
-The popular [GIF](https://en.wikipedia.org/wiki/GIF) format has *technically* supported animation loops for a long time. However, many GIF creators do not take full advantage of the capabilities of the image format. `buttery` helps to edit GIF files into smoother animation sequences.
+The popular [GIF](https://en.wikipedia.org/wiki/GIF) format has *technically* supported animation loops for a long time. However, many GIF creators do not take full advantage of the format's capabilities. `buttery` helps to edit GIF files into smoother animation sequences.
 
 Common GIF animation quirks may include:
 
@@ -13,7 +13,7 @@ Common GIF animation quirks may include:
 * Animation halts after a few seconds
 * Jerky motion
 
-`buttery` resolves many of these quirks. With `buttery`, we want to help animators showcase their craft.
+Enter `buttery`. With `buttery`, we can resolve many of these issues by programmable edits. We want to give artists more power to create and showcase their craft!
 
 # EXAMPLE
 
