@@ -81,27 +81,29 @@ func main() {
 	trimStart := *flagStart
 
 	if trimStart < 0 {
-		panic("trim start cannot be negative")
+		fmt.Fprintln(os.Stderr, "trim start cannot be negative")
 		os.Exit(1)
 	}
 
 	trimEnd := *flagEnd
 
 	if trimEnd < 0 {
-		panic("trim end cannot be negative")
+		fmt.Fprintln(os.Stderr, "trim end cannot be negative")
 		os.Exit(1)
 	}
 
 	sourceFile, err := os.Open(sourcePth)
 
 	if err != nil {
-		panic(err)
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 
 	sourceGif, err := gif.DecodeAll(sourceFile)
 
 	if err != nil {
-		panic(err)
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 
 	sourcePaletteds := sourceGif.Image
@@ -113,7 +115,7 @@ func main() {
 	}
 
 	if trimStart+trimEnd >= sourcePalettedsLen {
-		panic("minimum 1 output frame")
+		fmt.Fprintln(os.Stderr, "minimum 1 output frame")
 		os.Exit(1)
 	}
 
@@ -167,10 +169,12 @@ func main() {
 	butteryFile, err := os.Create(butteryPth)
 
 	if err != nil {
-		panic(err)
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 
 	if err2 := gif.EncodeAll(butteryFile, &butteryGif); err2 != nil {
-		panic(err2)
+		fmt.Fprintln(os.Stderr, err2)
+		os.Exit(1)
 	}
 }
