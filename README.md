@@ -4,7 +4,7 @@
 
 # ABOUT
 
-The popular GIF format has technically supported infinitely looping animations for a long time. However, many GIF images do not take advantage of the full capabilities of this image format.
+The popular [GIF](https://en.wikipedia.org/wiki/GIF) format has technically supported infinitely looping animations for a long time. However, many GIF images do not take advantage of the full capabilities of this image format.
 
 For example, some GIF's may consist of a single frame. Some GIF's may animate for a few seconds but then terminate. Still other GIF's may loop endlessly, but with jerky motion. `buttery` helps to edit these sequences into smoother, more pleasing animations.
 
