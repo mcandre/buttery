@@ -14,8 +14,9 @@ import (
 )
 
 var flagIn = flag.String("in", "", "path to a .gif source file (required)")
-var flagStart = flag.Int("trimStart", 0, "the number of frames to remove from the loop start")
-var flagEnd = flag.Int("trimEnd", 0, "the number of frames to remove from the loop end")
+var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
+var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
+var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
 
 func getDimensions(paletteds []*image.Paletted) (int, int) {
 	var xMin int
@@ -75,6 +76,8 @@ func main() {
 		os.Exit(1)
 	}
 
+	getFrames := *flagGetFrames
+
 	trimStart := *flagStart
 
 	if trimStart < 0 {
@@ -102,14 +105,19 @@ func main() {
 	}
 
 	sourcePaletteds := sourceGif.Image
+	sourcePalettedsLen := len(sourcePaletteds)
 
-	if trimStart+trimEnd >= len(sourcePaletteds) {
+	if getFrames {
+		fmt.Println(sourcePalettedsLen)
+		os.Exit(0)
+	}
+
+	if trimStart+trimEnd >= sourcePalettedsLen {
 		panic("minimum 1 output frame")
 		os.Exit(1)
 	}
 
 	sourceDelays := sourceGif.Delay
-	sourcePalettedsLen := len(sourcePaletteds)
 	sourceWidth, sourceHeight := getDimensions(sourcePaletteds)
 	canvasImage := image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
 	canvasBounds := canvasImage.Bounds()
