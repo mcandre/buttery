@@ -1,4 +1,4 @@
-# buttery: a GIF editor for generating smoother animation loops
+# buttery: a video editor for smooth animated GIF loops
 
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
