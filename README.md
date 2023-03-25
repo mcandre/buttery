@@ -2,9 +2,11 @@
 
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
-# EXAMPLE
+# ABOUT
 
-`buttery` generates smoothe GIF loops.
+`buttery` generates continuous GIF loops.
+
+# EXAMPLE
 
 ```console
 $ buttery -in homer.gif
