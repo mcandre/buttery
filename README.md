@@ -1,26 +1,10 @@
-# buttery: a video editor for smoother animations
+# buttery: a video editor with motion smoothing
 
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
-# ABOUT
-
-Artists have enjoyed creating digital animations for many years, thanks to popular file formats like the legendary [GIF](https://en.wikipedia.org/wiki/GIF). Woohoo!
-
-File formats as a *technical subject* turn out to offer interesting tradeoffs, including errors as well as amazing features. `buttery` is here to help artists navigate these tradeoffs. We want you to enjoy the full power of modern, programmable editing technology.
-
-For example, browsing assorted GIF's online reveals:
-
-* Jerky motion
-* File corruption
-* Animations too long or too short
-* GIF's consisting of a single frame
-* Animations that halt after a few seconds
-
-`buttery` treat many of these issues with simple, programmable commands. Our goals include making animation easier and more *expressive*, so that you can focus less on technicals and more on showcasing your work.
-
 # EXAMPLE
 
-`buttery` enables continuous animation loops.
+By default, `buttery` enables continuous looping. We can take a GIF input file that exhibits a jarring halt after a few seconds, and output a smoother, continuous loop.
 
 ```console
 $ cd examples
@@ -34,11 +18,16 @@ homer.buttery.gif
 
 ## Common options
 
-`-trimStart` / `-trimEnd` can drop frames from sides of the input GIF sequence. Trimming is useful for cutting down long animations to a specific subsequence.
+`buttery` includes additional options for editing animation files.
 
-This can facilitate motion smoothing even further. When used artfully, the simple act of trimming frames can even generate unique motion effects.
+## Trimming
 
-Pro tip: When cutting very long sequences, start by trimming the end first, which is often a faster operation than trimming the start. This is due to the inner workings of GIF's compression model.
+`-trimStart` / `-trimEnd` drop frames from either side of the input animation sequence.
+
+* Trimming animation sequences reduces file size.
+* Trimming cuts down time from quite long animations, to highlight a specific subsequence.
+* Trimming also helps to smooth over awkward motions that may occur at the start, middle, or end of an animation.
+* Trimming can generate unique motion effects, by gluing together animation loops at unexpected timings.
 
 See `buttery -help` for more information.
 
