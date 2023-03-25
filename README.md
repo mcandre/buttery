@@ -4,7 +4,9 @@
 
 # EXAMPLE
 
-By default, `buttery` enables continuous looping. We can take a GIF input file that exhibits a jarring halt after a few seconds, and output a smoother, continuous loop.
+By default, `buttery` enables continuous looping.
+
+For example, we can take a GIF input file that exhibits a jarring *halt* after a few seconds, and output a GIF file that plays as a smoother, continuous loop.
 
 ```console
 $ cd examples
