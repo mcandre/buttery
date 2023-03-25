@@ -12,13 +12,9 @@
 $ buttery -in homer.gif
 ```
 
-## Common options
+## Features
 
-`buttery` includes additional options for editing animation files.
-
-## Trimming
-
-`-trimStart` / `-trimEnd` drop frames from either side of the input animation sequence.
+`-trimStart` / `-trimEnd` drop frames from the far sides of the input animation sequence.
 
 * Trimming animation sequences reduces file size.
 * Trimming cuts down time from quite long animations, to highlight a specific subsequence.
