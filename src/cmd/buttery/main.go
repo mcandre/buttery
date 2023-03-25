@@ -114,7 +114,6 @@ func main() {
 	canvasImage := image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
 	canvasBounds := canvasImage.Bounds()
 	paletteSize := getPaletteSize(sourcePaletteds)
-	draw.Draw(canvasImage, canvasBounds, sourcePaletteds[0], image.ZP, draw.Src)
 	clonePaletteds := make([]*image.Paletted, sourcePalettedsLen)
 
 	for i, sourcePaletted := range sourcePaletteds {
@@ -125,25 +124,25 @@ func main() {
 		clonePaletteds[i] = clonePaletted
 	}
 
-	clonePaletteds = clonePaletteds[trimStart:len(sourcePaletteds)-trimEnd]
+	clonePaletteds = clonePaletteds[trimStart:]
+	clonePaletteds = clonePaletteds[:len(clonePaletteds)-trimEnd]
 	clonePalettedsLen := len(clonePaletteds)
-	sourceDelays = sourceDelays[trimStart:len(sourceDelays)-trimEnd]
-
-	butteryPalettedsLen := 2*(clonePalettedsLen)-1
+	sourceDelays = sourceDelays[trimStart:]
+	sourceDelays = sourceDelays[:len(sourceDelays)-trimEnd]
+	butteryPalettedsLen := 2*(clonePalettedsLen-1)
 	butteryPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 	butteryDelays := make([]int, butteryPalettedsLen)
+	var r int
 
-	m := butteryPalettedsLen/2
+	for i := 0; i < butteryPalettedsLen; i++ {
+		butteryPaletteds[i] = clonePaletteds[r]
+		butteryDelays[i] = sourceDelays[r]
 
-	for i := 0; i <= m; i++ {
-		butteryPaletteds[i] = clonePaletteds[i]
-		butteryDelays[i] = sourceDelays[i]
-	}
-
-	for i := m + 1; i < butteryPalettedsLen; i++ {
-		r := butteryPalettedsLen - i - 1
-		butteryPaletteds[i] = butteryPaletteds[r]
-		butteryDelays[i] = butteryDelays[r]
+		if i < clonePalettedsLen - 1 {
+			r++
+		} else {
+			r--
+		}
 	}
 
 	butteryGif := gif.GIF{

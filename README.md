@@ -22,4 +22,12 @@ homer.buttery.gif
 
 See `buttery -help` for more detail.
 
+# RUNTIME REQUIREMENTS
+
+(None)
+
+## Recommended
+
+* [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's.
+
 🧈
