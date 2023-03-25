@@ -8,8 +8,8 @@ The popular [GIF](https://en.wikipedia.org/wiki/GIF) format has *technically* su
 
 Common GIF animation quirks may include:
 
-* Single frame sequence
-* Long sequences
+* Very long sequences
+* Sequences consisting of a single frame
 * Animation halts after a few seconds
 * Jerky motion
 
@@ -29,7 +29,11 @@ homer.buttery.gif
 
 ## Common options
 
-`-trimStart` / `-trimEnd` can drop frames from sides of the input GIF sequence. Trimming is useful for cutting down long animations to a specific subsequence. Trimming may facilitate motion smoothing. When used artfully, trimming can even generate unique motion.
+`-trimStart` / `-trimEnd` can drop frames from sides of the input GIF sequence. Trimming is useful for cutting down long animations to a specific subsequence.
+
+This can facilitate motion smoothing even further. When used artfully, the simple act of trimming frames can even generate unique motion effects.
+
+Pro tip: When cutting very long sequences, start by trimming the end first, which is often a faster operation than trimming the start. This is due to the inner workings of GIF's compression model.
 
 See `buttery -help` for more information.
 
