@@ -4,16 +4,18 @@
 
 # ABOUT
 
-The popular [GIF](https://en.wikipedia.org/wiki/GIF) format has *technically* supported animation loops for a long time. However, many GIF creators do not take full advantage of the format's capabilities. `buttery` helps to edit GIF files into smoother animation sequences.
+Animators have enjoyed creating digital animations for many years, thanks to the popular [GIF](https://en.wikipedia.org/wiki/GIF) format. In fact, GIF as a *technical* subject has not been the easiest for artists to consume.
 
-Common GIF animation quirks may include:
+Take a tour of available GIF's online, and you may find:
 
-* Very long sequences
-* Sequences consisting of a single frame
-* Animation halts after a few seconds
+* File corruption
+* Very long animations
+* Animations too long or too short
+* Animations that halt after a few seconds
+* GIF's consisting of a single frame
 * Jerky motion
 
-Enter `buttery`. With `buttery`, we can resolve many of these issues by programmable edits. We want to give artists more power to create and showcase their craft!
+`buttery` treat many of these issues with simple, programmable edits. Our goal is to make the GIF format manipulation process easier, and to generate more pleasing images. Showcase your craft!
 
 # EXAMPLE
 
