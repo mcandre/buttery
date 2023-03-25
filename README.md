@@ -22,6 +22,10 @@ homer.buttery.gif
 
 See `buttery -help` for more detail.
 
+# LICENSE
+
+FreeBSD
+
 # RUNTIME REQUIREMENTS
 
 (None)
