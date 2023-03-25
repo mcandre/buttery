@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/andybons/gogif"
+	"github.com/mcandre/buttery"
 
 	"flag"
 	"fmt"
@@ -17,6 +18,8 @@ var flagIn = flag.String("in", "", "path to a .gif source file (required)")
 var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
+var flagVersion = flag.Bool("version", false, "Show version information")
+var flagHelp = flag.Bool("help", false, "Show usage information")
 
 func getDimensions(paletteds []*image.Paletted) (int, int) {
 	var xMin int
@@ -68,6 +71,16 @@ func getPaletteSize(paletteds []*image.Paletted) int {
 
 func main() {
 	flag.Parse()
+
+	if *flagHelp {
+			flag.PrintDefaults()
+			os.Exit(0)
+	}
+
+	if *flagVersion {
+			fmt.Println(buttery.Version)
+			os.Exit(0)
+	}
 
 	sourcePth := *flagIn
 
