@@ -1,7 +1,6 @@
 .PHONY: all
 
 all:
-	@cargo install --force cargo-audit@0.17.5
 	@cargo install --force unmake@0.0.3
 
 	@go install github.com/alexkohler/nakedret@v1.0.1
