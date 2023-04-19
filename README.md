@@ -1,4 +1,4 @@
-# buttery: a video editor with motion smoothing
+# buttery: a video editor with manual motion smoothing
 
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
