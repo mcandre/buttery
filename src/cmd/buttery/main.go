@@ -73,13 +73,13 @@ func main() {
 	flag.Parse()
 
 	if *flagHelp {
-			flag.PrintDefaults()
-			os.Exit(0)
+		flag.PrintDefaults()
+		os.Exit(0)
 	}
 
 	if *flagVersion {
-			fmt.Println(buttery.Version)
-			os.Exit(0)
+		fmt.Println(buttery.Version)
+		os.Exit(0)
 	}
 
 	sourcePth := *flagIn
