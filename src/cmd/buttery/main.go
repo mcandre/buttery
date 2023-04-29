@@ -18,6 +18,7 @@ var flagIn = flag.String("in", "", "path to a .gif source file (required)")
 var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
+var flagMirror = flag.Bool("mirror", true, "Toggle frame sequence mirroring")
 var flagVersion = flag.Bool("version", false, "Show version information")
 var flagHelp = flag.Bool("help", false, "Show usage information")
 
@@ -105,6 +106,8 @@ func main() {
 		os.Exit(1)
 	}
 
+	mirror := *flagMirror
+
 	sourceFile, err := os.Open(sourcePth)
 
 	if err != nil {
@@ -153,7 +156,14 @@ func main() {
 	clonePaletteds = clonePaletteds[trimStart:]
 	clonePalettedsLen := len(clonePaletteds)
 	sourceDelays = sourceDelays[trimStart:]
-	butteryPalettedsLen := 2 * (clonePalettedsLen - 1)
+	var butteryPalettedsLen int
+
+	if mirror {
+		butteryPalettedsLen = 2 * (clonePalettedsLen - 1)
+	} else {
+		butteryPalettedsLen = clonePalettedsLen
+	}
+
 	butteryPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 	butteryDelays := make([]int, butteryPalettedsLen)
 	var r int
@@ -162,7 +172,7 @@ func main() {
 		butteryPaletteds[i] = clonePaletteds[r]
 		butteryDelays[i] = sourceDelays[r]
 
-		if i < clonePalettedsLen-1 {
+		if !mirror || i < clonePalettedsLen-1 {
 			r++
 		} else {
 			r--
