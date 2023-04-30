@@ -22,6 +22,7 @@ var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GI
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
 var flagMirror = flag.Bool("mirror", true, "Toggle frame sequence mirroring")
 var flagReverse = flag.Bool("reverse", false, "Reverse original sequence")
+var flagSpeed = flag.Float64("speed", 1.0, "Speed factor (highly sensitive)")
 var flagVersion = flag.Bool("version", false, "Show version information")
 var flagHelp = flag.Bool("help", false, "Show usage information")
 
@@ -121,6 +122,13 @@ func main() {
 	reverse := *flagReverse
 	mirror := *flagMirror
 
+	if *flagSpeed <= 0.0 {
+		fmt.Fprintln(os.Stderr, "speed must be positive")
+		os.Exit(1)
+	}
+
+	speed := *flagSpeed
+
 	if len(flag.Args()) > 0 {
 		flag.PrintDefaults()
 		os.Exit(1)
@@ -192,7 +200,7 @@ func main() {
 
 	for i := 0; i < butteryPalettedsLen; i++ {
 		butteryPaletteds[i] = clonePaletteds[r]
-		butteryDelays[i] = sourceDelays[r]
+		butteryDelays[i] = int(float64(sourceDelays[r]) / speed)
 
 		if !mirror || i < clonePalettedsLen-1 {
 			r++
