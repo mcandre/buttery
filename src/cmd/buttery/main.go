@@ -108,6 +108,11 @@ func main() {
 
 	mirror := *flagMirror
 
+	if len(flag.Args()) > 0 {
+		flag.PrintDefaults()
+		os.Exit(1)
+	}
+
 	sourceFile, err := os.Open(sourcePth)
 
 	if err != nil {
