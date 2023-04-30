@@ -1,6 +1,8 @@
 package main
 
 import (
+	"reflect"
+
 	"github.com/andybons/gogif"
 	"github.com/mcandre/buttery"
 
@@ -19,6 +21,7 @@ var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame c
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
 var flagMirror = flag.Bool("mirror", true, "Toggle frame sequence mirroring")
+var flagReverse = flag.Bool("reverse", false, "Reverse original sequence")
 var flagVersion = flag.Bool("version", false, "Show version information")
 var flagHelp = flag.Bool("help", false, "Show usage information")
 
@@ -70,6 +73,15 @@ func getPaletteSize(paletteds []*image.Paletted) int {
 	return maxPaletteSize
 }
 
+// ReverseSlice performs an in-place swap in reverse order.
+func ReverseSlice(s interface{}) {
+	size := reflect.ValueOf(s).Len()
+	swap := reflect.Swapper(s)
+	for i, j := 0, size-1; i < j; i, j = i+1, j-1 {
+		swap(i, j)
+	}
+}
+
 func main() {
 	flag.Parse()
 
@@ -106,6 +118,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	reverse := *flagReverse
 	mirror := *flagMirror
 
 	if len(flag.Args()) > 0 {
@@ -140,9 +153,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	sourcePaletteds = sourcePaletteds[:sourcePalettedsLen-trimEnd]
-	sourcePalettedsLen = len(sourcePaletteds)
-
 	sourceDelays := sourceGif.Delay
 	sourceWidth, sourceHeight := getDimensions(sourcePaletteds)
 	canvasImage := image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
@@ -158,8 +168,15 @@ func main() {
 		clonePaletteds[i] = clonePaletted
 	}
 
+	if reverse {
+		ReverseSlice(clonePaletteds)
+	}
+
 	clonePaletteds = clonePaletteds[trimStart:]
+
+	clonePaletteds = clonePaletteds[:len(clonePaletteds)-trimEnd]
 	clonePalettedsLen := len(clonePaletteds)
+
 	sourceDelays = sourceDelays[trimStart:]
 	var butteryPalettedsLen int
 
