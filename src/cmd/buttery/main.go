@@ -159,7 +159,7 @@ func main() {
 	var butteryPalettedsLen int
 
 	if mirror {
-		butteryPalettedsLen = 2 * (clonePalettedsLen - 1)
+		butteryPalettedsLen = 2*clonePalettedsLen - 1
 	} else {
 		butteryPalettedsLen = clonePalettedsLen
 	}
