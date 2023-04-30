@@ -211,7 +211,16 @@ func main() {
 
 	for i := 0; i < butteryPalettedsLen; i++ {
 		butteryPaletteds[i] = clonePaletteds[r]
-		butteryDelays[i] = int(float64(sourceDelays[r]) / speed)
+
+		sourceDelay := sourceDelays[r]
+
+		butteryDelay := int(float64(sourceDelay) / speed)
+
+		if butteryDelay < 2 {
+			butteryDelay = 2
+		}
+
+		butteryDelays[i] = butteryDelay
 
 		if !mirror || i < clonePalettedsLen-1 {
 			r++
