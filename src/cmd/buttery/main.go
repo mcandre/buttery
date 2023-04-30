@@ -18,6 +18,7 @@ import (
 
 var flagIn = flag.String("in", "", "path to a .gif source file (required)")
 var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
+var flagEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
 var flagMirror = flag.Bool("mirror", true, "Toggle frame sequence mirroring")
@@ -105,6 +106,13 @@ func main() {
 
 	getFrames := *flagGetFrames
 
+	trimEdges := *flagEdges
+
+	if trimEdges < 0 {
+		fmt.Fprintln(os.Stderr, "trim edges cannot be negative")
+		os.Exit(1)
+	}
+
 	trimStart := *flagStart
 
 	if trimStart < 0 {
@@ -118,6 +126,9 @@ func main() {
 		fmt.Fprintln(os.Stderr, "trim end cannot be negative")
 		os.Exit(1)
 	}
+
+	trimStart += trimEdges
+	trimEnd += trimEdges
 
 	reverse := *flagReverse
 	mirror := *flagMirror
