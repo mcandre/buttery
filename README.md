@@ -49,6 +49,10 @@ See `buttery -help` for more information.
 
 # GENERAL TIPS
 
+## Transitions
+
+Some motions may appear awkward. Play with `-mirror=false`, `-reverse`, `-speed`, and/or `-trimStart` / `-trimEnd` to work around awkward motions.
+
 ## Supercuts
 
 Animation smoothing takes a long time. Pre-cut your GIF's to highlight the specific desired sequence, for faster overall editing.
