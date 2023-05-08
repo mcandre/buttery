@@ -12,6 +12,7 @@ import (
 	"image/color"
 	"image/draw"
 	"image/gif"
+	"math"
 	"os"
 	"path/filepath"
 	"strings"
@@ -213,15 +214,8 @@ func main() {
 
 	for i := 0; i < butteryPalettedsLen; i++ {
 		butteryPaletteds[i] = clonePaletteds[r]
-
 		sourceDelay := sourceDelays[r]
-
-		butteryDelay := int(float64(sourceDelay) / speed)
-
-		if butteryDelay < 2 {
-			butteryDelay = 2
-		}
-
+		butteryDelay := int(math.Max(2.0, float64(sourceDelay) / speed))
 		butteryDelays[i] = butteryDelay
 
 		if !mirror || i < clonePalettedsLen-1 {
