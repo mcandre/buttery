@@ -9,6 +9,7 @@ import (
 	"flag"
 	"fmt"
 	"image"
+	"image/color"
 	"image/draw"
 	"image/gif"
 	"os"
@@ -178,6 +179,7 @@ func main() {
 	canvasBounds := canvasImage.Bounds()
 	paletteSize := getPaletteSize(sourcePaletteds)
 	clonePaletteds := make([]*image.Paletted, sourcePalettedsLen)
+	draw.DrawMask(canvasImage, canvasBounds, &image.Uniform{sourcePaletteds[0].Palette.Convert(color.Black)}, image.ZP, nil, image.Pt(0, 0), draw.Src)
 
 	for i, sourcePaletted := range sourcePaletteds {
 		draw.Draw(canvasImage, canvasBounds, sourcePaletted, image.ZP, draw.Over)
