@@ -12,6 +12,8 @@
 $ buttery -in homer.gif
 ```
 
+
+
 # DOWNLOAD
 
 https://github.com/mcandre/buttery/releases
@@ -42,6 +44,8 @@ For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPM
 * Trimming highlights your favorite motions.
 * Trimming also helps to smooth over awkward motions at the start, middle, or end of an animation.
 * Trimming can generate creative motion effects, by gluing together animation loops at serendipitious frame timings.
+
+`-mirror=false` disables accordian mirroring.
 
 See `buttery -help` for more information.
 
