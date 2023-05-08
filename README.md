@@ -59,9 +59,11 @@ Motion appears to accelerate with fewer frames. This is not always a bad thing; 
 
 ## Speed
 
-The animation `-speed` factor is also fairly sensitive. For example, a loop may feel much faster at `1.5` (x) speed compared to the default `1` (x) speed.
+The maximum theoretical GIF speed is 100 FPS, though in practice many GIF viewers, such as Web browsers, may support slower speeds, such as 50 FPS or lower. Worse, some GIF viewers interpret a GIF frame of 0.01 sec fast delay, as a reset to 1 sec slow delay.
 
-The maximum theoretical GIF speed is 100 FPS, though in practice many GIF viewers, such as Web browsers, may support slower speeds, such as 50 FPS or lower. Worse, some GIF viewers interpret a GIF frame of 0.01 sec fast delay, as a reset to 1 sec slow delay. Generally stick to `-speed` factors between `0.1` (slow) to `3.0` (fast).
+Generally stick to `-speed` factors inside of `0.1` (quite slow) and `3.0` (quite fast).
+
+Note that some GIF's are already using the quickest delay setting possible. In that case, a `-speed` greater than or equal to `1`, may not alter the animation speed.
 
 # SEE ALSO
 
