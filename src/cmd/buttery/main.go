@@ -18,6 +18,7 @@ import (
 )
 
 var flagIn = flag.String("in", "", "path to a .gif source file (required)")
+var flagCheck = flag.Bool("check", false, "validate basic GIF format file integrity")
 var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
 var flagEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
@@ -50,6 +51,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	check := *flagCheck
 	getFrames := *flagGetFrames
 	trimEdges := *flagEdges
 
@@ -119,6 +121,10 @@ func main() {
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
+	}
+
+	if check {
+		os.Exit(0)
 	}
 
 	sourcePaletteds := sourceGif.Image
