@@ -5,19 +5,22 @@ package buttery
 type Stitch int
 
 const (
-	// Mirror follows the end of the incoming sequence by replaying the sequence backwards.
-	Mirror Stitch = iota
-
-	// Flip follows the end of the incoming sequence by replaying the sequence reflected horizontally.
-	Flip
-
 	// None ends the incoming sequence as-is.
-	None
+	None Stitch = iota
+
+	// Mirror follows the end of the incoming sequence by replaying the sequence backwards.
+	Mirror
+
+	// FlipH follows the end of the incoming sequence by replaying the sequence reflected horizontally.
+	FlipH
+
+	// FlipV follows the end of the incoming sequence by replaying the sequence reflected vertically.
+	FlipV
 )
 
 // ParseStitch generates a Stitch from a string value.
 func ParseStitch(s string) (*Stitch, bool) {
-	for i := Mirror; i <= None; i++ {
+	for i := None; i <= FlipV; i++ {
 		if s == i.String() {
 			return &i, true
 		}

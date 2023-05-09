@@ -24,7 +24,7 @@ var flagEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the inpu
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
 var flagWindow = flag.Int("window", -1, "set fixed sequence length")
-var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (Mirror, Flip, or None)")
+var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV)")
 var flagReverse = flag.Bool("reverse", false, "reverse original sequence")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
 var flagSpeed = flag.Float64("speed", 1.0, "speed factor (highly sensitive)")
@@ -186,7 +186,9 @@ func main() {
 	switch stitch {
 	case buttery.Mirror:
 		butteryPalettedsLen = 2*clonePalettedsLen - 1
-	case buttery.Flip:
+	case buttery.FlipH:
+		butteryPalettedsLen = 2 * clonePalettedsLen
+	case buttery.FlipV:
 		butteryPalettedsLen = 2 * clonePalettedsLen
 	default:
 		butteryPalettedsLen = clonePalettedsLen
@@ -200,9 +202,17 @@ func main() {
 	for i := 0; i < butteryPalettedsLen; i++ {
 		paletted := clonePaletteds[r]
 
-		if stitch == buttery.Flip && i > clonePalettedsLen-1 {
+		if (stitch == buttery.FlipH || stitch == buttery.FlipV) && i > clonePalettedsLen-1 {
 			flipPaletted := image.NewPaletted(canvasBounds, nil)
-			flippedNRGBA := imaging.FlipH(paletted)
+
+			var flippedNRGBA *image.NRGBA
+
+			if stitch == buttery.FlipH {
+				flippedNRGBA = imaging.FlipH(paletted)
+			} else {
+				flippedNRGBA = imaging.FlipV(paletted)
+			}
+
 			quantizer.Quantize(flipPaletted, canvasBounds, flippedNRGBA, image.ZP)
 			paletted = flipPaletted
 		}
@@ -213,7 +223,7 @@ func main() {
 
 		if stitch == buttery.Mirror && i >= clonePalettedsLen-1 {
 			r--
-		} else if stitch == buttery.Flip && i == clonePalettedsLen-1 {
+		} else if (stitch == buttery.FlipH || stitch == buttery.FlipV) && i == clonePalettedsLen-1 {
 			r = 0
 		} else {
 			r++

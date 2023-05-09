@@ -53,7 +53,7 @@ For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPM
 
 `-stitch Mirror` is the default continuity strategy. It works like an accordion, following the incoming sequence by replaying the incoming sequence backwards to form a loop.
 
-`-stitch Flip` follows the incoming sequence by reflecting the sequence horizontally.
+`-stitch FlipH` / `-stitch FlipV` follow the incoming sequence by reflecting the sequence horizontally or vertically.
 
 `-stitch None` presents the sequence with no special continuity transition. This is mainly useful for simply enabling the infinite loop setting on a GIF.
 

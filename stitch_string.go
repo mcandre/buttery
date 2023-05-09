@@ -8,14 +8,15 @@ func _() {
 	// An "invalid array index" compiler error signifies that the constant values have changed.
 	// Re-run the stringer command to generate them again.
 	var x [1]struct{}
-	_ = x[Mirror-0]
-	_ = x[Flip-1]
-	_ = x[None-2]
+	_ = x[None-0]
+	_ = x[Mirror-1]
+	_ = x[FlipH-2]
+	_ = x[FlipV-3]
 }
 
-const _Stitch_name = "MirrorFlipNone"
+const _Stitch_name = "NoneMirrorFlipHFlipV"
 
-var _Stitch_index = [...]uint8{0, 6, 10, 14}
+var _Stitch_index = [...]uint8{0, 4, 10, 15, 20}
 
 func (i Stitch) String() string {
 	if i < 0 || i >= Stitch(len(_Stitch_index)-1) {
