@@ -213,7 +213,7 @@ func main() {
 
 	clonePalettedsLen := len(clonePaletteds)
 	sourceDelays = sourceDelays[trimStart:]
-	sourceDelays = sourceDelays[:len(clonePaletteds)-trimEnd]
+	sourceDelays = sourceDelays[:len(sourceDelays)-trimEnd]
 
 	if window != -1 {
 		sourceDelays = sourceDelays[:window]
