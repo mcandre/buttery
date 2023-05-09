@@ -1,9 +1,8 @@
 package main
 
 import (
-	"reflect"
-
 	"github.com/andybons/gogif"
+	"github.com/disintegration/imaging"
 	"github.com/mcandre/buttery"
 
 	"flag"
@@ -24,69 +23,12 @@ var flagEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the inpu
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
 var flagWindow = flag.Int("window", -1, "set fixed sequence length")
-var flagMirror = flag.Bool("mirror", true, "toggle frame sequence mirroring")
+var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (Mirror, Flip, or None)")
 var flagReverse = flag.Bool("reverse", false, "reverse original sequence")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
 var flagSpeed = flag.Float64("speed", 1.0, "speed factor (highly sensitive)")
 var flagVersion = flag.Bool("version", false, "show version information")
 var flagHelp = flag.Bool("help", false, "show usage information")
-
-func getDimensions(paletteds []*image.Paletted) (int, int) {
-	var xMin int
-	var xMax int
-	var yMin int
-	var yMax int
-
-	for _, paletted := range paletteds {
-		rect := paletted.Rect
-		rectXMin := rect.Min.X
-		rectXMax := rect.Max.X
-		rectYMin := rect.Min.Y
-		rectYMax := rect.Max.Y
-
-		if rectXMin < xMin {
-			xMin = rectXMin
-		}
-
-		if rectXMax > xMax {
-			xMax = rectXMax
-		}
-
-		if rectYMin < yMin {
-			yMin = rectYMin
-		}
-
-		if rectYMax > yMax {
-			yMax = rectYMax
-		}
-	}
-
-	return xMax - xMin, yMax - yMin
-}
-
-func getPaletteSize(paletteds []*image.Paletted) int {
-	var maxPaletteSize int
-
-	for _, paletted := range paletteds {
-		palette := paletted.Palette
-		paletteSize := len(palette)
-
-		if paletteSize > maxPaletteSize {
-			maxPaletteSize = paletteSize
-		}
-	}
-
-	return maxPaletteSize
-}
-
-// ReverseSlice performs an in-place swap in reverse order.
-func ReverseSlice(s interface{}) {
-	size := reflect.ValueOf(s).Len()
-	swap := reflect.Swapper(s)
-	for i, j := 0, size-1; i < j; i, j = i+1, j-1 {
-		swap(i, j)
-	}
-}
 
 func main() {
 	flag.Parse()
@@ -143,7 +85,15 @@ func main() {
 
 	reverse := *flagReverse
 	shift := *flagShift
-	mirror := *flagMirror
+	stitchString := *flagStitch
+	stitchP, ok := buttery.ParseStitch(stitchString)
+
+	if !ok {
+		flag.PrintDefaults()
+		os.Exit(1)
+	}
+
+	stitch := *stitchP
 
 	if *flagSpeed <= 0.0 {
 		fmt.Fprintln(os.Stderr, "speed must be positive")
@@ -190,17 +140,17 @@ func main() {
 	}
 
 	sourceDelays := sourceGif.Delay
-	sourceWidth, sourceHeight := getDimensions(sourcePaletteds)
+	sourceWidth, sourceHeight := buttery.GetDimensions(sourcePaletteds)
 	canvasImage := image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
 	canvasBounds := canvasImage.Bounds()
-	paletteSize := getPaletteSize(sourcePaletteds)
+	paletteSize := buttery.GetPaletteSize(sourcePaletteds)
 	clonePaletteds := make([]*image.Paletted, sourcePalettedsLen)
+	quantizer := gogif.MedianCutQuantizer{NumColor: paletteSize}
 	draw.DrawMask(canvasImage, canvasBounds, &image.Uniform{sourcePaletteds[0].Palette.Convert(color.Black)}, image.ZP, nil, image.Pt(0, 0), draw.Src)
 
 	for i, sourcePaletted := range sourcePaletteds {
 		draw.Draw(canvasImage, canvasBounds, sourcePaletted, image.ZP, draw.Over)
 		clonePaletted := image.NewPaletted(canvasBounds, nil)
-		quantizer := gogif.MedianCutQuantizer{NumColor: paletteSize}
 		quantizer.Quantize(clonePaletted, canvasBounds, canvasImage, image.ZP)
 		clonePaletteds[i] = clonePaletted
 	}
@@ -220,17 +170,19 @@ func main() {
 		sourceDelays = sourceDelays[:window]
 	}
 
-
 	if reverse {
-		ReverseSlice(clonePaletteds)
-		ReverseSlice(sourceDelays)
+		buttery.ReverseSlice(clonePaletteds)
+		buttery.ReverseSlice(sourceDelays)
 	}
 
 	var butteryPalettedsLen int
 
-	if mirror {
+	switch stitch {
+	case buttery.Mirror:
 		butteryPalettedsLen = 2*clonePalettedsLen - 1
-	} else {
+	case buttery.Flip:
+		butteryPalettedsLen = 2 * clonePalettedsLen
+	default:
 		butteryPalettedsLen = clonePalettedsLen
 	}
 
@@ -240,22 +192,32 @@ func main() {
 	var r int
 
 	for i := 0; i < butteryPalettedsLen; i++ {
-		butteryPaletteds[i] = clonePaletteds[r]
-		sourceDelay := sourceDelays[r]
-		butteryDelay := int(math.Max(2.0, float64(sourceDelay) / speed))
-		butteryDelays[i] = butteryDelay
+		paletted := clonePaletteds[r]
 
-		if !mirror || i < clonePalettedsLen-1 {
-			r++
-		} else {
+		if stitch == buttery.Flip && i > clonePalettedsLen-1 {
+			flipPaletted := image.NewPaletted(canvasBounds, nil)
+			flippedNRGBA := imaging.FlipH(paletted)
+			quantizer.Quantize(flipPaletted, canvasBounds, flippedNRGBA, image.ZP)
+			paletted = flipPaletted
+		}
+
+		butteryPaletteds[i] = paletted
+		sourceDelay := sourceDelays[r]
+		butteryDelays[i] = int(math.Max(2.0, float64(sourceDelay)/speed))
+
+		if stitch == buttery.Mirror && i >= clonePalettedsLen-1 {
 			r--
+		} else if stitch == buttery.Flip && i == clonePalettedsLen-1 {
+			r = 0
+		} else {
+			r++
 		}
 	}
 
 	var shiftedPaletteds = make([]*image.Paletted, butteryPalettedsLen)
 	var shiftedDelays = make([]int, butteryDelaysLen)
 
-	for i, _ := range butteryPaletteds {
+	for i := range butteryPaletteds {
 		r = (i + shift) % butteryPalettedsLen
 
 		if r < 0 {

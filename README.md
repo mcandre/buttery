@@ -43,15 +43,17 @@ For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPM
 * Trimming also helps to smooth over awkward motions at the start, middle, or end of an animation.
 * Trimming can generate creative motion effects, by gluing together animation loops at serendipitious frame timings.
 
-`-mirror=false` disables accordian mirroring.
-
 See `buttery -help` for more information.
 
 # GENERAL TIPS
 
 ## Transitions
 
-Some motions may appear awkward. Play with `-mirror=false`, `-reverse`, `-speed`, and/or `-trimStart` / `-trimEnd` to work around awkward motions.
+`-stitch Mirror` is the default continuity strategy. It works like an accordion, following the incoming sequence by replaying the incoming sequence backwards to form a loop.
+
+`-stitch Flip` follows the incoming sequence by reflecting the sequence horizontally.
+
+`-stitch None` presents the sequence with no special continuity transition. This is mainly useful for simply enabling the infinite loop setting on a GIF.
 
 ## Supercuts
 

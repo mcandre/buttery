@@ -16,6 +16,14 @@
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
 * [webm](https://www.webmproject.org/) supports audio in animation loops
 
+# GENERATE SOURCES
+
+After each change to an enum, regenerate auxiliary Go sources:
+
+```console
+$ stringer ./...
+```
+
 # AUDIT
 
 ```console

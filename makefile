@@ -11,6 +11,7 @@ all:
 	go install github.com/mcandre/factorio/cmd/factorio@v0.0.3
 	go install golang.org/x/lint/golint@latest
 	go install golang.org/x/tools/cmd/goimports@latest
+	go install golang.org/x/tools/cmd/stringer@latest
 	go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
 	go install honnef.co/go/tools/cmd/staticcheck@2023.1.3
 	go mod tidy

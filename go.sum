@@ -1,5 +1,7 @@
 github.com/andybons/gogif v0.0.0-20140526152223-16d573594812 h1:WBBv0ka2SO7Ut4bpskb87E9cHNnJabqA6VoBTex0Jng=
 github.com/andybons/gogif v0.0.0-20140526152223-16d573594812/go.mod h1:lkVwYUDYv/mJZK69J7BP7HRUhHEAone7OQHFBRnhQdQ=
+github.com/disintegration/imaging v1.6.2 h1:w1LecBlG2Lnp8B3jk5zSuNqd7b4DXhcjwek1ei82L+c=
+github.com/disintegration/imaging v1.6.2/go.mod h1:44/5580QXChDfwIclfc/PCwrr44amcmDAg8hxG0Ewe4=
 github.com/jhoonb/archivex v0.0.0-20201016144719-6a343cdae81d h1:q7n+5taxmM+9T2Q7Ydo7YN90FkoDuR5bbzByZwkQqPo=
 github.com/jhoonb/archivex v0.0.0-20201016144719-6a343cdae81d/go.mod h1:GN1Mg/uXQ6qwXA0HypnUO3xlcQJS9/y68EsHNeuuRa4=
 github.com/magefile/mage v1.14.0 h1:6QDX3g6z1YvJ4olPhT1wksUcSa/V0a1B+pJb73fBjyo=
@@ -10,3 +12,6 @@ github.com/mcandre/mage-extras v0.0.12 h1:g8XslHjgZjKQbUU4QoGw194bmYGSVo1KHDGic3
 github.com/mcandre/mage-extras v0.0.12/go.mod h1:Q2tXIHq3wfVxrpucaR4mnXSXrAEpprzZwGR/WejfrJA=
 github.com/mcandre/zipc v0.0.7 h1:P5f4pB80jG0UFnn/C5Ex3gG2eilDAXtzgPmPXd+oUE8=
 github.com/mcandre/zipc v0.0.7/go.mod h1:oSG7tdqkZKlcTwzTmE5QXXM8TBkO2xwVzsOabVJ00KU=
+golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8 h1:hVwzHzIUGRjiF7EcUjqNxk3NCfkPxbDKRdnNE1Rpg0U=
+golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
+golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
