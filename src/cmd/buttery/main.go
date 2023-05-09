@@ -23,11 +23,13 @@ var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame c
 var flagEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
 var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
-var flagMirror = flag.Bool("mirror", true, "Toggle frame sequence mirroring")
-var flagReverse = flag.Bool("reverse", false, "Reverse original sequence")
-var flagSpeed = flag.Float64("speed", 1.0, "Speed factor (highly sensitive)")
-var flagVersion = flag.Bool("version", false, "Show version information")
-var flagHelp = flag.Bool("help", false, "Show usage information")
+var flagWindow = flag.Int("window", -1, "set fixed sequence length")
+var flagMirror = flag.Bool("mirror", true, "toggle frame sequence mirroring")
+var flagReverse = flag.Bool("reverse", false, "reverse original sequence")
+var flagShift = flag.Int("shift", 0, "rotate sequence left")
+var flagSpeed = flag.Float64("speed", 1.0, "speed factor (highly sensitive)")
+var flagVersion = flag.Bool("version", false, "show version information")
+var flagHelp = flag.Bool("help", false, "show usage information")
 
 func getDimensions(paletteds []*image.Paletted) (int, int) {
 	var xMin int
@@ -107,7 +109,6 @@ func main() {
 	}
 
 	getFrames := *flagGetFrames
-
 	trimEdges := *flagEdges
 
 	if trimEdges < 0 {
@@ -131,8 +132,17 @@ func main() {
 
 	trimStart += trimEdges
 	trimEnd += trimEdges
+	window := *flagWindow
+
+	if window != -1 {
+		if window < 1 {
+			fmt.Fprintln(os.Stderr, "minimum 1 output frame")
+			os.Exit(1)
+		}
+	}
 
 	reverse := *flagReverse
+	shift := *flagShift
 	mirror := *flagMirror
 
 	if *flagSpeed <= 0.0 {
@@ -195,11 +205,20 @@ func main() {
 	}
 
 	clonePaletteds = clonePaletteds[trimStart:]
-
 	clonePaletteds = clonePaletteds[:len(clonePaletteds)-trimEnd]
-	clonePalettedsLen := len(clonePaletteds)
 
+	if window != -1 {
+		clonePaletteds = clonePaletteds[:window]
+	}
+
+	clonePalettedsLen := len(clonePaletteds)
 	sourceDelays = sourceDelays[trimStart:]
+	sourceDelays = sourceDelays[:len(clonePaletteds)-trimEnd]
+
+	if window != -1 {
+		sourceDelays = sourceDelays[:window]
+	}
+
 	var butteryPalettedsLen int
 
 	if mirror {
@@ -210,6 +229,7 @@ func main() {
 
 	butteryPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 	butteryDelays := make([]int, butteryPalettedsLen)
+	butteryDelaysLen := butteryPalettedsLen
 	var r int
 
 	for i := 0; i < butteryPalettedsLen; i++ {
@@ -225,12 +245,26 @@ func main() {
 		}
 	}
 
+	var shiftedPaletteds = make([]*image.Paletted, butteryPalettedsLen)
+	var shiftedDelays = make([]int, butteryDelaysLen)
+
+	for i, _ := range butteryPaletteds {
+		r = (i + shift) % butteryPalettedsLen
+
+		if r < 0 {
+			r += butteryPalettedsLen
+		}
+
+		shiftedPaletteds[i] = butteryPaletteds[r]
+		shiftedDelays[i] = butteryDelays[r]
+	}
+
 	butteryGif := gif.GIF{
 		LoopCount:       0,
 		BackgroundIndex: sourceGif.BackgroundIndex,
 		Config:          sourceGif.Config,
-		Image:           butteryPaletteds,
-		Delay:           butteryDelays,
+		Image:           shiftedPaletteds,
+		Delay:           shiftedDelays,
 		Disposal:        nil,
 	}
 
