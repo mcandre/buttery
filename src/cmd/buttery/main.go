@@ -184,6 +184,11 @@ func main() {
 		os.Exit(1)
 	}
 
+	if window > sourcePalettedsLen-trimStart-trimEnd {
+		fmt.Fprintln(os.Stderr, "window longer than subsequence")
+		os.Exit(1)
+	}
+
 	sourceDelays := sourceGif.Delay
 	sourceWidth, sourceHeight := getDimensions(sourcePaletteds)
 	canvasImage := image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
