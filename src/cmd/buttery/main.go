@@ -17,7 +17,6 @@ import (
 	"strings"
 )
 
-var flagIn = flag.String("in", "", "path to a .gif source file (required)")
 var flagCheck = flag.Bool("check", false, "validate basic GIF format file integrity")
 var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
 var flagEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
@@ -31,24 +30,29 @@ var flagSpeed = flag.Float64("speed", 1.0, "speed factor (highly sensitive)")
 var flagVersion = flag.Bool("version", false, "show version information")
 var flagHelp = flag.Bool("help", false, "show usage information")
 
+func Usage() {
+	program, err := os.Executable()
+
+	if err != nil {
+		fmt.Fprint(os.Stderr, err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("Usage: %v [OPTION] <input.gif>\n", program)
+	flag.PrintDefaults()
+}
+
 func main() {
 	flag.Parse()
 
 	if *flagHelp {
-		flag.PrintDefaults()
+		Usage()
 		os.Exit(0)
 	}
 
 	if *flagVersion {
 		fmt.Println(buttery.Version)
 		os.Exit(0)
-	}
-
-	sourcePth := *flagIn
-
-	if sourcePth == "" {
-		flag.PrintDefaults()
-		os.Exit(1)
 	}
 
 	check := *flagCheck
@@ -91,7 +95,7 @@ func main() {
 	stitchP, ok := buttery.ParseStitch(stitchString)
 
 	if !ok {
-		flag.PrintDefaults()
+		Usage()
 		os.Exit(1)
 	}
 
@@ -103,9 +107,17 @@ func main() {
 	}
 
 	speed := *flagSpeed
+	rest := flag.Args()
 
-	if len(flag.Args()) > 0 {
-		flag.PrintDefaults()
+	if len(rest) != 1 {
+		Usage()
+		os.Exit(1)
+	}
+
+	sourcePth := rest[0]
+
+	if sourcePth == "" {
+		Usage()
 		os.Exit(1)
 	}
 

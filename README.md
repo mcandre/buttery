@@ -9,10 +9,8 @@
 # EXAMPLE
 
 ```console
-$ buttery -in homer.gif
+$ buttery homer.gif
 ```
-
-A `-check` flag can validate basic GIF format file integrity.
 
 See `buttery -help` for more options.
 
