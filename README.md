@@ -253,7 +253,7 @@ The `-speed <factor>` option adjusts animation speed. Speed is expressed as a fa
 
 `1` = `1.0` is the neutral factor.
 
-Negative factors like `-1`, `-1.0`, `-2.0`, `-0.2`, etc., the original sequence in reverse, from back to front.
+Negative factors like `-1`, `-1.0`, `-2.0`, `-0.2`, etc., navigate the original sequence in reverse, from back to front.
 
 We can diagram this in terms of the frame delays, expressed in centiseconds. That is, `4cs` indicates 4 centisec = 4/100 sec between advancing to the next frame.
 
