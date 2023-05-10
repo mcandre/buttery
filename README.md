@@ -52,7 +52,9 @@ For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPM
 
 ## Mirror
 
-`[-stitch Mirror]` is the default transition behavior. It twists the GIF timeline around like a Mobius strip, so that it arrives naturally back at the start. This is useful for smoothing GIF's that present misaligned images at the extreme ends of the loop.
+`-stitch Mirror` is the primary transition smoothing option, and the default `buttery` behavior.
+
+Mirror twists the GIF timeline around like a Mobius strip, so that it arrives naturally back at the start. This is useful for smoothing GIF's that present misaligned images at the extreme ends of the loop.
 
 We can diagram logically how Mirror works, by examining its effect on the frame sequence. With the notation:
 
