@@ -25,7 +25,7 @@ func Audit() error { return mageextras.SnykTest() }
 // Test executes the integration test suite.
 func Test() error {
 	mg.Deps(Install)
-	cmd := exec.Command("buttery", "-help")
+	cmd := exec.Command("buttery", "-version")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	return cmd.Run()
