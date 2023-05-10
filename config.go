@@ -37,6 +37,8 @@ type Config struct {
 
 	// Speed applies a factor to each frame delay (Default 1.0).
 	//
+	// Zero speed behaves as a Window of a single frame.
+	//
 	// Negative speed reverses the incoming sequence.
 	Speed float64
 }
@@ -67,10 +69,6 @@ func (o Config) Validate() error {
 		return errors.New("window cannot be negative")
 	}
 
-	if o.Speed == 0 {
-		return errors.New("speed cannot be zero")
-	}
-
 	return nil
 }
 
@@ -83,7 +81,21 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		return errors.New("minimum 1 output frame")
 	}
 
-	if o.Window > sourcePalettedsLen-o.TrimStart-o.TrimEnd {
+	var reverse bool
+	speed := o.Speed
+
+	if speed < 0 {
+		reverse = true
+		speed *= -1.0
+	}
+
+	window := o.Window
+
+	if speed == 0.0 {
+		window = 1
+	}
+
+	if window > sourcePalettedsLen-o.TrimStart-o.TrimEnd {
 		return errors.New("window longer than subsequence")
 	}
 
@@ -103,12 +115,9 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		clonePaletteds[i] = clonePaletted
 	}
 
-	speed := o.Speed
-
-	if o.Speed < 0 {
+	if reverse {
 		ReverseSlice(clonePaletteds)
 		ReverseSlice(sourceDelays)
-		speed *= -1.0
 	}
 
 	clonePaletteds = clonePaletteds[o.TrimStart:]
@@ -116,9 +125,9 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	sourceDelays = sourceDelays[o.TrimStart:]
 	sourceDelays = sourceDelays[:len(sourceDelays)-o.TrimEnd]
 
-	if o.Window != 0 {
-		clonePaletteds = clonePaletteds[:o.Window]
-		sourceDelays = sourceDelays[:o.Window]
+	if window != 0 {
+		clonePaletteds = clonePaletteds[:window]
+		sourceDelays = sourceDelays[:window]
 	}
 
 	clonePalettedsLen := len(clonePaletteds)

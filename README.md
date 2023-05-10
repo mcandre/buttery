@@ -237,11 +237,11 @@ With `-shift -1`:
 
 The `-speed <factor>` option adjusts animation speed. Speed is expressed as a factor relative to the original GIF frame delay. We recommend using magnitudes between `0.2` (slow) and `2.0` (fast).
 
-`1` = `1.0` is the neutral factor.
+`1` = `1.0` is the neutral speed factor.
 
-Speed cannot be zero.
+Zero speed factor acts as `-window 1`, freezing the sequence to a single frame.
 
-Negative factors like `-1`, `-2`, `-0.2`, etc., navigate the original sequence in reverse order, from back to front.
+Negative speed factors like `-1`, `-2`, `-0.2`, etc., navigate the original sequence in reverse order, from back to front.
 
 We can diagram this in terms of the frame delays, expressed in centiseconds. That is, `4cs` indicates 4 centisec = 4/100 sec between advancing to the next frame.
 
