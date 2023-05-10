@@ -125,21 +125,7 @@ This transition is more playful, with an effect akin to rebounding a tennis ball
 
 ## None
 
-The `-stitch None` transition applies no transition at all between animation cycles. In art, sometimes less is more.
-
-### Before
-
-```text
-1 2 3 (1 2 3 ...)
-```
-
-### After
-
-```text
-1 2 3 (1 2 3 ...)
-```
-
-In other words, this option disables the other Mirror, FlipH, and FlipV transitions.
+The `-stitch None` transition applies no particular transition at all between animation cycles. In art, sometimes less is more.
 
 # SUPERCUTS
 
