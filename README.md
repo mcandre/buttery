@@ -149,7 +149,7 @@ Often, animations appear to accelerate when frame are removed. This is not alway
 
 ## Trim Start / End
 
-The `-trimStart <n>` / `-trimEnd <n>` options drop `n` frames from the start and/or end of the original sequence.
+The `-trimStart <n>` / `-trimEnd <n>` options drop `n` frames from the start and/or end of the original sequence. Zero indicates no trimming.
 
 For brevity, we will now assume the None transition and elide the successive sequence repetitions.
 
@@ -181,7 +181,7 @@ With `-trimStart 1` and `-trimEnd 1`:
 
 ## Trim Edges
 
-For convenience, we provide a similar option `-trimEdges <n>`. This drops `n` frames from both sides of the original sequence.
+For convenience, we provide a similar option `-trimEdges <n>`. This drops `n` frames from both sides of the original sequence. Zero indicates no trimming.
 
 ### Before
 
@@ -199,7 +199,7 @@ With `-trimEdges 1`:
 
 ## Window
 
-The `-window <n>` option truncates the original sequence to a fixed frame count. This is helpful for cutting down long animations.
+The `-window <n>` option truncates the original sequence to a fixed frame count. This is helpful for cutting down long animations. Zero indicates no truncation.
 
 ### Before
 
@@ -225,7 +225,7 @@ With `-window 3` and `-trimStart 1`:
 
 The `-shift <offset>` option performs a circular, leftward shift on the original sequence. This is useful for fine tuning how the GIF's very first cycle presents, before entering successive loops.
 
-A negative offset indicates rightward shift. Zero is the neutral shift.
+Zero is the neutral shift. A negative offset indicates rightward shift.
 
 ### Before
 
@@ -247,25 +247,11 @@ With `-shift -1`:
 3 1 2
 ```
 
-# REVERSE
-
-The `-reverse` option reorders the original sequence backwards.
-
-### Before
-
-```text
-1 2 3
-```
-
-### After
-
-```text:
-3 2 1
-```
-
 # SPEED
 
-The `-speed <factor>` option adjusts animation speed. Speed is expressed as a factor relative to the original GIF frame delay. We recommend using values in the range `0.2` (slow) to `2.0` (fast).
+The `-speed <factor>` option adjusts animation speed. Speed is expressed as a factor relative to the original GIF frame delay. We recommend using magnitudes between `0.2` (slow) and `2.0` (fast).
+
+`1` = `1.0` is the neutral factor.
 
 We can diagram this in terms of the frame delays, expressed in centiseconds. That is, `4cs` indicates 4 centisec = 4/100 sec between advancing to the next frame.
 
@@ -289,7 +275,7 @@ With `-speed 0.5`:
 8cs 8cs 8cs
 ```
 
-`1.0` is the neutral factor. Speed cannot be zero or negative.
+A negative speed plays the original sequence in reverse order.
 
 ### Quirks, Quickly
 

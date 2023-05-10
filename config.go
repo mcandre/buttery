@@ -15,9 +15,6 @@ import (
 
 // Config models a set of animation editing manipulations.
 type Config struct {
-	// Reverse plays the incoming sequence backwards (Default false).
-	Reverse bool
-
 	// TrimEdges removes frames from the start and end of the incoming sequence (Default zero).
 	TrimEdges int
 
@@ -38,7 +35,9 @@ type Config struct {
 	// Stitch denotes a loop continuity transition (Default Mirror).
 	Stitch Stitch
 
-	// Speed applies a factor to each frame delay (Default 1.0)
+	// Speed applies a factor to each frame delay (Default 1.0).
+	//
+	// Negative speed reverses the incoming sequence.
 	Speed float64
 }
 
@@ -68,8 +67,8 @@ func (o Config) Validate() error {
 		return errors.New("window cannot be negative")
 	}
 
-	if o.Speed <= 0 {
-		return errors.New("speed must be positive")
+	if o.Speed == 0 {
+		return errors.New("speed cannot be zero")
 	}
 
 	return nil
@@ -104,9 +103,12 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		clonePaletteds[i] = clonePaletted
 	}
 
-	if o.Reverse {
+	speed := o.Speed
+
+	if o.Speed < 0 {
 		ReverseSlice(clonePaletteds)
 		ReverseSlice(sourceDelays)
+		speed *= -1.0
 	}
 
 	clonePaletteds = clonePaletteds[o.TrimStart:]
@@ -158,7 +160,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 
 		butteryPaletteds[i] = paletted
 		sourceDelay := sourceDelays[r]
-		butteryDelays[i] = int(math.Max(2.0, float64(sourceDelay)/o.Speed))
+		butteryDelays[i] = int(math.Max(2.0, float64(sourceDelay)/speed))
 
 		if o.Stitch == Mirror && i >= clonePalettedsLen-1 {
 			r--
