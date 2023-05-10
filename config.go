@@ -1,10 +1,19 @@
 package buttery
 
 import (
+	"github.com/andybons/gogif"
+	"github.com/disintegration/imaging"
+
 	"errors"
+	"image"
+	"image/color"
+	"image/draw"
+	"image/gif"
+	"math"
+	"os"
 )
 
-// Config models a set of animation editing instructions.
+// Config models a set of animation editing manipulations.
 type Config struct {
 	// Reverse plays the incoming sequence backwards (Default false).
 	Reverse bool
@@ -29,7 +38,7 @@ type Config struct {
 	// Stitch denotes a loop continuity transition (Default Mirror).
 	Stitch Stitch
 
-	//
+	// Speed applies a factor to each frame delay (Default 1.0)
 	Speed float64
 }
 
@@ -64,4 +73,130 @@ func (o Config) Validate() error {
 	}
 
 	return nil
+}
+
+// Edit applies the configured GIF manipulations.
+func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
+	sourcePaletteds := sourceGif.Image
+	sourcePalettedsLen := len(sourcePaletteds)
+
+	if o.TrimStart+o.TrimEnd >= sourcePalettedsLen {
+		return errors.New("minimum 1 output frame")
+	}
+
+	if o.Window > sourcePalettedsLen-o.TrimStart-o.TrimEnd {
+		return errors.New("window longer than subsequence")
+	}
+
+	sourceDelays := sourceGif.Delay
+	sourceWidth, sourceHeight := GetDimensions(sourcePaletteds)
+	canvasImage := image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
+	canvasBounds := canvasImage.Bounds()
+	paletteSize := GetPaletteSize(sourcePaletteds)
+	clonePaletteds := make([]*image.Paletted, sourcePalettedsLen)
+	quantizer := gogif.MedianCutQuantizer{NumColor: paletteSize}
+	draw.DrawMask(canvasImage, canvasBounds, &image.Uniform{sourcePaletteds[0].Palette.Convert(color.Black)}, image.Point{}, nil, image.Pt(0, 0), draw.Src)
+
+	for i, sourcePaletted := range sourcePaletteds {
+		draw.Draw(canvasImage, canvasBounds, sourcePaletted, image.Point{}, draw.Over)
+		clonePaletted := image.NewPaletted(canvasBounds, nil)
+		quantizer.Quantize(clonePaletted, canvasBounds, canvasImage, image.Point{})
+		clonePaletteds[i] = clonePaletted
+	}
+
+	if o.Reverse {
+		ReverseSlice(clonePaletteds)
+		ReverseSlice(sourceDelays)
+	}
+
+	clonePaletteds = clonePaletteds[o.TrimStart:]
+	clonePaletteds = clonePaletteds[:len(clonePaletteds)-o.TrimEnd]
+	sourceDelays = sourceDelays[o.TrimStart:]
+	sourceDelays = sourceDelays[:len(sourceDelays)-o.TrimEnd]
+
+	if o.Window != 0 {
+		clonePaletteds = clonePaletteds[:o.Window]
+		sourceDelays = sourceDelays[:o.Window]
+	}
+
+	clonePalettedsLen := len(clonePaletteds)
+	var butteryPalettedsLen int
+
+	switch o.Stitch {
+	case Mirror:
+		butteryPalettedsLen = 2*clonePalettedsLen - 1
+	case FlipH:
+		butteryPalettedsLen = 2 * clonePalettedsLen
+	case FlipV:
+		butteryPalettedsLen = 2 * clonePalettedsLen
+	default:
+		butteryPalettedsLen = clonePalettedsLen
+	}
+
+	butteryPaletteds := make([]*image.Paletted, butteryPalettedsLen)
+	butteryDelays := make([]int, butteryPalettedsLen)
+	butteryDelaysLen := butteryPalettedsLen
+	var r int
+
+	for i := 0; i < butteryPalettedsLen; i++ {
+		paletted := clonePaletteds[r]
+
+		if (o.Stitch == FlipH || o.Stitch == FlipV) && i > clonePalettedsLen-1 {
+			flipPaletted := image.NewPaletted(canvasBounds, nil)
+
+			var flippedNRGBA *image.NRGBA
+
+			if o.Stitch == FlipH {
+				flippedNRGBA = imaging.FlipH(paletted)
+			} else {
+				flippedNRGBA = imaging.FlipV(paletted)
+			}
+
+			quantizer.Quantize(flipPaletted, canvasBounds, flippedNRGBA, image.Point{})
+			paletted = flipPaletted
+		}
+
+		butteryPaletteds[i] = paletted
+		sourceDelay := sourceDelays[r]
+		butteryDelays[i] = int(math.Max(2.0, float64(sourceDelay)/o.Speed))
+
+		if o.Stitch == Mirror && i >= clonePalettedsLen-1 {
+			r--
+		} else if (o.Stitch == FlipH || o.Stitch == FlipV) && i == clonePalettedsLen-1 {
+			r = 0
+		} else {
+			r++
+		}
+	}
+
+	var shiftedPaletteds = make([]*image.Paletted, butteryPalettedsLen)
+	var shiftedDelays = make([]int, butteryDelaysLen)
+
+	for i := range butteryPaletteds {
+		r = (i + o.Shift) % butteryPalettedsLen
+
+		if r < 0 {
+			r += butteryPalettedsLen
+		}
+
+		shiftedPaletteds[i] = butteryPaletteds[r]
+		shiftedDelays[i] = butteryDelays[r]
+	}
+
+	butteryGif := gif.GIF{
+		LoopCount:       0,
+		BackgroundIndex: sourceGif.BackgroundIndex,
+		Config:          sourceGif.Config,
+		Image:           shiftedPaletteds,
+		Delay:           shiftedDelays,
+		Disposal:        nil,
+	}
+
+	butteryFile, err := os.Create(destPth)
+
+	if err != nil {
+		return err
+	}
+
+	return gif.EncodeAll(butteryFile, &butteryGif)
 }
