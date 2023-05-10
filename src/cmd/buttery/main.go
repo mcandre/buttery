@@ -173,6 +173,11 @@ func main() {
 		clonePaletteds[i] = clonePaletted
 	}
 
+	if reverse {
+		buttery.ReverseSlice(clonePaletteds)
+		buttery.ReverseSlice(sourceDelays)
+	}
+
 	clonePaletteds = clonePaletteds[trimStart:]
 	clonePaletteds = clonePaletteds[:len(clonePaletteds)-trimEnd]
 
@@ -186,11 +191,6 @@ func main() {
 
 	if window != -1 {
 		sourceDelays = sourceDelays[:window]
-	}
-
-	if reverse {
-		buttery.ReverseSlice(clonePaletteds)
-		buttery.ReverseSlice(sourceDelays)
 	}
 
 	var butteryPalettedsLen int
