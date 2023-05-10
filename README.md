@@ -78,11 +78,9 @@ Each restart of the loop has a jarring visual jump from frame 3 to its successor
 
 Of course, running the `buttery` editor yourself is the best way to appreciate how it works.
 
-By mirroring the sequence backward in time, we remove the biggest visual jump. The overall visual effect is that of a sailor rowing back and forth in place. The Mirror transition can dramatically improve the smoothness of a GIF loop, and it's our default, primary editing tool.
+By mirroring the sequence backward in time, we remove the biggest visual jump. The overall visual effect is that of a sailor rowing back and forth in place. The Mirror transition often dramatically improves the smoothness of a GIF loop.
 
-Mirroring may be slightly more compact in terms of frame count and file size, than FlipH or FlipV.
-
-However, some motion may still appear awkward with mirroring, such as sharp, quick motions towards the extreme ends of the loop, or motions that appear to defy physical entropy. For this reason, we provide alternative transitions and other editing tools.
+However, some motion may still appear awkward with mirroring, such as sharp, quick motions towards the extreme ends of the loop, or motions that appear to defy physical entropy. For this reason, we provide alternative transitions and other editing tools, described below.
 
 ## FlipH / FlipV
 
