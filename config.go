@@ -69,7 +69,7 @@ func (o Config) Validate() error {
 		return errors.New("window cannot be negative")
 	}
 
-	return nil
+	return o.Stitch.Validate()
 }
 
 // Edit applies the configured GIF manipulations.

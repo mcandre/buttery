@@ -1,6 +1,10 @@
 //go:generate stringer -type=Stitch
 package buttery
 
+import (
+	"fmt"
+)
+
 // Stitch models a loop continuity strategy.
 type Stitch int
 
@@ -27,4 +31,13 @@ func ParseStitch(s string) (*Stitch, bool) {
 	}
 
 	return nil, false
+}
+
+// Validate rejects out of bound values.
+func (o Stitch) Validate() error {
+	if o < None || o > FlipV {
+		return fmt.Errorf("invalid stitch value: %d", o)
+	}
+
+	return nil
 }
