@@ -13,5 +13,5 @@ require (
 	github.com/jhoonb/archivex v0.0.0-20201016144719-6a343cdae81d // indirect
 	github.com/mcandre/factorio v0.0.3 // indirect
 	github.com/mcandre/zipc v0.0.7 // indirect
-	golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8 // indirect
+	golang.org/x/image v0.5.0 // indirect
 )
