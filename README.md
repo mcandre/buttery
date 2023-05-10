@@ -84,7 +84,7 @@ However, some motion may still appear awkward with mirroring, such as sharp, qui
 
 ## FlipH / FlipV
 
-The `-stitch FlipH` or `-stitch FlipV` transition disguises jarring misalignment by reflecting the frames about an axis.
+The transisions `-stitch FlipH` or `-stitch FlipV` disguise jarring misalignment, by reflecting the frames horizontally or vertically.
 
 With the notation:
 
@@ -121,7 +121,7 @@ FlipV:
 U U U D D D (U U U D D D ...)
 ```
 
-This transition is more playful, with an effect akin to rebounding a tennis ball over a net.
+The `FlipH`/`FlipV` transitions are snappy, with an effect like rebounding a tennis ball across a net.
 
 ## None
 
