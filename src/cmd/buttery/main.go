@@ -19,10 +19,10 @@ import (
 
 var flagCheck = flag.Bool("check", false, "validate basic GIF format file integrity")
 var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
-var flagEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
-var flagStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
-var flagEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
-var flagWindow = flag.Int("window", -1, "set fixed sequence length")
+var flagTrimEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
+var flagTrimStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
+var flagTrimEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
+var flagWindow = flag.Int("window", 0, "set fixed sequence length")
 var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV)")
 var flagReverse = flag.Bool("reverse", false, "reverse original sequence")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
@@ -30,7 +30,7 @@ var flagSpeed = flag.Float64("speed", 1.0, "speed factor (highly sensitive)")
 var flagVersion = flag.Bool("version", false, "show version information")
 var flagHelp = flag.Bool("help", false, "show usage information")
 
-func Usage() {
+func usage() {
 	program, err := os.Executable()
 
 	if err != nil {
@@ -46,7 +46,7 @@ func main() {
 	flag.Parse()
 
 	if *flagHelp {
-		Usage()
+		usage()
 		os.Exit(0)
 	}
 
@@ -55,69 +55,48 @@ func main() {
 		os.Exit(0)
 	}
 
-	check := *flagCheck
-	getFrames := *flagGetFrames
-	trimEdges := *flagEdges
-
-	if trimEdges < 0 {
-		fmt.Fprintln(os.Stderr, "trim edges cannot be negative")
-		os.Exit(1)
-	}
-
-	trimStart := *flagStart
-
-	if trimStart < 0 {
-		fmt.Fprintln(os.Stderr, "trim start cannot be negative")
-		os.Exit(1)
-	}
-
-	trimEnd := *flagEnd
-
-	if trimEnd < 0 {
-		fmt.Fprintln(os.Stderr, "trim end cannot be negative")
-		os.Exit(1)
-	}
-
-	trimStart += trimEdges
-	trimEnd += trimEdges
-	window := *flagWindow
-
-	if window != -1 {
-		if window < 1 {
-			fmt.Fprintln(os.Stderr, "minimum 1 output frame")
-			os.Exit(1)
-		}
-	}
-
-	reverse := *flagReverse
-	shift := *flagShift
-	stitchString := *flagStitch
-	stitchP, ok := buttery.ParseStitch(stitchString)
-
-	if !ok {
-		Usage()
-		os.Exit(1)
-	}
-
-	stitch := *stitchP
-
-	if *flagSpeed <= 0.0 {
-		fmt.Fprintln(os.Stderr, "speed must be positive")
-		os.Exit(1)
-	}
-
-	speed := *flagSpeed
 	rest := flag.Args()
 
 	if len(rest) != 1 {
-		Usage()
+		usage()
 		os.Exit(1)
 	}
 
 	sourcePth := rest[0]
 
 	if sourcePth == "" {
-		Usage()
+		usage()
+		os.Exit(1)
+	}
+
+	check := *flagCheck
+	getFrames := *flagGetFrames
+	trimEdges := *flagTrimEdges
+
+	if trimEdges < 0 {
+		fmt.Fprintln(os.Stderr, "trim edges cannot be negative")
+		os.Exit(1)
+	}
+
+	stitchString := *flagStitch
+	stitchP, ok := buttery.ParseStitch(stitchString)
+
+	if !ok {
+		usage()
+		os.Exit(1)
+	}
+
+	config := buttery.NewConfig()
+	config.Reverse = *flagReverse
+	config.TrimStart = *flagTrimStart + trimEdges
+	config.TrimEnd = *flagTrimEnd + trimEdges
+	config.Window = *flagWindow
+	config.Shift = *flagShift
+	config.Stitch = *stitchP
+	config.Speed = *flagSpeed
+
+	if err := config.Validate(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 
@@ -147,12 +126,12 @@ func main() {
 		os.Exit(0)
 	}
 
-	if trimStart+trimEnd >= sourcePalettedsLen {
+	if config.TrimStart+config.TrimEnd >= sourcePalettedsLen {
 		fmt.Fprintln(os.Stderr, "minimum 1 output frame")
 		os.Exit(1)
 	}
 
-	if window > sourcePalettedsLen-trimStart-trimEnd {
+	if config.Window > sourcePalettedsLen-config.TrimStart-config.TrimEnd {
 		fmt.Fprintln(os.Stderr, "window longer than subsequence")
 		os.Exit(1)
 	}
@@ -173,29 +152,25 @@ func main() {
 		clonePaletteds[i] = clonePaletted
 	}
 
-	if reverse {
+	if config.Reverse {
 		buttery.ReverseSlice(clonePaletteds)
 		buttery.ReverseSlice(sourceDelays)
 	}
 
-	clonePaletteds = clonePaletteds[trimStart:]
-	clonePaletteds = clonePaletteds[:len(clonePaletteds)-trimEnd]
+	clonePaletteds = clonePaletteds[config.TrimStart:]
+	clonePaletteds = clonePaletteds[:len(clonePaletteds)-config.TrimEnd]
+	sourceDelays = sourceDelays[config.TrimStart:]
+	sourceDelays = sourceDelays[:len(sourceDelays)-config.TrimEnd]
 
-	if window != -1 {
-		clonePaletteds = clonePaletteds[:window]
+	if config.Window != 0 {
+		clonePaletteds = clonePaletteds[:config.Window]
+		sourceDelays = sourceDelays[:config.Window]
 	}
 
 	clonePalettedsLen := len(clonePaletteds)
-	sourceDelays = sourceDelays[trimStart:]
-	sourceDelays = sourceDelays[:len(sourceDelays)-trimEnd]
-
-	if window != -1 {
-		sourceDelays = sourceDelays[:window]
-	}
-
 	var butteryPalettedsLen int
 
-	switch stitch {
+	switch config.Stitch {
 	case buttery.Mirror:
 		butteryPalettedsLen = 2*clonePalettedsLen - 1
 	case buttery.FlipH:
@@ -214,12 +189,12 @@ func main() {
 	for i := 0; i < butteryPalettedsLen; i++ {
 		paletted := clonePaletteds[r]
 
-		if (stitch == buttery.FlipH || stitch == buttery.FlipV) && i > clonePalettedsLen-1 {
+		if (config.Stitch == buttery.FlipH || config.Stitch == buttery.FlipV) && i > clonePalettedsLen-1 {
 			flipPaletted := image.NewPaletted(canvasBounds, nil)
 
 			var flippedNRGBA *image.NRGBA
 
-			if stitch == buttery.FlipH {
+			if config.Stitch == buttery.FlipH {
 				flippedNRGBA = imaging.FlipH(paletted)
 			} else {
 				flippedNRGBA = imaging.FlipV(paletted)
@@ -231,11 +206,11 @@ func main() {
 
 		butteryPaletteds[i] = paletted
 		sourceDelay := sourceDelays[r]
-		butteryDelays[i] = int(math.Max(2.0, float64(sourceDelay)/speed))
+		butteryDelays[i] = int(math.Max(2.0, float64(sourceDelay)/config.Speed))
 
-		if stitch == buttery.Mirror && i >= clonePalettedsLen-1 {
+		if config.Stitch == buttery.Mirror && i >= clonePalettedsLen-1 {
 			r--
-		} else if (stitch == buttery.FlipH || stitch == buttery.FlipV) && i == clonePalettedsLen-1 {
+		} else if (config.Stitch == buttery.FlipH || config.Stitch == buttery.FlipV) && i == clonePalettedsLen-1 {
 			r = 0
 		} else {
 			r++
@@ -246,7 +221,7 @@ func main() {
 	var shiftedDelays = make([]int, butteryDelaysLen)
 
 	for i := range butteryPaletteds {
-		r = (i + shift) % butteryPalettedsLen
+		r = (i + config.Shift) % butteryPalettedsLen
 
 		if r < 0 {
 			r += butteryPalettedsLen
