@@ -52,7 +52,7 @@ For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPM
 
 ## Mirror
 
-`-stitch Mirror` is the primary transition smoothing option, and the default `buttery` setting.
+The `-stitch Mirror` option is the primary loop smoothing transition, and the default transition setting.
 
 Mirror twists the GIF timeline around like a Mobius strip, so that it arrives naturally back at the start. This is useful for smoothing GIF's that present misaligned images at the extreme ends of the loop.
 
@@ -229,6 +229,24 @@ With `-window 3` and `-trimStart 1`:
 
 ```text
 2 3 4
+```
+
+## Cut Interval
+
+The `-cutInterval <n>` option removes every nth frame from the original sequence. This can mitigate some oscillation, such as lighting fluctuations from fans.
+
+### Before
+
+```text
+1 2 3 4 5 6 7 8
+```
+
+### After
+
+With `-cutInterval 2`
+
+```text
+1 3 5 7
 ```
 
 # SHIFT

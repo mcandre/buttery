@@ -21,8 +21,11 @@ type Config struct {
 	// TrimStart removes frames from the start of the incoming sequence (Default zero).
 	TrimStart int
 
-	// TrimEnd removes fromes frames from the end of the incoming sequence (Default zero)
+	// TrimEnd removes fromes frames from the end of the incoming sequence (Default zero).
 	TrimEnd int
+
+	// CutInterval removes every nth frame from the incoming sequence (Default zero).
+	CutInterval int
 
 	// Window truncates frames from the incoming sequence (Default zero).
 	//
@@ -63,6 +66,10 @@ func (o Config) Validate() error {
 
 	if o.TrimEnd < 0 {
 		return errors.New("trim end cannot be negative")
+	}
+
+	if o.CutInterval < 0 || o.CutInterval == 1 {
+		return errors.New("cut interval cannot be less than two")
 	}
 
 	if o.Window < 0 {
@@ -127,6 +134,23 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	}
 
 	clonePalettedsLen := len(clonePaletteds)
+
+	if o.CutInterval != 0 {
+		var reducedPaletteds []*image.Paletted
+		var reducedDelays []int
+
+		for i := 0; i < clonePalettedsLen; i++ {
+			if (1+i)%o.CutInterval != 0 {
+				reducedPaletteds = append(reducedPaletteds, clonePaletteds[i])
+				reducedDelays = append(reducedDelays, sourceDelays[i])
+			}
+		}
+
+		clonePaletteds = reducedPaletteds
+		clonePalettedsLen = len(reducedPaletteds)
+		sourceDelays = reducedDelays
+	}
+
 	var butteryPalettedsLen int
 
 	switch o.Stitch {

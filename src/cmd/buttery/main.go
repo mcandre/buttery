@@ -16,6 +16,7 @@ var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame c
 var flagTrimEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
 var flagTrimStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagTrimEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
+var flagCutInterval = flag.Int("cutInterval", 0, "drop every nth frame of the input GIF")
 var flagWindow = flag.Int("window", 0, "set fixed sequence length")
 var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV/Shuffle)")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
@@ -82,6 +83,7 @@ func main() {
 	config := buttery.NewConfig()
 	config.TrimStart = *flagTrimStart + trimEdges
 	config.TrimEnd = *flagTrimEnd + trimEdges
+	config.CutInterval = *flagCutInterval
 	config.Window = *flagWindow
 	config.Shift = *flagShift
 	config.Stitch = *stitchP
