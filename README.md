@@ -257,15 +257,13 @@ With `-shift -1`:
 3 1 2
 ```
 
-# SPEED
+# SCALE DELAY
 
-The `-speed <factor>` option adjusts animation speed. Speed is expressed as a factor relative to the original GIF frame delay. We recommend using magnitudes between `0.2` (slow) and `2.0` (fast).
+The `-scaleDelay <factor>` option adjusts animation speed, by multiplying each frame delay by the given factor.
 
-`1` = `1.0` is the neutral speed factor.
+`1` = `1.0` is the neutral, and default factor.
 
-Zero speed factor acts as `-window 1`, freezing the sequence to a single frame.
-
-Negative speed factors like `-1`, `-2`, `-0.2`, etc., navigate the original sequence in reverse order, from back to front.
+Negative values reverse the original sequence.
 
 We can diagram this in terms of the frame delays, expressed in centiseconds. That is, `4cs` indicates 4 centisec = 4/100 sec between advancing to the next frame.
 
@@ -277,37 +275,25 @@ We can diagram this in terms of the frame delays, expressed in centiseconds. Tha
 
 ### After
 
-With `-speed 2`:
-
-```text
-2cs 3cs 4cs
-```
-
-With `-speed 0.5`:
+With `-scaleDelay 2`:
 
 ```text
 8cs 12cs 16cs
 ```
 
-With `-speed -1`:
+With `-scaleDelay 0.5`:
+
+```text
+2cs 3cs 4cs
+```
+
+With `-scaleDelay -1`:
 
 ```text
 8cs 6cs 4cs
 ```
 
-### Quirks, Quickly
-
-GIFs have some further quirks worth noting, regarding animation speed.
-
-The lowest delay value is zero, though in GIF format speak, that indicates a reset to a default 1 sec delay, which is slow.
-
-In theory, the fastest GIF delay is 1 centisec. However, this equates to an FPS frame rate higher than most computer systems can handle. In practice, the fastest GIF delay is 2 centisec, nearly 60 FPS. Unfortunately, some GIF rendering engines such as Google Chrome, may also treat 1 centisec as a reset to default 1 sec delay, which is slow. In order to ensure wide compatibility with many different GIF viewing applications, `buttery` enforces a lower bound of 2 centisec for frame delays.
-
-Frame delays are sensitive to high speed factors. Even most factors like `3.0` and higher, may produce a stuttery or blurred effect.
-
-Short, single digit frame delays are even more sensitive to speed factors. This is due to inherent limitations in delay integer precision. As a result, many different values of factors can yield animations with identical animation speeds.
-
-Note that some GIF's are already using the quickest delay setting possible, about 2cs. In that case, a speed factor greater than or equal to `1`, may not have the desired effect.
+For compatibility with a wide range of GIF viewers, the resulting delay is upheld to a lower bound of 2cs.
 
 # SEE ALSO
 

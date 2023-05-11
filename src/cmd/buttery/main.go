@@ -19,7 +19,7 @@ var flagTrimEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF"
 var flagWindow = flag.Int("window", 0, "set fixed sequence length")
 var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV/Shuffle)")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
-var flagSpeed = flag.Float64("speed", 1.0, "animation speed factor")
+var flagScaleDelay = flag.Float64("scaleDelay", 1.0, "multiply each frame delay by a factor")
 var flagVersion = flag.Bool("version", false, "show version information")
 var flagHelp = flag.Bool("help", false, "show usage information")
 
@@ -85,7 +85,7 @@ func main() {
 	config.Window = *flagWindow
 	config.Shift = *flagShift
 	config.Stitch = *stitchP
-	config.Speed = *flagSpeed
+	config.ScaleDelay = *flagScaleDelay
 
 	if err := config.Validate(); err != nil {
 		fmt.Fprintln(os.Stderr, err)

@@ -35,19 +35,19 @@ type Config struct {
 	// Stitch denotes a loop continuity transition (Default Mirror).
 	Stitch Stitch
 
-	// Speed applies a factor to each frame delay (Default 1.0).
+	// ScaleDelay multiplies each frame delay by a factor (Default 1.0).
 	//
-	// Zero speed behaves as a Window of a single frame.
+	// The resulting delay is upheld to a lower bound of 2 centisec.
 	//
-	// Negative speed reverses the incoming sequence.
-	Speed float64
+	// A negative scale delay reverses the incoming sequence.
+	ScaleDelay float64
 }
 
 // NewConfig generates a default Config.
 func NewConfig() Config {
 	return Config{
-		Stitch: Mirror,
-		Speed:  1.0,
+		Stitch:     Mirror,
+		ScaleDelay: 1.0,
 	}
 }
 
@@ -82,18 +82,14 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	}
 
 	var reverse bool
-	speed := o.Speed
+	scaleDelay := o.ScaleDelay
 
-	if speed < 0 {
+	if scaleDelay < 0 {
 		reverse = true
-		speed *= -1.0
+		scaleDelay *= -1.0
 	}
 
 	window := o.Window
-
-	if speed == 0.0 {
-		window = 1
-	}
 
 	if window > sourcePalettedsLen-o.TrimStart-o.TrimEnd {
 		return errors.New("window longer than subsequence")
@@ -169,7 +165,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 
 		butteryPaletteds[i] = paletted
 		sourceDelay := sourceDelays[r]
-		butteryDelays[i] = int(math.Max(2.0, float64(sourceDelay)/speed))
+		butteryDelays[i] = int(math.Max(2.0, scaleDelay*float64(sourceDelay)))
 
 		if o.Stitch == Mirror && i >= clonePalettedsLen-1 {
 			r--
