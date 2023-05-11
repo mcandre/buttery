@@ -233,7 +233,9 @@ With `-window 3` and `-trimStart 1`:
 
 ## Cut Interval
 
-The `-cutInterval <n>` option removes every nth frame from the original sequence. This can mitigate some oscillation, such as lighting fluctuations from fans.
+The `-cutInterval <n>` option removes every nth frame from the original sequence.
+
+This can mitigate some oscillation, such as lighting fluctuations from fans.
 
 ### Before
 
@@ -243,11 +245,13 @@ The `-cutInterval <n>` option removes every nth frame from the original sequence
 
 ### After
 
-With `-cutInterval 2`
+With `-cutInterval 2`:
 
 ```text
 1 3 5 7
 ```
+
+This can also artificially accelerate the perceived speed of the animation. Useful when want to accelerate an animation already scaled down to 2cs per frame.
 
 # SHIFT
 
