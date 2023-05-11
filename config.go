@@ -115,7 +115,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		clonePaletteds[i] = clonePaletted
 	}
 
-	if reverse {
+	if reverse && o.Stitch != Shuffle {
 		ReverseSlice(clonePaletteds)
 		ReverseSlice(sourceDelays)
 	}
@@ -180,26 +180,34 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		}
 	}
 
-	var shiftedPaletteds = make([]*image.Paletted, butteryPalettedsLen)
-	var shiftedDelays = make([]int, butteryDelaysLen)
+	if o.Stitch == Shuffle {
+		ShuffleSlice(butteryPaletteds)
+		ShuffleSlice(butteryDelays)
+	} else {
+		var shiftedPaletteds = make([]*image.Paletted, butteryPalettedsLen)
+		var shiftedDelays = make([]int, butteryDelaysLen)
 
-	for i := range butteryPaletteds {
-		r = (i + o.Shift) % butteryPalettedsLen
+		for i := range butteryPaletteds {
+			r = (i + o.Shift) % butteryPalettedsLen
 
-		if r < 0 {
-			r += butteryPalettedsLen
+			if r < 0 {
+				r += butteryPalettedsLen
+			}
+
+			shiftedPaletteds[i] = butteryPaletteds[r]
+			shiftedDelays[i] = butteryDelays[r]
 		}
 
-		shiftedPaletteds[i] = butteryPaletteds[r]
-		shiftedDelays[i] = butteryDelays[r]
+		butteryPaletteds = shiftedPaletteds
+		butteryDelays = shiftedDelays
 	}
 
 	butteryGif := gif.GIF{
 		LoopCount:       0,
 		BackgroundIndex: sourceGif.BackgroundIndex,
 		Config:          sourceGif.Config,
-		Image:           shiftedPaletteds,
-		Delay:           shiftedDelays,
+		Image:           butteryPaletteds,
+		Delay:           butteryDelays,
 		Disposal:        nil,
 	}
 

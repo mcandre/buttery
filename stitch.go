@@ -20,11 +20,14 @@ const (
 
 	// FlipV follows the end of the incoming sequence by replaying the sequence reflected vertically.
 	FlipV
+
+	// Shuffle randomizes the incoming sequence.
+	Shuffle
 )
 
 // ParseStitch generates a Stitch from a string value.
 func ParseStitch(s string) (*Stitch, bool) {
-	for i := None; i <= FlipV; i++ {
+	for i := None; i <= Shuffle; i++ {
 		if s == i.String() {
 			return &i, true
 		}
@@ -35,7 +38,7 @@ func ParseStitch(s string) (*Stitch, bool) {
 
 // Validate rejects out of bound values.
 func (o Stitch) Validate() error {
-	if o < None || o > FlipV {
+	if o < None || o > Shuffle {
 		return fmt.Errorf("invalid stitch value: %d", o)
 	}
 

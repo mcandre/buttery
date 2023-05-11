@@ -12,11 +12,12 @@ func _() {
 	_ = x[Mirror-1]
 	_ = x[FlipH-2]
 	_ = x[FlipV-3]
+	_ = x[Shuffle-4]
 }
 
-const _Stitch_name = "NoneMirrorFlipHFlipV"
+const _Stitch_name = "NoneMirrorFlipHFlipVShuffle"
 
-var _Stitch_index = [...]uint8{0, 4, 10, 15, 20}
+var _Stitch_index = [...]uint8{0, 4, 10, 15, 20, 27}
 
 func (i Stitch) String() string {
 	if i < 0 || i >= Stitch(len(_Stitch_index)-1) {

@@ -52,7 +52,7 @@ For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPM
 
 ## Mirror
 
-`-stitch Mirror` is the primary transition smoothing option, and the default `buttery` behavior.
+`-stitch Mirror` is the primary transition smoothing option, and the default `buttery` setting.
 
 Mirror twists the GIF timeline around like a Mobius strip, so that it arrives naturally back at the start. This is useful for smoothing GIF's that present misaligned images at the extreme ends of the loop.
 
@@ -84,7 +84,7 @@ However, some motion may still appear awkward with mirroring, such as sharp, qui
 
 ## FlipH / FlipV
 
-The transisions `-stitch FlipH` or `-stitch FlipV` disguise jarring misalignment, by reflecting the frames horizontally or vertically.
+The transision settings `-stitch FlipH` or `-stitch FlipV` disguise jarring misalignment, by reflecting the frames horizontally or vertically.
 
 With the notation:
 
@@ -123,9 +123,33 @@ U U U D D D (U U U D D D ...)
 
 The `FlipH`/`FlipV` transitions are snappy, with an effect like rebounding a tennis ball across a net.
 
+## Shuffle
+
+The `-stitch Shuffle` transition setting randomizes the frame sequence.
+
+### Before
+
+```text
+1 2 3 4 5 6
+```
+
+### After
+
+Example ordering:
+
+```text
+6 3 1 4 2 5
+```
+
+Naturally, the more unique frames available, the more opportunity for unique random orderings.
+
+This transition tends to artificially accelerate the perceived animation speed.
+
+This transition hides a single jarring misalignment, in the noise of a completely random, spastic animation.
+
 ## None
 
-The `-stitch None` transition applies no particular transition at all between animation cycles. In art, sometimes less is more.
+The `-stitch None` transition setting applies no particular transition at all between animation cycles. In art, sometimes less is more.
 
 # SUPERCUTS
 
