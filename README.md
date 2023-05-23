@@ -317,6 +317,28 @@ With `-scaleDelay -1`:
 
 For compatibility with a wide range of GIF viewers, the resulting delay is upheld to a lower bound of 2cs.
 
+# LOOP COUNT
+
+The `-loopCount <n>` option configures the low-level GIF loop counter setting. According to the GIF standard:
+
+* `-1` indicates loop exactly once.
+* `0` indicates infinite, endless looping (default).
+* `n` indicates n replays after the first play = 1 + n total iterations.
+
+### Before
+
+```text
+1 2 3
+```
+
+### After
+
+With `-loopCount 0`:
+
+```text
+1 2 3 (1 2 3 ...)
+```
+
 # SEE ALSO
 
 * [ffmpeg](https://ffmpeg.org/) edits and converts videos

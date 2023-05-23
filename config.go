@@ -44,6 +44,13 @@ type Config struct {
 	//
 	// A negative scale delay reverses the incoming sequence.
 	ScaleDelay float64
+
+	// LoopCount denotes how many times to play the animation (Default 0).
+	//
+	// -1 indicates one play.
+	// 0 indicates infinite, endless plays.
+	// N indicates 1+N iterations.
+	LoopCount int
 }
 
 // NewConfig generates a default Config.
@@ -223,7 +230,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	}
 
 	butteryGif := gif.GIF{
-		LoopCount:       0,
+		LoopCount:       o.LoopCount,
 		BackgroundIndex: sourceGif.BackgroundIndex,
 		Config:          sourceGif.Config,
 		Image:           butteryPaletteds,

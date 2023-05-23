@@ -21,6 +21,7 @@ var flagWindow = flag.Int("window", 0, "set fixed sequence length")
 var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV/Shuffle)")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
 var flagScaleDelay = flag.Float64("scaleDelay", 1.0, "multiply each frame delay by a factor")
+var flagLoopCount = flag.Int("loopCount", 0, "how many times to play animation (-1: Once, 0: Infinite, N: N+1 iterations)")
 var flagVersion = flag.Bool("version", false, "show version information")
 var flagHelp = flag.Bool("help", false, "show usage information")
 
@@ -88,6 +89,7 @@ func main() {
 	config.Shift = *flagShift
 	config.Stitch = *stitchP
 	config.ScaleDelay = *flagScaleDelay
+	config.LoopCount = *flagLoopCount
 
 	if err := config.Validate(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
