@@ -8,7 +8,7 @@
 
 ## Recommended
 
-* [ASDF](https://asdf-vm.com/) 0.10
+* [ASDF](https://asdf-vm.com/) 0.10 (run `asdf reshim` after provisioning)
 * [direnv](https://direnv.net/) 2
 * [ffmpeg](https://ffmpeg.org/) edits and converts videos
 * [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
