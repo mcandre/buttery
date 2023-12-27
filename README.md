@@ -30,7 +30,7 @@ https://pkg.go.dev/github.com/mcandre/buttery
 
 # LICENSE
 
-FreeBSD
+BSD-2-Clause
 
 # RUNTIME REQUIREMENTS
 
