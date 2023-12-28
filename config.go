@@ -2,7 +2,7 @@ package buttery
 
 import (
 	"github.com/andybons/gogif"
-	"github.com/disintegration/imaging"
+	"github.com/anthonynsimon/bild/transform"
 
 	"errors"
 	"image"
@@ -182,15 +182,15 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		if (o.Stitch == FlipH || o.Stitch == FlipV) && i > clonePalettedsLen-1 {
 			flipPaletted := image.NewPaletted(canvasBounds, nil)
 
-			var flippedNRGBA *image.NRGBA
+			var flippedRGBA *image.RGBA
 
 			if o.Stitch == FlipH {
-				flippedNRGBA = imaging.FlipH(paletted)
+				flippedRGBA = transform.FlipH(paletted)
 			} else {
-				flippedNRGBA = imaging.FlipV(paletted)
+				flippedRGBA = transform.FlipV(paletted)
 			}
 
-			quantizer.Quantize(flipPaletted, canvasBounds, flippedNRGBA, image.Point{})
+			quantizer.Quantize(flipPaletted, canvasBounds, flippedRGBA, image.Point{})
 			paletted = flipPaletted
 		}
 
