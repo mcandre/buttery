@@ -15,5 +15,5 @@ jobs:
     - run: "sudo apt-get install -y cargo make npm wget"
     - run: "wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz"
     - run: "sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz"
-    - run: "make -f install.mk"
-    - run: "make lint"
+    - run: "make"
+    - run: "mage lint"
