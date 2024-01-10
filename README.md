@@ -344,7 +344,6 @@ With `-loopCount 0`:
 * [ffmpeg](https://ffmpeg.org/) edits and converts videos
 * [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
 * [ImageMagick](https://imagemagick.org/) converts between multimedia formats, including GIF and WEBP
-* [karp](https://github.com/mcandre/karp) for conveniently browsing files and directories
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
 * [VLC](https://www.videolan.org/vlc/) plays numerous multimedia formats
 * [webm](https://www.webmproject.org/) supports audio in animation loops

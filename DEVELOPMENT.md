@@ -12,8 +12,8 @@
 * [direnv](https://direnv.net/) 2
 * [ffmpeg](https://ffmpeg.org/) edits and converts videos
 * [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
-* [karp](https://github.com/mcandre/karp) for conveniently browsing files and directories
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
+* an [open](https://github.com/mcandre/dotfiles) shim for non-BSD environments
 * [webm](https://www.webmproject.org/) supports audio in animation loops
 
 # GENERATE SOURCES
