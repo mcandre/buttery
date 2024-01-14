@@ -10,9 +10,6 @@ github.com/anthonynsimon/bild/transform
 # github.com/magefile/mage v1.14.0
 ## explicit; go 1.12
 github.com/magefile/mage/mg
-# github.com/mcandre/factorio v0.0.4
-## explicit; go 1.21
-github.com/mcandre/factorio
-# github.com/mcandre/mage-extras v0.0.15
+# github.com/mcandre/mage-extras v0.0.16
 ## explicit; go 1.21
 github.com/mcandre/mage-extras
