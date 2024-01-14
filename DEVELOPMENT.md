@@ -1,9 +1,10 @@
 # BUILDTIME REQUIREMENTS
 
 * [Go](https://golang.org/) 1.21.5+
+* POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html)
 * [Node.js](https://nodejs.org/en) 20.10.0+
 * [Rust](https://www.rust-lang.org/) 1.75.0+
-* a POSIX compliant [make](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/make.html) implementation (e.g. GNU make, BSD make, etc.)
+* POSIX compatible [tar](https://pubs.opengroup.org/onlinepubs/7908799/xcu/tar.html)
 * Provision additional dev tools with `make`
 
 ## Recommended
@@ -15,6 +16,9 @@
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
 * [webm](https://www.webmproject.org/) supports audio in animation loops
+* a UNIX environment, such as macOS, Linux, BSD, [WSL](https://learn.microsoft.com/en-us/windows/wsl/), etc.
+
+Non-UNIX environments may produce subtle adverse effects when linting or generating application ports.
 
 # GENERATE SOURCES
 
