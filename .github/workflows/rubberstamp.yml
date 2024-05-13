@@ -1,4 +1,8 @@
 ---
+#
+# Rubberstamp
+# https://github.com/mcandre/rubberstamp
+#
 name: "Rubberstamp"
 on: # yamllint disable-line rule:truthy
   schedule:
