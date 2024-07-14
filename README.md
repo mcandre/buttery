@@ -24,7 +24,7 @@ https://github.com/mcandre/buttery/releases
 $ go install github.com/mcandre/buttery/cmd/buttery@latest
 ```
 
-# API DOCUMENTATION
+# DOCUMENTATION
 
 https://pkg.go.dev/github.com/mcandre/buttery
 
