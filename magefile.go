@@ -20,7 +20,7 @@ var Default = Test
 // Govulncheck runs govulncheck.
 func Govulncheck() error { return mageextras.Govulncheck("./...") }
 
-// SnykTest runs Snyk SCA.
+// Snyk runs Snyk SCA.
 func Snyk() error { return mageextras.SnykTest() }
 
 // Audit runs a security audit.
