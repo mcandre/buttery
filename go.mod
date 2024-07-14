@@ -1,6 +1,6 @@
 module github.com/mcandre/buttery
 
-go 1.21
+go 1.22
 
 require (
 	github.com/andybons/gogif v0.0.0-20140526152223-16d573594812
