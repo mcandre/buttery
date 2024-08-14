@@ -41,14 +41,14 @@ func Test() error {
 // Deadcode runs deadcode.
 func Deadcode() error { return mageextras.Deadcode("./...") }
 
-// GoVet runs default go vet analyzers.
-func GoVet() error { return mageextras.GoVet() }
-
 // Gofmt runs gofmt.
 func GoFmt() error { return mageextras.GoFmt("-s", "-w") }
 
 // GoImports runs goimports.
 func GoImports() error { return mageextras.GoImports("-w") }
+
+// GoVet runs default go vet analyzers.
+func GoVet() error { return mageextras.GoVet() }
 
 // Errcheck runs errcheck.
 func Errcheck() error { return mageextras.Errcheck("-blank") }
