@@ -1,3 +1,4 @@
+// Package main implements a GIF editor application.
 package main
 
 import (
