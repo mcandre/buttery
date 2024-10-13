@@ -346,7 +346,7 @@ With `-loopCount 0`:
 * [harmonica](https://github.com/mcandre/harmonica) repackages comic archives
 * [ImageMagick](https://imagemagick.org/) converts between multimedia formats, including GIF and WEBP
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
-* [tigris](https://github.com/mcandre/tigris) provides comic book archival utilities
+* [tigris](https://github.com/mcandre/tigris) provides (Kindle) comic book archival utilities
 * [VLC](https://www.videolan.org/vlc/) plays numerous multimedia formats
 * [webm](https://www.webmproject.org/) supports audio in animation loops
 
