@@ -4,7 +4,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
 
 	"github.com/magefile/mage/mg"
 	"github.com/mcandre/buttery"
@@ -29,14 +28,8 @@ func Audit() error {
 	return Snyk()
 }
 
-// Test executes the integration test suite.
-func Test() error {
-	mg.Deps(Install)
-	cmd := exec.Command("buttery", "-version")
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	return cmd.Run()
-}
+// Test executes a test suite.
+func Test() error { return mageextras.UnitTest() }
 
 // Deadcode runs deadcode.
 func Deadcode() error { return mageextras.Deadcode("./...") }
