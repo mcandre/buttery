@@ -3,8 +3,6 @@ name: "Test"
 on: # yamllint disable-line rule:truthy
   push:
   pull_request:
-  schedule:
-  - cron: "0 0 * * 1"
 jobs:
   Test:
     runs-on: "ubuntu-24.04"
