@@ -5,7 +5,7 @@
 * [Rust](https://www.rust-lang.org/) 1.75.0+
 * [Snyk](https://snyk.io/)
 * POSIX compatible [tar](https://pubs.opengroup.org/onlinepubs/7908799/xcu/tar.html)
-* Provision additional dev tools with `make`
+* Provision additional dev tools with `make -j 4`
 
 ## Recommended
 
