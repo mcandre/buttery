@@ -1,12 +1,12 @@
 ---
-name: "Audit"
+name: "Test"
 on: # yamllint disable-line rule:truthy
   push:
   pull_request:
   schedule:
   - cron: "0 0 * * 1"
 jobs:
-  Audit:
+  Test:
     runs-on: "ubuntu-24.04"
     env:
       GOPATH: "/home/runner/go"
