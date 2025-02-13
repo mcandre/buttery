@@ -1,11 +1,11 @@
 # BUILDTIME REQUIREMENTS
 
-* [Go](https://go.dev/) 1.23.3+
-* [GNU](https://www.gnu.org/software/make/) / [BSD](https://man.freebsd.org/cgi/man.cgi?make(1)) make
+* [Go](https://go.dev/) 1.24.0+
+* POSIX compatible [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)
 * [Rust](https://www.rust-lang.org/) 1.75.0+
 * [Snyk](https://snyk.io/)
 * POSIX compatible [tar](https://pubs.opengroup.org/onlinepubs/7908799/xcu/tar.html)
-* Provision additional dev tools with `make -j 4`
+* Provision additional dev tools with `make [-j 4]`
 
 ## Recommended
 
@@ -13,6 +13,7 @@
 * [direnv](https://direnv.net/) 2
 * [ffmpeg](https://ffmpeg.org/) edits and converts videos
 * [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
+* [GNU](https://www.gnu.org/)/[BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) make
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
 * [webm](https://www.webmproject.org/) supports audio in animation loops
