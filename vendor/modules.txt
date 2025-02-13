@@ -15,9 +15,6 @@ github.com/anthonynsimon/bild/clone
 github.com/anthonynsimon/bild/math/f64
 github.com/anthonynsimon/bild/parallel
 github.com/anthonynsimon/bild/transform
-# github.com/bmatcuk/doublestar/v4 v4.8.1
-## explicit; go 1.16
-github.com/bmatcuk/doublestar/v4
 # github.com/chavacava/garif v0.1.0
 ## explicit; go 1.16
 github.com/chavacava/garif
@@ -61,7 +58,7 @@ github.com/mcandre/mage-extras
 # github.com/mgechev/dots v0.0.0-20210922191527-e955255bf517
 ## explicit
 github.com/mgechev/dots
-# github.com/mgechev/revive v1.6.1
+# github.com/mgechev/revive v1.6.0
 ## explicit; go 1.22.1
 github.com/mgechev/revive
 github.com/mgechev/revive/cli

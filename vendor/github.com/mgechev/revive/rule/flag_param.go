@@ -69,11 +69,6 @@ func (w conditionVisitor) Visit(node ast.Node) ast.Visitor {
 			return false
 		}
 
-		_, ok = w.idents[ident.Name]
-		if !ok {
-			return false
-		}
-
 		return w.idents[ident.Name] == struct{}{}
 	}
 
