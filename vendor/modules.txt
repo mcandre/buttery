@@ -2,8 +2,8 @@
 ## explicit; go 1.18
 github.com/BurntSushi/toml
 github.com/BurntSushi/toml/internal
-# github.com/alexkohler/nakedret/v2 v2.0.5
-## explicit; go 1.21
+# github.com/alexkohler/nakedret/v2 v2.0.5 => github.com/aep-sunlife/nakedret/v2 v2.0.0-20250227175454-3fb3a0f5caba
+## explicit; go 1.22.0
 github.com/alexkohler/nakedret/v2
 github.com/alexkohler/nakedret/v2/cmd/nakedret
 # github.com/andybons/gogif v0.0.0-20140526152223-16d573594812
