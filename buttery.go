@@ -1,4 +1,3 @@
-// Package buttery provides primitives for manipulating GIF animations.
 package buttery
 
 import (
