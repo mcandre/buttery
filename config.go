@@ -116,7 +116,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	paletteSize := GetPaletteSize(sourcePaletteds)
 	clonePaletteds := make([]*image.Paletted, sourcePalettedsLen)
 	quantizer := gogif.MedianCutQuantizer{NumColor: paletteSize}
-	draw.DrawMask(canvasImage, canvasBounds, &image.Uniform{sourcePaletteds[0].Palette.Convert(color.Black)}, image.Point{}, nil, image.Pt(0, 0), draw.Src)
+	draw.Draw(canvasImage, canvasBounds, &image.Uniform{sourcePaletteds[0].Palette.Convert(color.Black)}, image.Point{}, draw.Src)
 
 	for i, sourcePaletted := range sourcePaletteds {
 		draw.Draw(canvasImage, canvasBounds, sourcePaletted, image.Point{}, draw.Over)
