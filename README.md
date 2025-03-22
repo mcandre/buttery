@@ -48,6 +48,10 @@ For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPM
 
 `buttery -getFrames <GIF>` reports the frame count. This is useful for planning edits, particularly towards the far end of the original animation sequence.
 
+# BACKGROUNDS
+
+The `-transparent` option changes the disposal mode from none to background, and changes the background from black to clear.
+
 # TRANSITIONS
 
 ## Mirror

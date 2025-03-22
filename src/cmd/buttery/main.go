@@ -14,6 +14,7 @@ import (
 
 var flagCheck = flag.Bool("check", false, "validate basic GIF format file integrity")
 var flagGetFrames = flag.Bool("getFrames", false, "query total input GIF frame count")
+var flagTransparent = flag.Bool("transparent", false, "preserve clear GIFs")
 var flagTrimEdges = flag.Int("trimEdges", 0, "drop frames from both ends of the input GIF")
 var flagTrimStart = flag.Int("trimStart", 0, "drop frames from start of the input GIF")
 var flagTrimEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
@@ -83,6 +84,7 @@ func main() {
 	}
 
 	config := buttery.NewConfig()
+	config.Transparent = *flagTransparent
 	config.TrimStart = *flagTrimStart + trimEdges
 	config.TrimEnd = *flagTrimEnd + trimEdges
 	config.CutInterval = *flagCutInterval

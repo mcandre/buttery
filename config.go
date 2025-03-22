@@ -15,6 +15,9 @@ import (
 
 // Config models a set of animation editing manipulations.
 type Config struct {
+	// Transparent preserves clear animations (Default false).
+	Transparent bool
+
 	// TrimEdges removes frames from the start and end of the incoming sequence (Default zero).
 	TrimEdges int
 
@@ -116,13 +119,33 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	paletteSize := GetPaletteSize(sourcePaletteds)
 	clonePaletteds := make([]*image.Paletted, sourcePalettedsLen)
 	quantizer := gogif.MedianCutQuantizer{NumColor: paletteSize}
-	draw.Draw(canvasImage, canvasBounds, &image.Uniform{sourcePaletteds[0].Palette.Convert(color.Black)}, image.Point{}, draw.Src)
+	var disposals []byte
+	c := color.Alpha16{0}
+
+	if o.Transparent {
+		c = color.Transparent
+	}
+
+	draw.Src.Draw(canvasImage, canvasBounds, &image.Uniform{sourcePaletteds[0].Palette.Convert(c)}, image.Point{})
 
 	for i, sourcePaletted := range sourcePaletteds {
-		draw.Draw(canvasImage, canvasBounds, sourcePaletted, image.Point{}, draw.Over)
-		clonePaletted := image.NewPaletted(canvasBounds, nil)
-		quantizer.Quantize(clonePaletted, canvasBounds, canvasImage, image.Point{})
+		im := canvasImage
+
+		if o.Transparent {
+			im = image.NewRGBA(image.Rect(0, 0, sourceWidth, sourceHeight))
+		}
+
+		draw.Over.Draw(im, canvasBounds, sourcePaletted, image.Point{})
+		clonePaletted := image.NewPaletted(canvasBounds, sourcePaletted.Palette)
+		quantizer.Quantize(clonePaletted, canvasBounds, im, image.Point{})
 		clonePaletteds[i] = clonePaletted
+		disposal := byte(gif.DisposalNone)
+
+		if o.Transparent {
+			disposal = byte(gif.DisposalBackground)
+		}
+
+		disposals = append(disposals, disposal)
 	}
 
 	if reverse && o.Stitch != Shuffle {
@@ -134,10 +157,13 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	clonePaletteds = clonePaletteds[:len(clonePaletteds)-o.TrimEnd]
 	sourceDelays = sourceDelays[o.TrimStart:]
 	sourceDelays = sourceDelays[:len(sourceDelays)-o.TrimEnd]
+	cloneDisposals := disposals[o.TrimStart:]
+	cloneDisposals = cloneDisposals[:len(clonePaletteds)-o.TrimEnd]
 
 	if window != 0 {
 		clonePaletteds = clonePaletteds[:window]
 		sourceDelays = sourceDelays[:window]
+		cloneDisposals = cloneDisposals[:window]
 	}
 
 	clonePalettedsLen := len(clonePaletteds)
@@ -145,17 +171,20 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	if o.CutInterval != 0 {
 		var reducedPaletteds []*image.Paletted
 		var reducedDelays []int
+		var reducedDisposals []byte
 
 		for i := 0; i < clonePalettedsLen; i++ {
 			if (1+i)%o.CutInterval != 0 {
 				reducedPaletteds = append(reducedPaletteds, clonePaletteds[i])
 				reducedDelays = append(reducedDelays, sourceDelays[i])
+				reducedDisposals = append(reducedDisposals, cloneDisposals[i])
 			}
 		}
 
 		clonePaletteds = reducedPaletteds
 		clonePalettedsLen = len(reducedPaletteds)
 		sourceDelays = reducedDelays
+		cloneDisposals = reducedDisposals
 	}
 
 	var butteryPalettedsLen int
@@ -174,6 +203,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	butteryPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 	butteryDelays := make([]int, butteryPalettedsLen)
 	butteryDelaysLen := butteryPalettedsLen
+	butteryDisposals := make([]byte, butteryPalettedsLen)
 	var r int
 
 	for i := 0; i < butteryPalettedsLen; i++ {
@@ -197,6 +227,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		butteryPaletteds[i] = paletted
 		sourceDelay := sourceDelays[r]
 		butteryDelays[i] = int(math.Max(2.0, scaleDelay*float64(sourceDelay)))
+		butteryDisposals[i] = cloneDisposals[r]
 
 		if o.Stitch == Mirror && i >= clonePalettedsLen-1 {
 			r--
@@ -213,6 +244,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	} else {
 		var shiftedPaletteds = make([]*image.Paletted, butteryPalettedsLen)
 		var shiftedDelays = make([]int, butteryDelaysLen)
+		var shiftedDisposals = make([]byte, butteryDelaysLen)
 
 		for i := range butteryPaletteds {
 			r = (i + o.Shift) % butteryPalettedsLen
@@ -223,10 +255,12 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 
 			shiftedPaletteds[i] = butteryPaletteds[r]
 			shiftedDelays[i] = butteryDelays[r]
+			shiftedDisposals[i] = butteryDisposals[r]
 		}
 
 		butteryPaletteds = shiftedPaletteds
 		butteryDelays = shiftedDelays
+		butteryDisposals = shiftedDisposals
 	}
 
 	butteryGif := gif.GIF{
@@ -235,7 +269,7 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		Config:          sourceGif.Config,
 		Image:           butteryPaletteds,
 		Delay:           butteryDelays,
-		Disposal:        nil,
+		Disposal:        butteryDisposals,
 	}
 
 	butteryFile, err := os.Create(destPth)
