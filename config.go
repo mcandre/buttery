@@ -1,9 +1,6 @@
 package buttery
 
 import (
-	"github.com/andybons/gogif"
-	"github.com/anthonynsimon/bild/transform"
-
 	"errors"
 	"image"
 	"image/color"
@@ -11,6 +8,9 @@ import (
 	"image/gif"
 	"math"
 	"os"
+
+	"github.com/andybons/gogif"
+	"github.com/anthonynsimon/bild/transform"
 )
 
 // Config models a set of animation editing manipulations.
@@ -65,7 +65,7 @@ func NewConfig() Config {
 }
 
 // Validate checks for basic Config integrity.
-func (o Config) Validate() error {
+func (o *Config) Validate() error {
 	if o.TrimEdges < 0 {
 		return errors.New("trim edges cannot be negative")
 	}
@@ -90,7 +90,7 @@ func (o Config) Validate() error {
 }
 
 // Edit applies the configured GIF manipulations.
-func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
+func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	sourcePaletteds := sourceGif.Image
 	sourcePalettedsLen := len(sourcePaletteds)
 
@@ -229,11 +229,12 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		butteryDelays[i] = int(math.Max(2.0, scaleDelay*float64(sourceDelay)))
 		butteryDisposals[i] = cloneDisposals[r]
 
-		if o.Stitch == Mirror && i >= clonePalettedsLen-1 {
+		switch {
+		case o.Stitch == Mirror && i >= clonePalettedsLen-1:
 			r--
-		} else if (o.Stitch == FlipH || o.Stitch == FlipV) && i == clonePalettedsLen-1 {
+		case (o.Stitch == FlipH || o.Stitch == FlipV) && i == clonePalettedsLen-1:
 			r = 0
-		} else {
+		default:
 			r++
 		}
 	}
@@ -242,9 +243,9 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		ShuffleSlice(butteryPaletteds)
 		ShuffleSlice(butteryDelays)
 	} else {
-		var shiftedPaletteds = make([]*image.Paletted, butteryPalettedsLen)
-		var shiftedDelays = make([]int, butteryDelaysLen)
-		var shiftedDisposals = make([]byte, butteryDelaysLen)
+		shiftedPaletteds := make([]*image.Paletted, butteryPalettedsLen)
+		shiftedDelays := make([]int, butteryDelaysLen)
+		shiftedDisposals := make([]byte, butteryDelaysLen)
 
 		for i := range butteryPaletteds {
 			r = (i + o.Shift) % butteryPalettedsLen
@@ -273,7 +274,6 @@ func (o Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	}
 
 	butteryFile, err := os.Create(destPth)
-
 	if err != nil {
 		return err
 	}

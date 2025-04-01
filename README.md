@@ -2,14 +2,20 @@
 
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
+![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif)
+
 # ABOUT
 
 `buttery` generates continuous GIF loops.
 
-# EXAMPLE
+# EXAMPLES
 
 ```console
+$ cd examples
+
 $ buttery homer.gif
+
+$ buttery -transparent -stitch FlipH cinnamoroll.gif
 ```
 
 See `buttery -help` for more options.
