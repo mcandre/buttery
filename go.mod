@@ -1,12 +1,12 @@
 module github.com/mcandre/buttery
 
-go 1.24
+go 1.24.2
 
 require (
 	github.com/andybons/gogif v0.0.0-20140526152223-16d573594812
-	github.com/anthonynsimon/bild v0.13.0
+	github.com/anthonynsimon/bild v0.14.0
 	github.com/magefile/mage v1.15.0
-	github.com/mcandre/mage-extras v0.0.21
+	github.com/mcandre/mage-extras v0.0.23
 )
 
 require (
@@ -43,6 +43,3 @@ tool (
 	github.com/mgechev/revive
 	honnef.co/go/tools/cmd/staticcheck
 )
-
-// Pending https://github.com/alexkohler/nakedret/issues/38
-replace github.com/alexkohler/nakedret/v2 v2.0.5 => github.com/aep-sunlife/nakedret/v2 v2.0.0-20250227175454-3fb3a0f5caba
