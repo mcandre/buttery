@@ -25,11 +25,20 @@ const (
 
 	// Shuffle randomizes the incoming sequence.
 	Shuffle
+
+	// PanH shifts the canvas horizontally
+	PanH
+
+	// PanV shifts the canvas vertically
+	PanV
 )
 
 // ParseStitch generates a Stitch from a string value.
 func ParseStitch(s string) (*Stitch, bool) {
-	for i := None; i <= Shuffle; i++ {
+	//
+	// /!\ Manually update upper bound for each new enum value /!\
+	//
+	for i := None; i <= PanV; i++ {
 		if s == i.String() {
 			return &i, true
 		}
@@ -40,7 +49,10 @@ func ParseStitch(s string) (*Stitch, bool) {
 
 // Validate rejects out of bound values.
 func (o Stitch) Validate() error {
-	if o < None || o > Shuffle {
+	//
+	// /!\ Manually update upper bound for each new enum value /!\
+	//
+	if o < None || o > PanV {
 		return fmt.Errorf("invalid stitch value: %d", o)
 	}
 

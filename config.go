@@ -48,6 +48,9 @@ type Config struct {
 	// A negative scale delay reverses the incoming sequence.
 	ScaleDelay float64
 
+	// PanVelocity specifies the number of pixels to shift the canvas per frame (Default: 1.0).
+	PanVelocity float64
+
 	// LoopCount denotes how many times to play the animation (Default 0).
 	//
 	// -1 indicates one play.
@@ -224,6 +227,18 @@ func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 			paletted = flipPaletted
 		}
 
+		panVelocity := int(float64(i) * o.PanVelocity)
+
+		if o.Stitch == PanH {
+			panPaletted := pan(paletted, panVelocity, 0)
+			paletted = panPaletted
+		}
+
+		if o.Stitch == PanV {
+			panPaletted := pan(paletted, 0, panVelocity)
+			paletted = panPaletted
+		}
+
 		butteryPaletteds[i] = paletted
 		sourceDelay := sourceDelays[r]
 		butteryDelays[i] = int(math.Max(2.0, scaleDelay*float64(sourceDelay)))
@@ -279,4 +294,29 @@ func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	}
 
 	return gif.EncodeAll(butteryFile, &butteryGif)
+}
+
+// pan offsets an image by the given horizontal and vertical offsets.
+func pan(img *image.Paletted, dx, dy int) *image.Paletted {
+	bounds := img.Bounds()
+	panned := image.NewPaletted(bounds, img.Palette)
+
+	for x := bounds.Min.X; x < bounds.Max.X; x++ {
+		for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+			srcX, srcY := signedMod(x, bounds.Max.X), signedMod(y, bounds.Max.Y)
+			dstX, dstY := signedMod(x+dx, bounds.Max.X), signedMod(y+dy, bounds.Max.Y)
+
+			panned.SetColorIndex(dstX, dstY, img.ColorIndexAt(srcX, srcY))
+		}
+	}
+
+	return panned
+}
+
+// signedMod reverses direction for negative n denominators.
+//
+// Warning: Each programming language may implements subtly distinct modulo algorithms.
+// https://en.wikipedia.org/wiki/Modulo
+func signedMod(a, n int) int {
+	return a - (n * int(math.Floor(float64(a)/float64(n))))
 }

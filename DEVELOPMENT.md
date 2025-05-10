@@ -29,7 +29,7 @@ Apply a user environment variable `GODEBUG=modcacheunzipinplace=1` per [access d
 After each change to an enum, regenerate auxiliary Go sources:
 
 ```console
-$ stringer ./...
+$ stringer -type "Stitch"
 ```
 
 # AUDIT

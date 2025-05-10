@@ -157,6 +157,10 @@ This transition tends to artificially accelerate the perceived animation speed.
 
 This transition hides a single jarring misalignment, in the noise of a completely random, spastic animation.
 
+## PanH / PanV
+
+The `PanH` / `PanV` transitions offset the canvas at `-panVelocity <n>` pixels per frame.
+
 ## None
 
 The `-stitch None` transition setting applies no particular transition at all between animation cycles. In art, sometimes less is more.
