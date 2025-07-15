@@ -15,4 +15,4 @@ go:
 	go mod tidy
 
 rust:
-	cargo install --force unmake@0.0.20
+	cargo install --force unmake@0.0.21
