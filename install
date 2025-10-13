@@ -1,0 +1,34 @@
+#!/bin/bash
+unset IFS
+set -eufo pipefail
+
+go() {
+	command go install golang.org/x/tools/cmd/deadcode@latest
+	command go install golang.org/x/tools/cmd/goimports@latest
+	command go install golang.org/x/tools/cmd/stringer@latest
+	command go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
+	command go install golang.org/x/vuln/cmd/govulncheck@latest
+	command go install tool
+	command go mod tidy
+}
+
+TASKS='go'
+
+SELECTED_TASKS="$TASKS"
+
+if [ "$#" -gt 0 ]; then
+    SELECTED_TASKS="$*"
+fi
+
+for TASK in $SELECTED_TASKS; do
+    case "$TASKS" in
+    *"$TASK"*)
+        "$TASK"
+        ;;
+    *)
+        echo "error: no such task: $TASK"
+        exit 1
+        ;;
+    esac
+done
+
