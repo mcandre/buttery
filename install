@@ -1,6 +1,6 @@
-#!/bin/bash
-unset IFS
-set -eufo pipefail
+#!/bin/sh
+set -e
+
 go install golang.org/x/tools/cmd/deadcode@latest
 go install golang.org/x/tools/cmd/goimports@latest
 go install golang.org/x/tools/cmd/stringer@latest
