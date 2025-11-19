@@ -12,8 +12,8 @@ github.com/kisielk/errcheck v1.9.0 h1:9xt1zI9EBfcYBvdU1nVrzMzzUPUtPKs9bVSIM3TAb3
 github.com/kisielk/errcheck v1.9.0/go.mod h1:kQxWMMVZgIkDq7U8xtG/n2juOjbLgZtedi0D+/VL/i8=
 github.com/magefile/mage v1.15.0 h1:BvGheCMAsG3bWUDbZ8AyXXpCNwU9u5CB6sM+HNb9HYg=
 github.com/magefile/mage v1.15.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=
-github.com/mcandre/factorio v0.0.15 h1:FgptwMQCQKM5oFKi3ndUT/boOUwUmpP7ZBqZXEx9tjs=
-github.com/mcandre/factorio v0.0.15/go.mod h1:3OjD6n5hAwwglqdAWr5ZK5o3uqMrSA0wrQRP5qiIkP4=
+github.com/mcandre/factorio v0.0.16 h1:qECFqBLW3cI2fdzPHW3lnmduGu6kwRUdeDPJ10qgguE=
+github.com/mcandre/factorio v0.0.16/go.mod h1:kk7EL5n6oSGP2I5YgZl6l5HCTRGFZirFIuqMDjc0zuA=
 github.com/mcandre/mage-extras v0.0.28 h1:/pBEGPyZkaCWaL1F0AcGzvJ+N2gcCdECfKqKy3iRe5Y=
 github.com/mcandre/mage-extras v0.0.28/go.mod h1:UNiw5UmBU2KgSvtSmv1TZONPZGVA/2bhwt4Icm09euA=
 golang.org/x/exp/typeparams v0.0.0-20250408133849-7e4ce0ab07d0 h1:oMe07YcizemJ09rs2kRkFYAp0pt4e1lYLwPWiEGMpXE=
