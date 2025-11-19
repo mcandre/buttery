@@ -12,6 +12,6 @@ jobs:
     - uses: "actions/setup-go@v5"
       with:
         go-version: "1.25.3"
-    - name: "provision dev tools"
-      run: "./install"
+    - name: "provision go tools"
+      run: "make"
     - run: "mage lint"
