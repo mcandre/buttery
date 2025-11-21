@@ -21,9 +21,7 @@ var Default = Test
 func Govulncheck() error { return mageextras.Govulncheck("-scan", "package", "./...") }
 
 // Audit runs a security audit.
-func Audit() error {
-	mg.Deps(Govulncheck)
-}
+func Audit() error { return Govulncheck() }
 
 // Test executes a test suite.
 func Test() error { return mageextras.UnitTest() }
