@@ -6,9 +6,11 @@ import (
 
 	"flag"
 	"fmt"
+	"image/color"
 	"image/gif"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -20,7 +22,9 @@ var flagTrimStart = flag.Int("trimStart", 0, "drop frames from start of the inpu
 var flagTrimEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF")
 var flagCutInterval = flag.Int("cutInterval", 0, "drop every nth frame of the input GIF")
 var flagWindow = flag.Int("window", 0, "set fixed sequence length")
-var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV/Shuffle/PanH/PanV)")
+var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV/Shuffle/PanH/PanV/Fade)")
+var flagFadeColor = flag.String("fadeColor", "0x000000", "fade color (0xRRGGBB)")
+var flagFadeRate = flag.Float64("fadeRate", 1.0, "fade velocity factor")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
 var flagScaleDelay = flag.Float64("scaleDelay", 1.0, "multiply each frame delay by a factor")
 var flagPanVelocity = flag.Float64("panVelocity", 1, "how many pixels to pan per frame")
@@ -84,6 +88,26 @@ func main() {
 		os.Exit(1)
 	}
 
+	fadeColorString := *flagFadeColor
+	fadeColorUint32, err := strconv.ParseUint(fadeColorString, 0, 32)
+
+	if err != nil {
+		usage()
+		os.Exit(1)
+	}
+
+	if fadeColorUint32 > 0xFFFFFF {
+		usage()
+		os.Exit(1)
+	}
+
+	fadeColorRGBA := color.RGBA{
+		R: uint8((fadeColorUint32 >> 16) & 0xFF),
+		G: uint8((fadeColorUint32 >> 8) & 0xFF),
+		B: uint8(fadeColorUint32 & 0xFF),
+		A: 0x00,
+	}
+
 	config := buttery.NewConfig()
 	config.Transparent = *flagTransparent
 	config.TrimStart = *flagTrimStart + trimEdges
@@ -92,12 +116,14 @@ func main() {
 	config.Window = *flagWindow
 	config.Shift = *flagShift
 	config.Stitch = *stitchP
+	config.FadeColor = fadeColorRGBA
+	config.FadeRate = *flagFadeRate
 	config.ScaleDelay = *flagScaleDelay
 	config.PanVelocity = *flagPanVelocity
 	config.LoopCount = *flagLoopCount
 
-	if err := config.Validate(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
+	if err2 := config.Validate(); err2 != nil {
+		fmt.Fprintln(os.Stderr, err2)
 		os.Exit(1)
 	}
 

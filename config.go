@@ -41,6 +41,13 @@ type Config struct {
 	// Stitch denotes a loop continuity transition (Default Mirror).
 	Stitch Stitch
 
+	// FadeColor denotes a hue for fade transitions (Default opaque black).
+	// Alpha channel ignored.
+	FadeColor color.RGBA
+
+	// FadeRate denotes the speed of fade transitions (Default 1.0).
+	FadeRate float64
+
 	// ScaleDelay multiplies each frame delay by a factor (Default 1.0).
 	//
 	// The resulting delay is upheld to a lower bound of 2 centisec.
@@ -261,17 +268,48 @@ func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		shiftedPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 		shiftedDelays := make([]int, butteryDelaysLen)
 		shiftedDisposals := make([]byte, butteryDelaysLen)
+		target := o.FadeColor
+		targetR, targetG, targetB := float64(target.R), float64(target.G), float64(target.B)
+		s := float64(butteryPalettedsLen) - 1.0
 
 		for i := range butteryPaletteds {
-			r = (i + o.Shift) % butteryPalettedsLen
-
-			if r < 0 {
-				r += butteryPalettedsLen
-			}
-
+			r = signedMod(i+o.Shift, butteryPalettedsLen)
 			shiftedPaletteds[i] = butteryPaletteds[r]
 			shiftedDelays[i] = butteryDelays[r]
 			shiftedDisposals[i] = butteryDisposals[r]
+
+			fadedPaletted := shiftedPaletteds[i]
+			fade := float64(s) / float64(butteryPalettedsLen-1)
+			palette := fadedPaletted.Palette
+			fadedPalette := make(color.Palette, len(palette))
+
+			for j, c := range palette {
+				r, g, b, a := c.RGBA()
+				rF, gF, bF := float64(r>>8), float64(g>>8), float64(b>>8)
+				rF = rF + (targetR-rF)*fade
+				rF = max(rF, 0.0)
+				rF = min(rF, 255.0)
+				gF = gF + (targetG-gF)*fade
+				gF = max(gF, 0.0)
+				gF = min(gF, 255.0)
+				bF = bF + (targetB-bF)*fade
+				bF = max(bF, 0.0)
+				bF = min(bF, 255.0)
+				r2, g2, b2, a2 := uint8(rF), uint8(gF), uint8(bF), uint8(a>>8)
+				fadedPalette[j] = color.RGBA{R: r2, G: g2, B: b2, A: a2}
+			}
+
+			fadedPaletted.Palette = fadedPalette
+			shiftedPaletteds[i] = fadedPaletted
+
+			if i < butteryPalettedsLen/2 {
+				s -= o.FadeRate
+			} else if i > butteryPalettedsLen/2 {
+				s += o.FadeRate
+			}
+
+			s = min(s, float64(butteryPalettedsLen)-1.0)
+			s = max(s, 0.0)
 		}
 
 		butteryPaletteds = shiftedPaletteds

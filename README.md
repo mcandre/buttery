@@ -161,6 +161,26 @@ This transition hides a single jarring misalignment, in the noise of a completel
 
 The `PanH` / `PanV` transitions offset the canvas at `-panVelocity <n>` pixels per frame.
 
+## Fade
+
+The transision setting `-stitch Fade` applies fade to black, fade to white, etc. time color gradient effects.
+
+### Before
+
+```text
+no_fade ... no_fade ... no_fade ... no_fade ... no_fade
+```
+
+### After
+
+```text
+max_fade ... less_fade ... no_fade ... less_fade ... max_fade
+```
+
+`-fadeColor 0xRRGGBB` customizes the fade hue (default: black).
+
+`-fadeRate <v>` adjusts fade velocity (default: 1.0).
+
 ## None
 
 The `-stitch None` transition setting applies no particular transition at all between animation cycles. In art, sometimes less is more.

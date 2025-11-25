@@ -31,6 +31,9 @@ const (
 
 	// PanV shifts the canvas vertically
 	PanV
+
+	// Fade applies time color gradients
+	Fade
 )
 
 // ParseStitch generates a Stitch from a string value.
@@ -38,7 +41,7 @@ func ParseStitch(s string) (*Stitch, bool) {
 	//
 	// /!\ Manually update upper bound for each new enum value /!\
 	//
-	for i := None; i <= PanV; i++ {
+	for i := None; i <= Fade; i++ {
 		if s == i.String() {
 			return &i, true
 		}
@@ -52,7 +55,7 @@ func (o Stitch) Validate() error {
 	//
 	// /!\ Manually update upper bound for each new enum value /!\
 	//
-	if o < None || o > PanV {
+	if o < None || o > Fade {
 		return fmt.Errorf("invalid stitch value: %d", o)
 	}
 
