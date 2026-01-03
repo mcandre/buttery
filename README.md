@@ -1,5 +1,7 @@
 # buttery: a video editor with manual motion smoothing
 
+[![Donate](https://img.shields.io/badge/GUMROAD-36a9ae?style=flat&logo=gumroad&logoColor=white)](https://mcandre.gumroad.com/)
+
 ![examples/homer.buttery.gif](examples/homer.buttery.gif)
 
 ![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif)
