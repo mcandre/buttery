@@ -48,11 +48,11 @@ func DockerPush() error {
 
 // DockerTest creates and tag aliases remote test Docker buildx images.
 func DockerTest() error {
-	return mageextras.Tuggy(
-		"-t", "n4jm4/buttery:test",
-		"--load",
-		"--push",
-	)
+	if err := mageextras.Tuggy("-t", "n4jm4/buttery:test", "--load"); err != nil {
+		return err
+	}
+
+	return mageextras.Tuggy("-t", "n4jm4/buttery:test", "--load", "--push")
 }
 
 // GoImports runs goimports.
