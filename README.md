@@ -22,6 +22,10 @@ $ buttery -transparent -stitch FlipH cinnamoroll.gif
 
 See `buttery -help` for more options.
 
+# DOCKER HUB
+
+https://hub.docker.com/r/n4jm4/buttery
+
 # DOWNLOAD
 
 https://github.com/mcandre/buttery/releases

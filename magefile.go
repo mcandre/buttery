@@ -29,6 +29,32 @@ func Test() error { return mageextras.UnitTest() }
 // Deadcode runs deadcode.
 func Deadcode() error { return mageextras.Deadcode("./...") }
 
+// DockerBuild creates local Docker buildx images.
+func DockerBuild() error {
+	return mageextras.Tuggy(
+		"-t", fmt.Sprintf("n4jm4/buttery:%s", buttery.Version),
+		"--load",
+	)
+}
+
+// DockerPush creates and tag aliases remote Docker buildx images.
+func DockerPush() error {
+	return mageextras.Tuggy(
+		"-t", fmt.Sprintf("n4jm4/buttery:%s", buttery.Version),
+		"-a", "n4jm4/buttery",
+		"--push",
+	)
+}
+
+// DockerTest creates and tag aliases remote test Docker buildx images.
+func DockerTest() error {
+	return mageextras.Tuggy(
+		"-t", "n4jm4/buttery:test",
+		"--load",
+		"--push",
+	)
+}
+
 // GoImports runs goimports.
 func GoImports() error { return mageextras.GoImports("-w") }
 
@@ -69,7 +95,17 @@ var repoNamespace = "github.com/mcandre/buttery"
 func Factorio() error { return mageextras.Factorio(portBasename) }
 
 // Port builds and compresses artifacts.
-func Port() error { mg.Deps(Factorio); return mageextras.Archive(portBasename, artifactsPath) }
+func Port() error {
+	mg.Deps(Factorio);
+
+	return mageextras.Chandler(
+		"-C",
+		artifactsPath,
+		"-czf",
+		fmt.Sprintf("%s.tgz", portBasename),
+		portBasename,
+	)
+}
 
 // Install builds and installs Go applications.
 func Install() error { return mageextras.Install() }
