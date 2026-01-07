@@ -52,7 +52,7 @@ func DockerTest() error {
 		return err
 	}
 
-	return mageextras.Tuggy("-t", "n4jm4/buttery:test", "--load", "--push")
+	return mageextras.Tuggy("-t", "n4jm4/buttery:test", "--push")
 }
 
 // GoImports runs goimports.
