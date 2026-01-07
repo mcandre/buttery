@@ -27,7 +27,7 @@ github.com/magefile/mage/mage
 github.com/magefile/mage/mg
 github.com/magefile/mage/parse
 github.com/magefile/mage/sh
-# github.com/mcandre/factorio v0.0.16
+# github.com/mcandre/factorio v0.0.17
 ## explicit; go 1.25.4
 github.com/mcandre/factorio
 github.com/mcandre/factorio/cmd/factorio
