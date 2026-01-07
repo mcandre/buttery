@@ -1,8 +1,8 @@
 *.md
 .editorconfig
 .rubberstamp
-tuggy.toml
 cover.html
+tuggy.toml
 bin/
 examples/
 .github/
