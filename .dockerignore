@@ -1,6 +1,7 @@
 *.md
 .editorconfig
 .rubberstamp
+tuggy.toml
 cover.html
 bin/
 examples/
