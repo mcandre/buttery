@@ -22,6 +22,10 @@ $ buttery -transparent -stitch FlipH cinnamoroll.gif
 
 See `buttery -help` for more options.
 
+# API DOCUMENTATION
+
+https://pkg.go.dev/github.com/mcandre/buttery
+
 # INSTALL
 
 We support several installation methods.
@@ -62,10 +66,6 @@ go install ./...
 ```
 
 For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
-
-# DOCUMENTATION
-
-https://pkg.go.dev/github.com/mcandre/buttery
 
 # LICENSE
 
