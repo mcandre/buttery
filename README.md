@@ -38,21 +38,30 @@ https://github.com/mcandre/buttery/releases
 
 ## Docker
 
-```console
-$ docker pull n4jm4/buttery
+```sh
+docker pull n4jm4/buttery
 ```
 
-## Remote Source
+## go mod
 
-```console
-$ go install github.com/mcandre/buttery/cmd/buttery@latest
+```sh
+go get -tool github.com/mcandre/buttery/cmd/buttery@v0.0.22
+go mod tidy
 ```
 
-## Local Source
+Optional:
 
-```console
-$ go install ./...
+```sh
+go mod vendor
 ```
+
+## Compile from Source
+
+```sh
+go install ./...
+```
+
+For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 # DOCUMENTATION
 
@@ -65,10 +74,6 @@ BSD-2-Clause
 # RUNTIME REQUIREMENTS
 
 (None)
-
-# CONTRIBUTING
-
-For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 # LINT
 
