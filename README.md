@@ -24,13 +24,15 @@ See `buttery -help` for more options.
 
 # INSTALL
 
-## Docker Hub
-
-https://hub.docker.com/r/n4jm4/buttery
-
 ## Precompiled Binaries
 
 https://github.com/mcandre/buttery/releases
+
+## Docker
+
+```console
+$ docker pull n4jm4/buttery
+```
 
 ## Remote Source
 
