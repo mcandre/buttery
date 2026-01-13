@@ -26,54 +26,13 @@ See `buttery -help` for more options.
 
 https://pkg.go.dev/github.com/mcandre/buttery
 
-# INSTALL
+# INSTALLATION
 
-We support several installation methods.
-
-## Precompiled Binaries
-
-https://github.com/mcandre/buttery/releases
-
-1. Download release archive.
-2. Extract archive.
-3. Select executables for your target platform.
-4. Copy executabless to a convenient location, e.g. `$HOME/bin`.
-5. Ensure location is registered in `$PATH`.
-
-## Docker
-
-```sh
-docker pull n4jm4/buttery
-```
-
-## go mod
-
-```sh
-go get -tool github.com/mcandre/buttery/cmd/buttery
-go mod tidy
-```
-
-Optional:
-
-```sh
-go mod vendor
-```
-
-## Build from Source
-
-```sh
-go install ./...
-```
-
-For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
+See [INSTALL.md](INSTALL.md).
 
 # LICENSE
 
 BSD-2-Clause
-
-# RUNTIME REQUIREMENTS
-
-(None)
 
 # LINT
 
