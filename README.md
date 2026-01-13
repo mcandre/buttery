@@ -22,18 +22,26 @@ $ buttery -transparent -stitch FlipH cinnamoroll.gif
 
 See `buttery -help` for more options.
 
-# DOCKER HUB
+# INSTALL
+
+## Docker Hub
 
 https://hub.docker.com/r/n4jm4/buttery
 
-# DOWNLOAD
+## Precompiled Binaries
 
 https://github.com/mcandre/buttery/releases
 
-# INSTALL FROM SOURCE
+## Remote Source
 
 ```console
 $ go install github.com/mcandre/buttery/cmd/buttery@latest
+```
+
+## Local Source
+
+```console
+$ go install ./...
 ```
 
 # DOCUMENTATION
