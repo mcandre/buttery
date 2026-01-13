@@ -49,7 +49,7 @@ docker pull n4jm4/buttery
 ## go mod
 
 ```sh
-go get -tool github.com/mcandre/buttery/cmd/buttery@v0.0.22
+go get -tool github.com/mcandre/buttery/cmd/buttery
 go mod tidy
 ```
 
