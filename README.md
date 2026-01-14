@@ -2,7 +2,7 @@
 
 ![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif)
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/buttery)](https://hub.docker.com/r/n4jm4/buttery) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/buttery) ![license](https://img.shields.io/badge/license-BSD-3) [![Donate](https://img.shields.io/badge/GUMROAD-36a9ae?style=flat&logo=gumroad&logoColor=white)](https://mcandre.gumroad.com/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/buttery)](https://hub.docker.com/r/n4jm4/buttery) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/buttery) [![license](https://img.shields.io/badge/license-BSD-3)](LICENSE.md) [![Donate](https://img.shields.io/badge/GUMROAD-36a9ae?style=flat&logo=gumroad&logoColor=white)](https://mcandre.gumroad.com/)
 
 # ABOUT
 
