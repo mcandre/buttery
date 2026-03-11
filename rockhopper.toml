@@ -1,0 +1,102 @@
+# log_level = "debug"
+log_level = "quiet"
+
+[rocklet]
+name = "buttery"
+identifier = "com.github.mcandre.buttery"
+rev = "1"
+maintainer = "Andrew Pennebaker <n4jm4@pm.me>"
+manufacturer = "YelloSoft"
+summary = "GIF editor"
+description = "a video editor with manual motion smoothing"
+copyright = "Copyright (C) 2023 Andrew Pennebaker"
+license = "0BSD"
+url = "https://github.com/mcandre/buttery"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-alpine-linux"
+rocklet.oci_arch = "linux/amd64"
+dest."usr/bin" = "bin/buttery/linux/amd64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-alpine-linux"
+rocklet.oci_arch = "linux/arm64"
+dest."usr/bin" = "bin/buttery/linux/arm64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-fedora"
+rocklet.oci_arch = "linux/amd64"
+dest."usr/bin" = "bin/buttery/linux/amd64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-fedora"
+rocklet.oci_arch = "linux/arm64"
+dest."usr/bin" = "bin/buttery/linux/arm64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-freebsd"
+rocklet.origin = "local/buttery"
+rocklet.oci_arch = "linux/amd64"
+rocklet.os_arch = "freebsd:*:amd64"
+dest."usr/local/bin" = "bin/buttery/freebsd/amd64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-freebsd"
+rocklet.origin = "local/buttery"
+rocklet.oci_arch = "linux/arm64"
+rocklet.os_arch = "freebsd:*:arm64"
+dest."usr/local/bin" = "bin/buttery/freebsd/arm64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-macos"
+rocklet.oci_arch = "linux/amd64"
+rocklet.os_arch = "x86_64"
+dest."usr/local/bin" = "bin/buttery/darwin/amd64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-macos"
+rocklet.oci_arch = "linux/arm64"
+rocklet.os_arch = "arm64"
+dest."usr/local/bin" = "bin/buttery/darwin/arm64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-netbsd"
+rocklet.oci_arch = "linux/amd64"
+rocklet.os_arch = "x86_64"
+rocklet.pkg_os_version = "10.1"
+# byte estimate, including dependencies
+rocklet.pkg_size_all = "1000000"
+dest."bin" = "bin/buttery/netbsd/amd64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-netbsd"
+rocklet.oci_arch = "linux/arm64"
+rocklet.os_arch = "aarch64"
+rocklet.pkg_os_version = "10.1"
+# byte estimate, including dependencies
+rocklet.pkg_size_all = "1000000"
+dest."bin" = "bin/buttery/netbsd/arm64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-ubuntu"
+rocklet.oci_arch = "linux/amd64"
+dest."usr/bin" = "bin/buttery/linux/amd64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-ubuntu"
+rocklet.oci_arch = "linux/arm64"
+dest."usr/bin" = "bin/buttery/linux/arm64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-windows"
+rocklet.oci_arch = "linux/amd64"
+rocklet.os_arch = "x64"
+rocklet.msi_upgrade_code = "CAFE61E1-32DC-42A8-95A3-590E58EBC00A"
+dest."bin" = "bin/buttery/windows/amd64"
+
+[[pkg]]
+image = "n4jm4/rockhopper:0.0.23-windows"
+rocklet.oci_arch = "linux/arm64"
+rocklet.os_arch = "arm64"
+rocklet.msi_upgrade_code = "CAFE61E1-32DC-42A8-95A3-590E58EBC00A"
+dest."bin" = "bin/buttery/windows/arm64"

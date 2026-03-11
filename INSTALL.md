@@ -1,49 +1,113 @@
-# INSTALL
+# INSTALL GUIDE
 
-We support several installation methods.
+In addition to OS packages, buttery also supports alternative installation methods.
 
-# PRECOMPILED BINARIES
+# INSTALL (CURL)
 
-https://github.com/mcandre/buttery/releases
-
-## Requirements
-
-(None)
-
-## Instructions
-
-1. Download release archive.
-2. Extract archive.
-3. Select executables for your target platform.
-4. Copy executabless to a convenient location, e.g. `$HOME/bin`.
-5. Ensure location is registered in `$PATH`.
-
-# DOCKER
-
-## Requirements
-
-* [Docker](https://www.docker.com/) 28.0.1+
-
-## Instructions
+curl based installs automatically download and extract precompiled binaries.
 
 ```sh
-docker pull n4jm4/buttery
+curl -L https://raw.githubusercontent.com/mcandre/buttery/refs/heads/main/install-buttery | sh
 ```
 
-# BUILD FROM SOURCE
+## Postinstall
 
-## Requirements
+Ensure `$HOME/.local/bin` is registered with your shell's `PATH` environment variable.
 
-* [Go](https://go.dev/) 1.25.4+
-* Ensure `GOBIN` is registered in `$PATH`. Validate like `go env GOBIN; echo "$PATH"`
-
-## Instructions
+## Uninstall
 
 ```sh
-go get -tool github.com/mcandre/buttery/src/cmd/buttery
-go mod tidy
-go mod vendor
-go install tool
+curl -L https://raw.githubusercontent.com/mcandre/buttery/refs/heads/main/uninstall-buttery | sh
 ```
 
-For more information on developing buttery itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
+## System Requirements
+
+### Bitness
+
+64
+
+### Operating Systems
+
+* DragonflyBSD (Intel)
+* FreeBSD (ARM, Intel)
+* Illumos (Intel)
+* Linux (ARM, Intel, LoongArch, RISC-V)
+* macOS 26 Tahoe+ (ARM, Intel)
+* NetBSD (ARM, Intel)
+* OpenBSD (ARM, Intel, RISC-V)
+* WSL 2 (ARM, Intel)
+
+### Prerequisites
+
+* [bash](https://www.gnu.org/software/bash/) 4+
+* [curl](https://curl.se/)
+
+# INSTALL (PRECOMPILED BINARIES)
+
+Precompiled binaries may be installed manually.
+
+## Install
+
+1. Download a [tarball](https://github.com/mcandre/buttery/releases) corresponding to your environment's architecture and OS.
+2. Extract executables into a selected directory.
+
+   Examples:
+
+   * `~/.local/bin` (XDG compliant per-user)
+   * `/usr/local/bin` (XDG compliant global)
+   * `~/bin` (BSD)
+   * `~\AppData\Local` (native Windows)
+
+## Postinstall
+
+Ensure the selected directory is registered with your shell's `PATH` environment variable.
+
+## Uninstall
+
+Remove the application executables from the selected directory.
+
+## System Requirements
+
+### Bitness
+
+64
+
+### Operating Systems
+
+* DragonflyBSD (Intel)
+* FreeBSD (ARM, Intel)
+* Illumos (Intel)
+* Linux (ARM, Intel, LoongArch, RISC-V)
+* macOS 26 Tahoe+ (ARM, Intel)
+* NetBSD (ARM, Intel)
+* OpenBSD (ARM, Intel, RISC-V)
+* Windows 11+ (ARM, Intel)
+
+# INSTALL (GO REMOTE)
+
+buttery is packaged as a Go module.
+
+```sh
+go install github.com/mcandre/buttery/cmd/buttery@latest
+```
+
+## Prerequisites
+
+* [Go](https://go.dev/)
+
+# INSTALL (GO LOCAL)
+
+buttery may be compiled from source.
+
+```sh
+git clone https://github.com/mcandre/buttery.git
+cd buttery
+go install ./...
+```
+
+## Prerequisites
+
+* [git](https://git-scm.com/)
+* [Go](https://go.dev/)
+
+For more details on developing buttery, see our [development guide](DEVELOPMENT.md).

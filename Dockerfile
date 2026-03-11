@@ -1,9 +1,8 @@
-FROM alpine:3.23 AS build
-RUN apk add -U go
+FROM dhi.io/golang:1.26-alpine3.23 AS build
 COPY . /src
 WORKDIR /src
 RUN go install ./...
 
 FROM scratch
-COPY --from=build /root/go/bin/buttery /buttery
+COPY --from=build /go/bin/buttery /buttery
 ENTRYPOINT ["/buttery"]

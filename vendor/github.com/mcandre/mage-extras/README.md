@@ -1,76 +1,32 @@
 # mage-extras: some predefined tasks for common mage workflows
 
-[![Donate](https://img.shields.io/badge/GUMROAD-36a9ae?style=flat&logo=gumroad&logoColor=white)](https://mcandre.gumroad.com/)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/mage-extras) [![Test](https://github.com/mcandre/mage-extras/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/mage-extras/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md)
 
 # SUMMARY
 
-mage-extras provides a collection of prebaked tasks for common Go project software development needs.
-
-# EXAMPLE
-
-```console
-$ mage noVendor
-/Users/andrew/go/src/github.com/mcandre/mage-extras/test.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/mageextras_test.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/errcheck.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/sources.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/gox.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/nakedret.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/vet.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/goimports.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/mageextras.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/packages.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/pathseparator.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/binaries_test.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/sources_test.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/binaries.go
-/Users/andrew/go/src/github.com/mcandre/mage-extras/install.go
-```
+mage-extras streamlines common Go development tasks.
 
 # ABOUT
 
-mage-extras defines some reusable task predicates for common workflows, in a platform-agnostic way:
+[API Docs](https://pkg.go.dev/github.com/mcandre/mage-extras)
 
-* security audits
-* checking that Go source code actually compiles
-* running unit tests
-* generating code coverage reports
-* linting with assorted Go linting tools
-* formatting Go code
-* installing and uninstall Go applications
-* collecting Go source file paths
-* obtaining the GOPATH/bin directory
-* referencing all local Go packages
-* referencing all local Go commands
-* cross-compiling applications with factorio, gox, goxcart, and xgo
-* archiving artifacts
-* manipulating the path separator as a string
+mage-extras provides utility functions for common Go development operations.
 
-Mage is highly agnostic about workflows. mage-extras is a little more opinionated, introducing some useful conventions on top, such as reliably obtaining a list of non-vendored Go files paths, while allowing developers to customize builds to suit their project needs.
+* `Install` - Compile and install Go executables
+* Lint Go projects recursively:
+  * `GoImports`
+  * `GoLint`
+  * `GoVet`
+  * `GoVetShadow`
+  * `Nakedret`
+  * `Revive`
+* `UnitTest` - trigger unit test suite
+* `Xgo` crosscompile cGo applications
+* `Run` for everything else
 
-# DOCUMENTATION
+# SYSTEM REQUIREMENTS
 
-https://pkg.go.dev/github.com/mcandre/mage-extras
-
-# LICENSE
-
-BSD-2-Clause
-
-# RUNTIME REQUIREMENTS
-
-* [Go](https://go.dev/) 1.25.4+
+* [Go](https://go.dev/)
 * [Mage](https://magefile.org/) (e.g., `go get -tool github.com/magefile/mage`)
 
-## Recommended
-
-* a UNIX environment, such as macOS, Linux, BSD, [WSL](https://learn.microsoft.com/en-us/windows/wsl/), etc.
-* [GNU](https://www.gnu.org/software/tar/)/[BSD](https://man.freebsd.org/cgi/man.cgi?tar(1))/[Windows](https://ss64.com/nt/tar.html) tar with gzip support
-* [tree](https://linux.die.net/man/1/tree)
-
-tar is a portable archiver suitable for creating `*.tgz` tarball archives. Users can then download the tarball and extract the executable relevant to their platform. Tarballs are especially well suited for use in Docker containers, as the tar command is more likely to be installed than unzip.
-
-Note that non-UNIX file systems may not preserve crucial chmod acl bits during port generation. This can corrupt downstream artifacts, such as compressed archives and installation procedures.
-
-# CONTRIBUTING
-
-For more details on developing mage-extras itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
+For details on developing mage-extras, see our [development guide](DEVELOPMENT.md).

@@ -1,6 +1,15 @@
+# DEVELOPMENT GUIDE
+
+buttery follows standard, Go based operations for compiling and unit testing Go code.
+
+For advanced operations, such as linting, we further supplement with some software industry tools.
+
 # BUILDTIME REQUIREMENTS
 
 * a UNIX-like environment (e.g. [WSL](https://learn.microsoft.com/en-us/windows/wsl/))
+* [awscli](https://aws.amazon.com/cli/)
+* [bash](https://www.gnu.org/software/bash/) 4+
+* [Docker](https://www.docker.com/)
 * [Go](https://go.dev/)
 * POSIX compliant [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)
 * [Rust](https://rust-lang.org/)
@@ -9,20 +18,11 @@
 ## Recommended
 
 * [ASDF](https://asdf-vm.com/) 0.18 (run `asdf reshim` after provisioning)
-* [direnv](https://direnv.net/) 2
-* [ffmpeg](https://ffmpeg.org/) edits and converts videos
-* [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
-* [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
-* [webm](https://www.webmproject.org/) supports audio in animation loops
-
-## Windows
-
-Apply a user environment variable `GODEBUG=modcacheunzipinplace=1` per [access denied resolution](https://github.com/golang/go/wiki/Modules/e93463d3e853031af84204dc5d3e2a9a710a7607#go-115), for native Windows development environments (Command Prompt / PowerShell, not WLS, not Cygwin, not MSYS2, not MinGW, not msysGit, not Git Bash, not etc).
 
 # GENERATE SOURCES
 
-After each change to an enum, regenerate auxiliary Go sources:
+After each change to `stitch.go`, regenerate auxiliary Go sources:
 
 ```sh
 stringer -type "Stitch"
@@ -58,13 +58,25 @@ mage lint
 mage test
 ```
 
-# PORT
+# CROSSCOMPILE & ARCHIVE BINARIES
 
 ```sh
-mage port
+mage TUCO
 ```
 
-# TEST DOCKER IMAGES
+# BUILD OS PACKAGES
+
+```sh
+mage package
+```
+
+# BUILD DOCKER IMAGES
+
+```sh
+mage dockerBuild
+```
+
+# TEST PUSH DOCKER IMAGES
 
 ```sh
 mage dockerTest
@@ -74,4 +86,10 @@ mage dockerTest
 
 ```sh
 mage dockerPush
+```
+
+# CLEAN
+
+```sh
+mage clean
 ```
