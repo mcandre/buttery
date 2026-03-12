@@ -61,10 +61,10 @@ mage test
 # CROSSCOMPILE & ARCHIVE BINARIES
 
 ```sh
-mage TUCO
+mage goreleaser
 ```
 
-# BUILD OS PACKAGES
+# PACKAGE BINARIES
 
 ```sh
 mage package

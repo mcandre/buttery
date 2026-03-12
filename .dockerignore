@@ -2,10 +2,11 @@
 .editorconfig
 .git/
 .github/
+.goreleaser.yaml
 .rockhopper/
 .rubberstamp
-bin/
 cover.html
+dist/
 docker-bake.hcl
 examples/
 rockhopper.toml

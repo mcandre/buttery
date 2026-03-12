@@ -21,7 +21,7 @@ func Audit() error { return Govulncheck() }
 func Clean() error { mg.Deps(CleanPackages); return CleanArtifacts() }
 
 // CleanArtifacts removes artifacts.
-func CleanArtifacts() error { return sh.RunV("tuco", "-clean") }
+func CleanArtifacts() error { return mx.CleanGoReleaser() }
 
 // CleanPackages removes OS package artifacts.
 func CleanPackages() error { return sh.RunV("rockhopper", "-c") }
@@ -43,6 +43,14 @@ func Errcheck() error { return sh.RunV("errcheck", "-blank") }
 
 // GoImports runs goimports.
 func GoImports() error { return mx.GoImports("-w") }
+
+// Goreleaser builds crossplatform binaries and tarballs.
+func Goreleaser() error {
+	return mx.GoReleaser(
+		map[string]string{"NO_COLOR": "1"},
+		"--snapshot", "--clean",
+	)
+}
 
 // GoVet runs default go vet analyzers.
 func GoVet() error { return mx.GoVet() }
@@ -79,9 +87,6 @@ func Staticcheck() error { return sh.RunV("staticcheck", "./...") }
 
 // Test executes a test suite.
 func Test() error { return mx.UnitTest() }
-
-// Tuco builds crossplatform binaries and tarballs.
-func Tuco() error { return sh.RunV("tuco") }
 
 // Uninstall deletes installed Go applications.
 func Uninstall() error { return mx.Uninstall("buttery") }
