@@ -2,8 +2,6 @@
 package main
 
 import (
-	"github.com/mcandre/buttery"
-
 	"flag"
 	"fmt"
 	"image/color"
@@ -12,6 +10,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/mcandre/buttery"
 )
 
 var flagCheck = flag.Bool("check", false, "validate basic GIF format file integrity")

@@ -1,9 +1,9 @@
 package buttery_test
 
 import (
-	"github.com/mcandre/buttery"
-
 	"testing"
+
+	"github.com/mcandre/buttery"
 )
 
 func TestStitchMarshaling(t *testing.T) {

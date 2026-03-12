@@ -1,10 +1,10 @@
 package buttery_test
 
 import (
-	"github.com/mcandre/buttery"
-
 	"reflect"
 	"testing"
+
+	"github.com/mcandre/buttery"
 )
 
 func TestReverseSliceSymmetric(t *testing.T) {
