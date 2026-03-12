@@ -17,4 +17,4 @@ jobs:
         toolchain: "1.92.0"
     - name: "provision dev tools"
       run: "make"
-    - run: "mage port"
+    - run: "mage tuco"
