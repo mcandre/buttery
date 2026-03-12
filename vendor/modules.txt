@@ -30,7 +30,7 @@ github.com/magefile/mage/sh
 # github.com/mcandre/mage-extras v0.0.37
 ## explicit; go 1.26.1
 github.com/mcandre/mage-extras
-# github.com/mcandre/mx v0.0.44
+# github.com/mcandre/mx v0.0.45
 ## explicit; go 1.26.1
 github.com/mcandre/mx
 # github.com/mcandre/tuco v0.0.21

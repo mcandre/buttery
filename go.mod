@@ -6,7 +6,7 @@ require (
 	github.com/andybons/gogif v0.0.0-20140526152223-16d573594812
 	github.com/anthonynsimon/bild v0.14.0
 	github.com/magefile/mage v1.16.1
-	github.com/mcandre/mx v0.0.44
+	github.com/mcandre/mx v0.0.45
 )
 
 require (
