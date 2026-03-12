@@ -70,6 +70,12 @@ mage TUCO
 mage package
 ```
 
+# UPLOAD OS PACKAGES
+
+```sh
+mage upload
+```
+
 # BUILD DOCKER IMAGES
 
 ```sh

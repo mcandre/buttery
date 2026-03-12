@@ -84,3 +84,6 @@ func Tuco() error { return mageextras.Run("tuco") }
 
 // Uninstall deletes installed Go applications.
 func Uninstall() error { return mageextras.Uninstall("buttery") }
+
+// Upload sends packages to CloudFlare R2.
+func Upload() error { return mageextras.Run("./upload") }
