@@ -1,7 +1,7 @@
 version: 2
 
 builds:
-- main: "src/cmd/{{ .ProjectName }}/main.go"
+- main: "cmd/{{ .ProjectName }}/main.go"
   binary: "{{ .ProjectName }}/{{ .Os }}/{{ .Arch }}/{{ .ProjectName }}"
   no_unique_dist_dir: true
   # Skip 32-bit ISAs
