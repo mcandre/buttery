@@ -17,8 +17,12 @@ For advanced operations, such as linting, we further supplement with some softwa
 
 ## Recommended
 
-* [ASDF](https://asdf-vm.com/) 0.18 (run `asdf reshim` after provisioning)
+* [asdf](https://asdf-vm.com/) 0.18 (run `asdf reshim` after provisioning)
 * macOS [open](https://ss64.com/mac/open.html) or equivalent alias
+
+## Postinstall (non-asdf)
+
+Register `"$(go env GOBIN)` to `PATH` environment variable.
 
 # GENERATE SOURCES
 

@@ -12,7 +12,7 @@ curl -L https://raw.githubusercontent.com/mcandre/buttery/refs/heads/main/instal
 
 ## Postinstall
 
-Ensure `$HOME/.local/bin` is registered with your shell's `PATH` environment variable.
+Register `$HOME/.local/bin` to `PATH` environment variable.
 
 ## Uninstall
 
@@ -60,7 +60,7 @@ Precompiled binaries may be installed manually.
 
 ## Postinstall
 
-Ensure the selected directory is registered with your shell's `PATH` environment variable.
+Register the selected directory to `PATH` environment variable.
 
 ## Uninstall
 
@@ -95,6 +95,10 @@ go install github.com/mcandre/buttery/cmd/buttery@latest
 
 * [Go](https://go.dev/)
 
+## Postinstall (non-asdf)
+
+Register `"$(go env GOBIN)` to `PATH` environment variable.
+
 # INSTALL (GO LOCAL)
 
 buttery may be compiled from source.
@@ -109,5 +113,9 @@ go install ./...
 
 * [git](https://git-scm.com/)
 * [Go](https://go.dev/)
+
+## Postinstall (non-asdf)
+
+Register `"$(go env GOBIN)` to `PATH` environment variable.
 
 For more details on developing buttery, see our [development guide](DEVELOPMENT.md).

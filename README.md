@@ -69,6 +69,10 @@ For practical usage information, see our [usage guide](USAGE.md).
   </tbody>
 </table>
 
+## Postinstall (Windows)
+
+Register `C:\Program Files\buttery\bin` to `PATH` environment variable.
+
 # SYSTEM REQUIREMENTS
 
 ## Bitness
