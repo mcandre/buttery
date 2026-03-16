@@ -34,32 +34,32 @@ For practical usage information, see our [usage guide](USAGE.md).
   <tbody>
     <tr>
       <td>Alpine Linux</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/alpine-linux/buttery-0.0.26-r1.aarch64.apk">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/alpine-linux/buttery-0.0.26-r1.x86_64.apk">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/alpine-linux/buttery-0.0.27-r1.aarch64.apk">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/alpine-linux/buttery-0.0.27-r1.x86_64.apk">Intel</a></td>
     </tr>
       <td>Fedora</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/fedora/buttery-0.0.26-1.aarch64.rpm">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/fedora/buttery-0.0.26-1.x86_64.rpm">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/fedora/buttery-0.0.27-1.aarch64.rpm">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/fedora/buttery-0.0.27-1.x86_64.rpm">Intel</a></td>
     </tr>
     <tr>
       <td>FreeBSD</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/freebsd-arm64/buttery-0.0.26_1.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/freebsd-amd64/buttery-0.0.26_1.pkg">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/freebsd-arm64/buttery-0.0.27_1.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/freebsd-amd64/buttery-0.0.27_1.pkg">Intel</a></td>
     </tr>
     <tr>
       <td>macOS 26 Tahoe+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/macos/buttery-arm64-0.0.26-1.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/macos/buttery-x86_64-0.0.26-1.pkg">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/macos/buttery-arm64-0.0.27-1.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/macos/buttery-x86_64-0.0.27-1.pkg">Intel</a></td>
     </tr>
     <tr>
       <td>Ubuntu</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/ubuntu/buttery_0.0.26-1_arm64.deb">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/ubuntu/buttery_0.0.26-1_amd64.deb">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/ubuntu/buttery_0.0.27-1_arm64.deb">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/ubuntu/buttery_0.0.27-1_amd64.deb">Intel</a></td>
     </tr>
     <tr>
       <td>Windows 11+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/windows/buttery-0.0.26.1-arm64.msi">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/windows/buttery-0.0.26.1-x64.msi">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/windows/buttery-0.0.27.1-arm64.msi">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/windows/buttery-0.0.27.1-x64.msi">Intel</a></td>
     </tr>
   </tbody>
 </table>
