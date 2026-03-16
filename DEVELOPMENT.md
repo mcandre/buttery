@@ -65,7 +65,7 @@ mage test
 # CROSSCOMPILE & ARCHIVE BINARIES
 
 ```sh
-mage goreleaser
+mage tuco
 ```
 
 # PACKAGE BINARIES
@@ -78,24 +78,6 @@ mage package
 
 ```sh
 mage upload
-```
-
-# BUILD DOCKER IMAGES
-
-```sh
-mage dockerBuild
-```
-
-# TEST PUSH DOCKER IMAGES
-
-```sh
-mage dockerTest
-```
-
-# PUSH DOCKER IMAGES
-
-```sh
-mage dockerPush
 ```
 
 # CLEAN

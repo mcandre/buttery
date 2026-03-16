@@ -29,7 +29,8 @@ Examples:
   * `GoVetShadow`
   * `Nakedret`
 * `UnitTest` - trigger unit test suite
-* `GoReleaser`, `CleanGoReleaser` - Normalize [goreleaser](https://goreleaser.com/)
+* `NoVendor` - Query Go source file paths excluding vendoring
+* `ExecSilent`, `RunVSilent` - Reduce command log noise
 
 # SYSTEM REQUIREMENTS
 

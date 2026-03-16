@@ -1,6 +1,6 @@
 # buttery: a video editor with manual motion smoothing
 
-[![CloudFlare R2 install media downloads](https://img.shields.io/badge/Packages-F38020?logo=Cloudflare&logoColor=white)](#download) [![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/buttery)](https://hub.docker.com/r/n4jm4/buttery) [![GitHub Downloads](https://img.shields.io/github/downloads/mcandre/buttery/total?logo=github)](https://github.com/mcandre/buttery/releases) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/buttery) [![Test](https://github.com/mcandre/buttery/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/buttery/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md) [![Donate](https://img.shields.io/badge/%E2%99%A5-Sponsor-BF3988)](https://github.com/sponsors/mcandre)
+[![CloudFlare R2 install media downloads](https://img.shields.io/badge/Packages-F38020?logo=Cloudflare&logoColor=white)](#download) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/buttery) [![Test](https://github.com/mcandre/buttery/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/buttery/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md) [![Donate](https://img.shields.io/badge/%E2%99%A5-Sponsor-BF3988)](https://github.com/sponsors/mcandre)
 
 ![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif)
 
@@ -50,11 +50,6 @@ For practical usage information, see our [usage guide](USAGE.md).
       <td>macOS 26 Tahoe+</td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/macos/buttery-arm64-0.0.26-1.pkg">ARM</a></td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/macos/buttery-x86_64-0.0.26-1.pkg">Intel</a></td>
-    </tr>
-    <tr>
-      <td>NetBSD</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/netbsd-aarch64/buttery-0.0.26nb1.tgz">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.26/netbsd-x86_64/buttery-0.0.26nb1.tgz">Intel</a></td>
     </tr>
     <tr>
       <td>Ubuntu</td>
