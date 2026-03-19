@@ -33,11 +33,6 @@ For practical usage information, see our [usage guide](USAGE.md).
   </thead>
   <tbody>
     <tr>
-      <td>Fedora</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/fedora/buttery-0.0.27-1.aarch64.rpm">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/fedora/buttery-0.0.27-1.x86_64.rpm">Intel</a></td>
-    </tr>
-    <tr>
       <td>FreeBSD</td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/freebsd-arm64/buttery-0.0.27_1.pkg">ARM</a></td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/freebsd-amd64/buttery-0.0.27_1.pkg">Intel</a></td>
