@@ -13,14 +13,13 @@ For advanced operations, such as linting, we further supplement with some softwa
 * [bash](https://www.gnu.org/software/bash/) 4+
 * [Docker](https://www.docker.com/)
 * [Go](https://go.dev/)
-* POSIX compliant [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)
+* [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)
 * [Rust](https://rust-lang.org/)
 * Provision additional dev tools with `make`
 
 ## Recommended
 
 * [asdf](https://asdf-vm.com/) 0.18
-* macOS [open](https://ss64.com/mac/open.html) or equivalent alias
 
 ## Postinstall
 
