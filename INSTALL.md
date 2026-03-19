@@ -14,9 +14,9 @@ go install github.com/mcandre/buttery/cmd/buttery@latest
 
 * [Go](https://go.dev/)
 
-## Postinstall (non-asdf)
+## Postinstall
 
-Register `"$(go env GOBIN)` to `PATH` environment variable.
+Register `"$(go env GOBIN)"` to `PATH` environment variable.
 
 # INSTALL (GO LOCAL)
 
@@ -33,8 +33,8 @@ go install ./...
 * [git](https://git-scm.com/)
 * [Go](https://go.dev/)
 
-## Postinstall (non-asdf)
+## Postinstall
 
-Register `"$(go env GOBIN)` to `PATH` environment variable.
+Register `"$(go env GOBIN)"` to `PATH` environment variable.
 
 For more details on developing buttery, see our [development guide](DEVELOPMENT.md).
