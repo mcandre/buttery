@@ -33,11 +33,6 @@ For practical usage information, see our [usage guide](USAGE.md).
   </thead>
   <tbody>
     <tr>
-      <td>FreeBSD</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/freebsd-arm64/buttery-0.0.27_1.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/freebsd-amd64/buttery-0.0.27_1.pkg">Intel</a></td>
-    </tr>
-    <tr>
       <td>macOS 26 Tahoe+</td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/macos/buttery-arm64-0.0.27-1.pkg">ARM</a></td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/macos/buttery-x86_64-0.0.27-1.pkg">Intel</a></td>

@@ -15,7 +15,7 @@ os:
 # - "android"
 - "darwin"
 # - "dragonfly"
-- "freebsd"
+# - "freebsd"
 # - "illumos"
 # - "ios"
 # - "js"
