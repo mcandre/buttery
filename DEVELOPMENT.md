@@ -10,7 +10,6 @@ For advanced operations, such as linting, we further supplement with some softwa
 
 * a UNIX-like environment (e.g. [WSL](https://learn.microsoft.com/en-us/windows/wsl/))
 * [awscli](https://aws.amazon.com/cli/)
-* [bash](https://www.gnu.org/software/bash/) 4+
 * [Docker](https://www.docker.com/)
 * [Go](https://go.dev/)
 * [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)

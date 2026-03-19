@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"path"
 
 	"github.com/mcandre/buttery"
 	"github.com/magefile/mage/mg"
@@ -77,5 +78,26 @@ func Tuco() error { return sh.RunV("tuco") }
 // Uninstall deletes installed Go applications.
 func Uninstall() error { return mx.Uninstall("buttery") }
 
+// Bucket stores OS packages
+const Bucket = "s3://buttery"
+
+// Artifacts contains precompiled binaries
+var Artifacts = path.Join(".rockhopper", "artifacts")
+
+// Banner identifies the application version.
+var Banner = fmt.Sprintf("buttery-%s", buttery.Version)
+
+// Dest stores OS packages for this application version.
+var Dest = fmt.Sprintf("%s/%s/", Bucket, Banner)
+
 // Upload sends packages to CloudFlare R2.
-func Upload() error { return sh.RunV("./upload") }
+func Upload() error {
+	return mx.RunVSilent("aws",
+		"--cli-connect-timeout", "1",
+		"s3",
+		"cp",
+		"--recursive",
+		Artifacts,
+		Dest,
+	)
+}

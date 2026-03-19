@@ -25,7 +25,7 @@ os:
 # - "plan9"
 # - "solaris"
 # - "wasip1"
-- "windows"
+# - "windows"
 
 # Skip 32-bit chipsets
 # Skip fringe chipsets

@@ -11,11 +11,11 @@
 # EXAMPLES
 
 ```console
-$ cd examples
+% cd examples
 
-$ buttery homer.gif
+% buttery homer.gif
 
-$ buttery -transparent -stitch FlipH cinnamoroll.gif
+% buttery -transparent -stitch FlipH cinnamoroll.gif
 ```
 
 For more CLI options, run `buttery -help`.
@@ -33,10 +33,6 @@ For practical usage information, see our [usage guide](USAGE.md).
   </thead>
   <tbody>
     <tr>
-      <td>Alpine Linux</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/alpine-linux/buttery-0.0.27-r1.aarch64.apk">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/alpine-linux/buttery-0.0.27-r1.x86_64.apk">Intel</a></td>
-    </tr>
       <td>Fedora</td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/fedora/buttery-0.0.27-1.aarch64.rpm">ARM</a></td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/fedora/buttery-0.0.27-1.x86_64.rpm">Intel</a></td>
@@ -52,21 +48,12 @@ For practical usage information, see our [usage guide](USAGE.md).
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/macos/buttery-x86_64-0.0.27-1.pkg">Intel</a></td>
     </tr>
     <tr>
-      <td>Ubuntu</td>
+      <td>Ubuntu / WSL 2+</td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/ubuntu/buttery_0.0.27-1_arm64.deb">ARM</a></td>
       <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/ubuntu/buttery_0.0.27-1_amd64.deb">Intel</a></td>
     </tr>
-    <tr>
-      <td>Windows 11+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/windows/buttery-0.0.27.1-arm64.msi">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.27/windows/buttery-0.0.27.1-x64.msi">Intel</a></td>
-    </tr>
   </tbody>
 </table>
-
-## Postinstall (Windows)
-
-Register `C:\Program Files\buttery\bin` to `PATH` environment variable.
 
 For more platforms and installation methods, see our [install guide](INSTALL.md).
 
