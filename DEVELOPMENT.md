@@ -22,7 +22,7 @@ For advanced operations, such as linting, we further supplement with some softwa
 
 ## Postinstall (non-asdf)
 
-Register `"$(go env GOBIN)` to `PATH` environment variable.
+Register `"$(go env GOBIN)"` to `PATH` environment variable.
 
 # GENERATE SOURCES
 
