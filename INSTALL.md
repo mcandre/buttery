@@ -16,7 +16,7 @@ go install github.com/mcandre/buttery/cmd/buttery@latest
 
 ## Postinstall
 
-Register `"$(go env GOBIN)"` to `PATH` environment variable.
+Register output of `go env GOBIN` to `PATH` environment variable.
 
 # INSTALL (GO LOCAL)
 
@@ -35,6 +35,6 @@ go install ./...
 
 ## Postinstall
 
-Register `"$(go env GOBIN)"` to `PATH` environment variable.
+Register output of `go env GOBIN` to `PATH` environment variable.
 
 For more details on developing buttery, see our [development guide](DEVELOPMENT.md).

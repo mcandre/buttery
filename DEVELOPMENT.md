@@ -6,6 +6,8 @@ For advanced operations, such as linting, we further supplement with some softwa
 
 # BUILDTIME REQUIREMENTS
 
+## Prerequisites
+
 * a UNIX-like environment (e.g. [WSL](https://learn.microsoft.com/en-us/windows/wsl/))
 * [awscli](https://aws.amazon.com/cli/)
 * [bash](https://www.gnu.org/software/bash/) 4+
@@ -22,7 +24,7 @@ For advanced operations, such as linting, we further supplement with some softwa
 
 ## Postinstall
 
-Register `"$(go env GOBIN)"` to `PATH` environment variable.
+Register output of `go env GOBIN` to `PATH` environment variable.
 
 # GENERATE SOURCES
 

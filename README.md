@@ -68,12 +68,6 @@ For practical usage information, see our [usage guide](USAGE.md).
 
 Register `C:\Program Files\buttery\bin` to `PATH` environment variable.
 
-# SYSTEM REQUIREMENTS
-
-## Bitness
-
-64
-
 For more platforms and installation methods, see our [install guide](INSTALL.md).
 
 # RESOURCES
