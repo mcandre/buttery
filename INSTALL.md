@@ -1,13 +1,13 @@
 # INSTALL GUIDE
 
-buttery supports alternative installation methods.
+We support alternative installation methods.
 
 # INSTALL (GO)
 
-buttery is packaged as a Go module.
+harmonica is packaged as a Go module.
 
 ```sh
-go install github.com/mcandre/buttery/cmd/buttery@latest
+go install github.com/mcandre/harmonica/cmd/harmonica@latest
 ```
 
 ## Prerequisites
@@ -17,5 +17,3 @@ go install github.com/mcandre/buttery/cmd/buttery@latest
 ## Postinstall
 
 Register output of `go env GOBIN` to `PATH` environment variable.
-
-For details on developing buttery, see our [development guide](DEVELOPMENT.md).

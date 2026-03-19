@@ -16,5 +16,5 @@ jobs:
       with:
         toolchain: "1.92.0"
     - name: "provision dev tools"
-      run: "make"
+      run: "make -f install.mk"
     - run: "mage lint"

@@ -1,10 +1,10 @@
 # DEVELOPMENT GUIDE
 
-buttery follows standard, Go based operations for compiling and unit testing Go code.
+We follow standard, `go` based operations for compiling and unit testing Go code.
 
 For advanced operations, such as linting, we further supplement with some software industry tools.
 
-# BUILDTIME REQUIREMENTS
+# DEV ENVIRONMENT
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ For advanced operations, such as linting, we further supplement with some softwa
 * [Go](https://go.dev/)
 * [make](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/make.html)
 * [Rust](https://rust-lang.org/)
-* Provision additional dev tools with `make`
+* Provision additional dev tools with `make -f install.mk`
 
 ## Recommended
 
@@ -24,63 +24,65 @@ For advanced operations, such as linting, we further supplement with some softwa
 
 Register output of `go env GOBIN` to `PATH` environment variable.
 
-# GENERATE SOURCES
+# TASKS
 
-After each change to `stitch.go`, regenerate auxiliary Go sources:
+We automate engineering tasks.
 
-```sh
-stringer -type "Stitch"
-```
-
-# AUDIT
+## Build
 
 ```sh
-mage audit
+mage
 ```
 
-# INSTALL
+## Install
 
 ```sh
 mage install
 ```
 
-# UNINSTALL
+## Uninstall
 
 ```sh
 mage uninstall
 ```
 
-# LINT
+## Security Audit
+
+```sh
+mage audit
+```
+
+## Lint
 
 ```sh
 mage lint
 ```
 
-# TEST
+## Test
 
 ```sh
 mage test
 ```
 
-# CROSSCOMPILE & ARCHIVE BINARIES
+## Crosscompile Binaries
 
 ```sh
 mage tuco
 ```
 
-# PACKAGE BINARIES
+## Package Binaries
 
 ```sh
 mage package
 ```
 
-# UPLOAD OS PACKAGES
+## Upload Packages
 
 ```sh
 mage upload
 ```
 
-# CLEAN
+## Clean Workspace
 
 ```sh
 mage clean

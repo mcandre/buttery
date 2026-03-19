@@ -1,6 +1,6 @@
 # USAGE GUIDE
 
-buttery provides a rich set of features.
+We provide a rich set of features.
 
 # LINT
 

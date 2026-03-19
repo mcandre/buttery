@@ -18,9 +18,7 @@
 % buttery -transparent -stitch FlipH cinnamoroll.gif
 ```
 
-For more CLI options, run `buttery -help`.
-
-For practical usage information, see our [usage guide](USAGE.md).
+For feature details, see our [usage guide](USAGE.md).
 
 # DOWNLOAD
 
@@ -46,6 +44,8 @@ For practical usage information, see our [usage guide](USAGE.md).
 </table>
 
 For more platforms and installation methods, see our [install guide](INSTALL.md).
+
+For details on building from source, see our [development guide](DEVELOPMENT.md).
 
 # RESOURCES
 
