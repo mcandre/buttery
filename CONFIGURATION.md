@@ -1,22 +1,40 @@
-# USAGE GUIDE
+# CONFIGURATION
 
-We provide a rich set of features.
+buttery uses CLI flags for configuration.
 
-# LINT
+# OPERATIONS
 
-`buttery -check <GIF>` can act as a linter for basic GIF file format integrity. In the event of a corrupt GIF file, the program emits a brief message and exits non-zero.
+## Check
 
-# INSPECT
+The `-check <GIF>` option validates basic GIF file integrity.
 
-`buttery -getFrames <GIF>` reports the frame count. This is useful for planning edits, particularly towards the far end of the original animation sequence.
+In the event of a corrupt GIF file, the program emits a brief message and exits nonzero.
 
-# BACKGROUNDS
+## Get Frames
+
+The `-getFrames` option reports reports the frame count.
+
+This is useful for planning edits, particularly towards the far end of the original animation sequence.
+
+## None
+
+When no particular operation is specified, then buttery edits GIFs.
+
+# OPTIONS
+
+## Transparency
 
 The `-transparent` option changes the disposal mode from none to background, and changes the background from black to clear.
 
-# TRANSITIONS
+## Stitches
 
-## Mirror
+Default: `Mirror`
+
+The `-stitch <type>` option customizes the transition mode used to smooth animation loops.
+
+### Stitch Types
+
+#### Mirror
 
 The `-stitch Mirror` option is the primary loop smoothing transition, and the default transition setting.
 
@@ -28,7 +46,7 @@ We can diagram logically how Mirror works, by examining its effect on the frame 
 real frame sequence (successive sequence repeated during infinite loop playback...)
 ```
 
-### Before
+##### Before
 
 ```text
 1 2 3 (1 2 3 ...)
@@ -36,7 +54,7 @@ real frame sequence (successive sequence repeated during infinite loop playback.
 
 Each restart of the loop has a jarring visual jump from frame 3 to its successor frame 1.
 
-### After
+##### After
 
 ```text
 1 2 3 2 (1 2 3 2 ...)
@@ -48,7 +66,7 @@ By mirroring the sequence backward in time, we remove the biggest visual jump. T
 
 However, some motion may still appear awkward with mirroring, such as sharp, quick motions towards the extreme ends of the loop, or motions that appear to defy physical entropy. For this reason, we provide alternative transitions and other editing tools, described below.
 
-## FlipH / FlipV
+#### FlipH / FlipV
 
 The transision settings `-stitch FlipH` or `-stitch FlipV` disguise jarring misalignment, by reflecting the frames horizontally or vertically.
 
@@ -59,7 +77,7 @@ With the notation:
 * `U`: A original "upright" frame
 * `D`: A frame reflected vertically "downward"
 
-### Before
+##### Before
 
 FlipH:
 
@@ -73,7 +91,7 @@ FlipV:
 U U U (U U U ...)
 ```
 
-### After
+##### After
 
 FlipH:
 
@@ -89,17 +107,17 @@ U U U D D D (U U U D D D ...)
 
 The `FlipH`/`FlipV` transitions are snappy, with an effect like rebounding a tennis ball across a net.
 
-## Shuffle
+#### Shuffle
 
 The `-stitch Shuffle` transition setting randomizes the frame sequence.
 
-### Before
+##### Before
 
 ```text
 1 2 3 4 5 6
 ```
 
-### After
+##### After
 
 Example ordering:
 
@@ -113,21 +131,21 @@ This transition tends to artificially accelerate the perceived animation speed.
 
 This transition hides a single jarring misalignment, in the noise of a completely random, spastic animation.
 
-## PanH / PanV
+#### PanH / PanV
 
 The `PanH` / `PanV` transitions offset the canvas at `-panVelocity <n>` pixels per frame.
 
-## Fade
+#### Fade
 
 The transision setting `-stitch Fade` applies fade to black, fade to white, etc. time color gradient effects.
 
-### Before
+##### Before
 
 ```text
 no_fade ... no_fade ... no_fade ... no_fade ... no_fade
 ```
 
-### After
+##### After
 
 ```text
 max_fade ... less_fade ... no_fade ... less_fade ... max_fade
@@ -137,29 +155,29 @@ max_fade ... less_fade ... no_fade ... less_fade ... max_fade
 
 `-fadeRate <v>` adjusts fade velocity (default: 1.0).
 
-## None
+#### None
 
 The `-stitch None` transition setting applies no particular transition at all between animation cycles. In art, sometimes less is more.
 
-# SUPERCUTS
+## Trims
 
-Animation smoothing takes a long time. We recommend pre-cutting your source assets to the desired subsequence. Every frame removed from the input GIF makes the `buttery` editing process faster.
+Animations may be time cropped.
 
-Often, animations appear to accelerate when frame are removed. This is not always a bad thing; sometimes a fast animation helps to smooth over more subtle details.
+Note: Often, animations appear to accelerate when frame are removed. This is not always a bad thing. A faster animation can naturally smoothes over visual quirks.
 
-## Trim Start / End
+### Trim Start / End
 
 The `-trimStart <n>` / `-trimEnd <n>` options drop `n` frames from the start and/or end of the original sequence. Zero indicates no trimming.
 
-For brevity, we will now assume the None transition and elide the successive sequence repetitions.
+For brevity, we assume the None transition and elide sequence repetitions.
 
-### Before
+#### Before
 
 ```text
 1 2 3 4 5
 ```
 
-### After
+#### After
 
 With `-trimStart 1`:
 
@@ -179,17 +197,17 @@ With `-trimStart 1` and `-trimEnd 1`:
 2 3 4
 ```
 
-## Trim Edges
+### Trim Edges
 
 For convenience, we provide a similar option `-trimEdges <n>`. This drops `n` frames from both sides of the original sequence. Zero indicates no trimming.
 
-### Before
+#### Before
 
 ```text
 1 2 3 4 5
 ```
 
-### After
+#### After
 
 With `-trimEdges 1`:
 
@@ -197,17 +215,17 @@ With `-trimEdges 1`:
 2 3 4
 ```
 
-## Window
+### Window
 
 The `-window <n>` option truncates the original sequence to a fixed frame count. This is helpful for cutting down long animations. Zero indicates no truncation.
 
-### Before
+#### Before
 
 ```text
 1 2 3 4 5
 ```
 
-### After
+#### After
 
 With `-window 3`:
 
@@ -243,7 +261,7 @@ With `-cutInterval 2`:
 
 This can also artificially accelerate the perceived speed of the animation. Useful when want to accelerate an animation already scaled down to 2cs per frame.
 
-# SHIFT
+## Shifts
 
 The `-shift <offset>` option performs a circular, leftward shift on the original sequence. This is useful for fine tuning how the GIF's very first cycle presents, before entering successive loops.
 
@@ -269,7 +287,7 @@ With `-shift -1`:
 3 1 2
 ```
 
-# SCALE DELAY
+## Scale Delay
 
 The `-scaleDelay <factor>` option adjusts animation speed, by multiplying each frame delay by the given factor.
 
@@ -307,7 +325,7 @@ With `-scaleDelay -1`:
 
 For compatibility with a wide range of GIF viewers, the resulting delay is upheld to a lower bound of 2cs.
 
-# LOOP COUNT
+## Loop Count
 
 The `-loopCount <n>` option configures the low-level GIF loop counter setting. According to the GIF standard:
 

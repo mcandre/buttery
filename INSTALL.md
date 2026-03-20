@@ -1,4 +1,4 @@
-# INSTALL GUIDE
+# INSTALL
 
 We support alternative installation methods.
 
