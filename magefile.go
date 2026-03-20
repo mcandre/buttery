@@ -4,7 +4,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"path"
 
 	"github.com/mcandre/buttery"
@@ -13,9 +12,6 @@ import (
 	"github.com/mcandre/mx"
 )
 
-// ArtifactsPath describes where artifacts are produced.
-const ArtifactsPath = "bin"
-
 // Default references the default build task.
 var Default = Build
 
@@ -23,28 +19,13 @@ var Default = Build
 func Audit() error { return Govulncheck() }
 
 // Build compiles Go projects.
-func Build() error {
-	dest := ArtifactsPath
-
-	if d, ok := os.LookupEnv("DEST"); ok && d != "" {
-		dest = d
-	}
-
-	if err := os.MkdirAll(dest, 0755); err != nil {
-		return err
-	}
-
-	return sh.RunV("go", "build", "-o", dest, "./...")
-}
+func Build() error { return sh.RunV("go", "build", "./...") }
 
 // Clean removes artifacts.
-func Clean() error { mg.Deps(CleanPackages); mg.Deps(CleanBuild); return CleanArtifacts() }
+func Clean() error { mg.Deps(CleanPackages); return CleanArtifacts() }
 
 // CleanArtifacts removes artifacts.
 func CleanArtifacts() error { return sh.RunV("tuco", "-clean") }
-
-// CleanBuild removes build artifacts.
-func CleanBuild() error { return os.RemoveAll(ArtifactsPath) }
 
 // CleanPackages removes OS package artifacts.
 func CleanPackages() error { return sh.RunV("rockhopper", "-c") }
