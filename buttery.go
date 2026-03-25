@@ -2,26 +2,7 @@ package buttery
 
 import (
 	"image"
-	"math/rand"
-	"reflect"
 )
-
-// ReverseSlice performs an in-place swap in reverse order.
-func ReverseSlice(s interface{}) {
-	size := reflect.ValueOf(s).Len()
-	swap := reflect.Swapper(s)
-
-	for i, j := 0, size-1; i < j; i, j = i+1, j-1 {
-		swap(i, j)
-	}
-}
-
-// ShuffleSlice randomizes the order of a slice.
-func ShuffleSlice(s interface{}) {
-	size := reflect.ValueOf(s).Len()
-	swap := reflect.Swapper(s)
-	rand.Shuffle(size, swap)
-}
 
 // GetDimensions reports the horizontal and vertical bounds of a GIF.
 func GetDimensions(paletteds []*image.Paletted) (int, int) {

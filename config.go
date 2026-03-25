@@ -7,7 +7,9 @@ import (
 	"image/draw"
 	"image/gif"
 	"math"
+	"math/rand"
 	"os"
+	"slices"
 
 	"github.com/andybons/gogif"
 	"github.com/anthonynsimon/bild/transform"
@@ -159,8 +161,8 @@ func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	}
 
 	if reverse && o.Stitch != Shuffle {
-		ReverseSlice(clonePaletteds)
-		ReverseSlice(sourceDelays)
+		slices.Reverse(clonePaletteds)
+		slices.Reverse(sourceDelays)
 	}
 
 	clonePaletteds = clonePaletteds[o.TrimStart:]
@@ -262,8 +264,12 @@ func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 	}
 
 	if o.Stitch == Shuffle {
-		ShuffleSlice(butteryPaletteds)
-		ShuffleSlice(butteryDelays)
+		rand.Shuffle(butteryPalettedsLen, func(i, j int) {
+			butteryPaletteds[i], butteryPaletteds[j] = butteryPaletteds[j], butteryPaletteds[i]
+		})
+		rand.Shuffle(butteryDelaysLen, func(i, j int) {
+			butteryDelays[i], butteryDelays[j] = butteryDelays[j], butteryDelays[i]
+		})
 	} else {
 		shiftedPaletteds := make([]*image.Paletted, butteryPalettedsLen)
 		shiftedDelays := make([]int, butteryDelaysLen)
