@@ -23,7 +23,7 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/kisielk/errcheck v1.9.0 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
-	github.com/mcandre/tuco v0.0.22 // indirect
+	github.com/mcandre/tuco v0.0.23 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20250408133849-7e4ce0ab07d0 // indirect
 	golang.org/x/mod v0.34.0 // indirect

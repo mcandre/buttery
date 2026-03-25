@@ -1,6 +1,6 @@
 # tuco: minimalist Go port multiplexer
 
-[![GitHub Downloads](https://img.shields.io/github/downloads/mcandre/tuco/total?logo=github)](https://github.com/mcandre/tuco/releases) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/tuco) [![Test](https://github.com/mcandre/tuco/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/tuco/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md) [![Donate](https://img.shields.io/badge/%E2%99%A5-Sponsor-BF3988)](https://github.com/sponsors/mcandre)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/tuco) [![Test](https://github.com/mcandre/tuco/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/tuco/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md) [![Donate](https://img.shields.io/badge/%E2%99%A5-Sponsor-BF3988)](https://github.com/sponsors/mcandre)
 
 ![la tuza](tuco.png)
 
@@ -22,10 +22,6 @@ hello-darwin-arm64.tgz
 ...
 ```
 
-For more CLI option, run `tuco -help`.
-
-For more ports, run `go tool dist list`.
-
 # DOWNLOAD
 
 ```sh
@@ -36,7 +32,9 @@ go install github.com/mcandre/tuco/cmd/tuco@latest
 
 * [Go](https://go.dev/)
 
-For more information on developing tuco, see our [development guide](DEVELOPMENT.md).
+For details on tuning tuco, see [CONFIGURATION](CONFIGURATION.md).
+
+For details on building from source, see [DEVELOPMENT](DEVELOPMENT.md).
 
 # ABOUT
 
@@ -50,10 +48,6 @@ tuco automates more low level steps involved in managing crosscompilation for Go
 * Few dependencies
 * Automatically corrects chmod bits inside tarballs
 * Logical directory structure for straightforward binary based OS packaging
-
-# CONFIGURATION
-
-For details on tuning tuco, see our [configuration guide](CONFIGURATION.md).
 
 # RESOURCES
 

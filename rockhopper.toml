@@ -14,37 +14,23 @@ license = "0BSD"
 url = "https://github.com/mcandre/buttery"
 
 [[pkg]]
-image = "n4jm4/rockhopper:0.0.23-freebsd"
-rocklet.origin = "local/buttery"
-rocklet.oci_arch = "linux/amd64"
-rocklet.os_arch = "freebsd:*:amd64"
-dest."usr/local/bin" = "bin/buttery/freebsd/amd64"
-
-[[pkg]]
-image = "n4jm4/rockhopper:0.0.23-freebsd"
-rocklet.origin = "local/buttery"
-rocklet.oci_arch = "linux/arm64"
-rocklet.os_arch = "freebsd:*:arm64"
-dest."usr/local/bin" = "bin/buttery/freebsd/arm64"
-
-[[pkg]]
-image = "n4jm4/rockhopper:0.0.23-macos"
+image = "n4jm4/rockhopper:0.0.25-macos"
 rocklet.oci_arch = "linux/amd64"
 rocklet.os_arch = "x86_64"
 dest."usr/local/bin" = "bin/buttery/darwin/amd64"
 
 [[pkg]]
-image = "n4jm4/rockhopper:0.0.23-macos"
+image = "n4jm4/rockhopper:0.0.25-macos"
 rocklet.oci_arch = "linux/arm64"
 rocklet.os_arch = "arm64"
 dest."usr/local/bin" = "bin/buttery/darwin/arm64"
 
 [[pkg]]
-image = "n4jm4/rockhopper:0.0.23-ubuntu"
+image = "n4jm4/rockhopper:0.0.25-ubuntu"
 rocklet.oci_arch = "linux/amd64"
 dest."usr/bin" = "bin/buttery/linux/amd64"
 
 [[pkg]]
-image = "n4jm4/rockhopper:0.0.23-ubuntu"
+image = "n4jm4/rockhopper:0.0.25-ubuntu"
 rocklet.oci_arch = "linux/arm64"
 dest."usr/bin" = "bin/buttery/linux/arm64"
