@@ -4,9 +4,7 @@ We follow standard, `go` based operations for compiling and unit testing Go code
 
 For advanced operations, such as linting, we further supplement with some software industry tools.
 
-# DEV ENVIRONMENT
-
-## Prerequisites
+# PREREQUISITES
 
 * a UNIX-like environment (e.g. [WSL](https://learn.microsoft.com/en-us/windows/wsl/))
 * [awscli](https://aws.amazon.com/cli/)
