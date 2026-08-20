@@ -4,8 +4,8 @@ go 1.27.0
 
 require (
 	github.com/andybons/gogif v0.0.0-20140526152223-16d573594812
-	github.com/anthonynsimon/bild v0.14.0
-	github.com/magefile/mage v1.16.1
+	github.com/anthonynsimon/bild v0.17.0
+	github.com/magefile/mage v1.17.2
 	github.com/mcandre/mx v0.0.47
 )
 
