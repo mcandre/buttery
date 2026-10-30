@@ -43,6 +43,8 @@ Found in the [examples/](examples) directory.
 
 By default, buttery smoothes out animations by copying frames in reverse. As well, the GIF loop count flag is set to infinite.
 
+Homer changes from popping instantaneously out of a bush, to emerging back out of a bush.
+
 | Before | After |
 | :----: | :---: |
 | ![examples/homer.gif](examples/homer.gif) | ![examples/homer.buttery.gif](examples/homer.buttery.gif) |
@@ -51,9 +53,21 @@ By default, buttery smoothes out animations by copying frames in reverse. As wel
 buttery homer.gif
 ```
 
+## Color Fading
+
+The classic fade-to-black (or orange!) transition. Dream-like.
+
+| Before | After |
+| :----: | :---: |
+| ![examples/red-panda.gif](examples/red-panda.gif) | ![examples/red-panda.buttery.gif](examples/red-panda.buttery.gif) |
+
+```sh
+buttery -stitch Fade -fadeColor '0xCC5500' red-panda.gif
+```
+
 ## FlipH/FlipV
 
-buttery provides several alternative mechanisms for smoothing out GIF loops, such as horizontal/vertical frame flips.
+Reflecting frames around a horizontal or vertical axis, starting at the animation halfway point in time, is another great way to smooth out transitions.
 
 | Before | After |
 | :----: | :---: |
@@ -64,18 +78,6 @@ buttery -transparent -stitch FlipH cinnamoroll.gif
 ```
 
 Run `buttery -help` for even more options.
-
-## Color Fading
-
-The classic fade-to-black (or orange!) transition.
-
-| Before | After |
-| :----: | :---: |
-| ![examples/red-panda.gif](examples/red-panda.gif) | ![examples/red-panda.buttery.gif](examples/red-panda.buttery.gif) |
-
-```sh
-buttery -stitch Fade -fadeColor '0xCC5500' red-panda.gif
-```
 
 # RESOURCES
 
