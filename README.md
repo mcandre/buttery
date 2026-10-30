@@ -2,21 +2,63 @@
 
 [![CloudFlare R2 install media downloads](https://img.shields.io/badge/Packages-F38020?logo=Cloudflare&logoColor=white)](#download) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/buttery) [![Test](https://github.com/mcandre/buttery/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/buttery/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md) [![Donate](https://img.shields.io/badge/%E2%99%A5-Sponsor-BF3988)](https://github.com/sponsors/mcandre)
 
-![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif)
-
 # ABOUT
 
 `buttery` generates continuous GIF loops.
 
 # EXAMPLES
 
-```console
-% cd examples
+(In the [examples/](examples) directory.)
 
-% buttery homer.gif
+## Default Loop Stitch
 
-% buttery -transparent -stitch FlipH cinnamoroll.gif
+```sh
+buttery homer.gif
 ```
+
+By default, buttery smoothes out animations by enabling the GIF loop infinite flag, and copying frames in reverse.
+
+### Before
+
+![examples/homer.gif](examples/homer.gif)
+
+### After
+
+![examples/homer.buttery.gif](examples/homer.buttery.gif)
+
+## FlipH/FlipV
+
+buttery provides several alternative mechanisms for smoothing out GIF loops, such as horizontal/vertical frame flips.
+
+```sh
+buttery -transparent -stitch FlipH cinnamoroll.gif
+```
+
+Run `buttery -help` for even more options.
+
+### Before
+
+![examples/cinnamoroll.gif](examples/cinnamoroll.gif)
+
+### After
+
+![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif)
+
+## Color Fading
+
+The classic fade-to-black (or orange!) transition can smooth out even the most jarring animations.
+
+```sh
+buttery -stitch Fade -fadeColor '0xCC5500' -scaleDelay 1.5 red-panda.gif
+```
+
+### Before
+
+![examples/red-panda.gif](examples/red-panda.gif)
+
+### After
+
+![examples/red-panda.buttery.gif](examples/red-panda.buttery.gif)
 
 # DOWNLOAD
 
