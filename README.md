@@ -2,9 +2,9 @@
 
 [![CloudFlare R2 install media downloads](https://img.shields.io/badge/Packages-F38020?logo=Cloudflare&logoColor=white)](#download) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/buttery) [![Test](https://github.com/mcandre/buttery/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/buttery/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md) [![Donate](https://img.shields.io/badge/%E2%99%A5-Sponsor-BF3988)](https://github.com/sponsors/mcandre)
 
-# ABOUT
+# SUMMARY
 
-`buttery` generates continuous GIF loops.
+`buttery` smoothes out transitions at the ends of animated GIFs.
 
 # DOWNLOAD
 
