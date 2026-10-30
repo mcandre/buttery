@@ -3,7 +3,7 @@
 .PHONY: all
 
 all:
-	cargo install --force rockhopper@0.0.25
+	cargo install --force rockhopper@0.0.32
 	go install golang.org/x/tools/cmd/deadcode@latest
 	go install golang.org/x/tools/cmd/goimports@latest
 	go install golang.org/x/tools/cmd/stringer@latest
