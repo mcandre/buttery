@@ -12,7 +12,7 @@
 
 ## Default Loop Stitch
 
-By default, buttery smoothes out animations by enabling the GIF loop infinite flag, and copying frames in reverse.
+By default, buttery smoothes out animations by copying frames in reverse. As well, the GIF loop count flag is set to infinite.
 
 | Before | After |
 | :----: | :---: |
