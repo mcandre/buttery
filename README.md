@@ -12,23 +12,23 @@
 
 ## Default Loop Stitch
 
+By default, buttery smoothes out animations by enabling the GIF loop infinite flag, and copying frames in reverse.
+
+| Before | After |
+| :----: | :---: |
+| ![examples/homer.gif](examples/homer.gif) | ![examples/homer.buttery.gif](examples/homer.buttery.gif) |
+
 ```sh
 buttery homer.gif
 ```
 
-By default, buttery smoothes out animations by enabling the GIF loop infinite flag, and copying frames in reverse.
-
-### Before
-
-![examples/homer.gif](examples/homer.gif)
-
-### After
-
-![examples/homer.buttery.gif](examples/homer.buttery.gif)
-
 ## FlipH/FlipV
 
 buttery provides several alternative mechanisms for smoothing out GIF loops, such as horizontal/vertical frame flips.
+
+| Before | After |
+| :----: | :---: |
+| ![examples/cinnamoroll.gif](examples/cinnamoroll.gif) | ![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif) |
 
 ```sh
 buttery -transparent -stitch FlipH cinnamoroll.gif
@@ -36,29 +36,17 @@ buttery -transparent -stitch FlipH cinnamoroll.gif
 
 Run `buttery -help` for even more options.
 
-### Before
-
-![examples/cinnamoroll.gif](examples/cinnamoroll.gif)
-
-### After
-
-![examples/cinnamoroll.buttery.gif](examples/cinnamoroll.buttery.gif)
-
 ## Color Fading
 
-The classic fade-to-black (or orange!) transition can smooth out even the most jarring animations.
+The classic fade-to-black (or orange!) transition.
+
+| Before | After |
+| :----: | :---: |
+| ![examples/red-panda.gif](examples/red-panda.gif) | ![examples/red-panda.buttery.gif](examples/red-panda.buttery.gif) |
 
 ```sh
-buttery -stitch Fade -fadeColor '0xCC5500' -scaleDelay 1.5 red-panda.gif
+buttery -stitch Fade -fadeColor '0xCC5500' red-panda.gif
 ```
-
-### Before
-
-![examples/red-panda.gif](examples/red-panda.gif)
-
-### After
-
-![examples/red-panda.buttery.gif](examples/red-panda.buttery.gif)
 
 # DOWNLOAD
 
