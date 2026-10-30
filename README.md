@@ -6,9 +6,38 @@
 
 `buttery` generates continuous GIF loops.
 
+# DOWNLOAD
+
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th colspan=2>Package</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>macOS 26 Tahoe+</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/macos/buttery-arm64-0.0.29-1.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/macos/buttery-x86_64-0.0.29-1.pkg">Intel</a></td>
+    </tr>
+    <tr>
+      <td>Ubuntu / WSL 2+</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/ubuntu/buttery_0.0.29-1_arm64.deb">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/ubuntu/buttery_0.0.29-1_amd64.deb">Intel</a></td>
+    </tr>
+  </tbody>
+</table>
+
+For more platforms and installation methods, see [INSTALL](INSTALL.md).
+
+For details on tuning buttery, see [CONFIGURATION](CONFIGURATION.md).
+
+For details on building from source, see [DEVELOPMENT](DEVELOPMENT.md).
+
 # EXAMPLES
 
-(In the [examples/](examples) directory.)
+Found in the [examples/](examples) directory.
 
 ## Default Loop Stitch
 
@@ -47,35 +76,6 @@ The classic fade-to-black (or orange!) transition.
 ```sh
 buttery -stitch Fade -fadeColor '0xCC5500' red-panda.gif
 ```
-
-# DOWNLOAD
-
-<table>
-  <thead>
-    <tr>
-      <th>OS</th>
-      <th colspan=2>Package</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>macOS 26 Tahoe+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/macos/buttery-arm64-0.0.29-1.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/macos/buttery-x86_64-0.0.29-1.pkg">Intel</a></td>
-    </tr>
-    <tr>
-      <td>Ubuntu / WSL 2+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/ubuntu/buttery_0.0.29-1_arm64.deb">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.29/ubuntu/buttery_0.0.29-1_amd64.deb">Intel</a></td>
-    </tr>
-  </tbody>
-</table>
-
-For more platforms and installation methods, see [INSTALL](INSTALL.md).
-
-For details on tuning buttery, see [CONFIGURATION](CONFIGURATION.md).
-
-For details on building from source, see [DEVELOPMENT](DEVELOPMENT.md).
 
 # RESOURCES
 
