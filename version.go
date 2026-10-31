@@ -1,4 +1,4 @@
 package buttery
 
 // Version is semver.
-const Version = "0.0.29"
+const Version = "0.0.30"
