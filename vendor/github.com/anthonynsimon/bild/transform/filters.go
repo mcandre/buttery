@@ -19,7 +19,7 @@ type ResampleFilter struct {
 // NearestNeighbor resampling filter assigns to each point the sample point nearest to it.
 var NearestNeighbor ResampleFilter
 
-// Box resampling filter, only let pass values in the x < 0.5 range from sample.
+// Box resampling filter, only let pass values in the x <= 0.5 range from sample.
 // It produces similar results to the Nearest Neighbor method.
 var Box ResampleFilter
 
@@ -47,7 +47,7 @@ func init() {
 	Box = ResampleFilter{
 		Support: 0.5,
 		Fn: func(x float64) float64 {
-			if math.Abs(x) < 0.5 {
+			if math.Abs(x) <= 0.5 {
 				return 1
 			}
 			return 0

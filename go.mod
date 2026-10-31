@@ -1,10 +1,10 @@
 module github.com/mcandre/buttery
 
-go 1.27.0
+go 1.27.3
 
 require (
 	github.com/andybons/gogif v0.0.0-20140526152223-16d573594812
-	github.com/anthonynsimon/bild v0.17.0
+	github.com/anthonynsimon/bild v0.17.1
 	github.com/magefile/mage v1.17.2
 	github.com/mcandre/mx v0.0.47
 	github.com/munchpass/gifsicle-go v0.1.0
@@ -29,7 +29,7 @@ require (
 	golang.org/x/exp/typeparams v0.0.0-20250408133849-7e4ce0ab07d0 // indirect
 	golang.org/x/mod v0.35.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.43.0 // indirect
+	golang.org/x/sys v0.49.0 // indirect
 	golang.org/x/tools v0.44.1-0.20260420230617-19499e7caabc // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
