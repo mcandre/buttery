@@ -13,6 +13,7 @@ import (
 
 	"github.com/andybons/gogif"
 	"github.com/anthonynsimon/bild/transform"
+	"github.com/munchpass/gifsicle-go"
 )
 
 // Config models a set of animation editing manipulations.
@@ -346,7 +347,11 @@ func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 		return err
 	}
 
-	return gif.EncodeAll(butteryFile, &butteryGif)
+	return gifsicle.Compress(butteryFile, &butteryGif, &gifsicle.Options{
+		Lossy:         0,
+		OptimizeLevel: gifsicle.OPTIMIZE_LEVEL_TWO,
+		NumColors:     0,
+	})
 }
 
 // pan offsets an image by the given horizontal and vertical offsets.
