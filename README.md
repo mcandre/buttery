@@ -18,13 +18,13 @@
   <tbody>
     <tr>
       <td>macOS 26 Tahoe+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.32/macos/buttery-arm64-0.0.32-1.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.32/macos/buttery-x86_64-0.0.32-1.pkg">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/macos/buttery-arm64-0.0.33-1.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/macos/buttery-x86_64-0.0.33-1.pkg">Intel</a></td>
     </tr>
     <tr>
       <td>Ubuntu / WSL 2+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.32/ubuntu/buttery_0.0.32-1_arm64.deb">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.32/ubuntu/buttery_0.0.32-1_amd64.deb">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/ubuntu/buttery_0.0.33-1_arm64.deb">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/ubuntu/buttery_0.0.33-1_amd64.deb">Intel</a></td>
     </tr>
   </tbody>
 </table>
