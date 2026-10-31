@@ -62,7 +62,7 @@ The classic fade-to-black (or orange!) transition. Dream-like.
 | ![examples/red-panda.gif](examples/red-panda.gif) | ![examples/red-panda.buttery.gif](examples/red-panda.buttery.gif) |
 
 ```sh
-buttery -stitch Fade -fadeColor '0xCC5500' red-panda.gif
+buttery -stitch Fade -fadeColor '#CC5500' red-panda.gif
 ```
 
 ## FlipH/FlipV

@@ -23,7 +23,7 @@ var flagTrimEnd = flag.Int("trimEnd", 0, "drop frames from end of the input GIF"
 var flagCutInterval = flag.Int("cutInterval", 0, "drop every nth frame of the input GIF")
 var flagWindow = flag.Int("window", 0, "set fixed sequence length")
 var flagStitch = flag.String("stitch", "Mirror", "stitching strategy (None/Mirror/FlipH/FlipV/Shuffle/PanH/PanV/Fade)")
-var flagFadeColor = flag.String("fadeColor", "0x000000", "fade color (0xRRGGBB)")
+var flagFadeColor = flag.String("fadeColor", "#000000", "fade color (#RRGGBB)")
 var flagFadeRate = flag.Float64("fadeRate", 1.0, "fade velocity factor")
 var flagShift = flag.Int("shift", 0, "rotate sequence left")
 var flagScaleDelay = flag.Float64("scaleDelay", 1.0, "multiply each frame delay by a factor")
@@ -88,8 +88,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	fadeColorString := *flagFadeColor
-	fadeColorUint32, err := strconv.ParseUint(fadeColorString, 0, 32)
+	fadeColorCSS := *flagFadeColor
+	fadeColorUint32, err := strconv.ParseUint(strings.ReplaceAll(fadeColorCSS, "#", "0x"), 0, 32)
 
 	if err != nil {
 		usage()

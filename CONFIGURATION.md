@@ -151,7 +151,7 @@ no_fade ... no_fade ... no_fade ... no_fade ... no_fade
 max_fade ... less_fade ... no_fade ... less_fade ... max_fade
 ```
 
-`-fadeColor 0xRRGGBB` customizes the fade hue (default: black).
+`-fadeColor #RRGGBB` customizes the fade hue (default: `#000000`).
 
 `-fadeRate <v>` adjusts fade velocity (default: 1.0).
 
