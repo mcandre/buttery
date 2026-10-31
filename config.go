@@ -167,10 +167,12 @@ func (o *Config) Edit(destPth string, sourceGif *gif.GIF) error {
 
 	clonePaletteds = clonePaletteds[o.TrimStart:]
 	clonePaletteds = clonePaletteds[:len(clonePaletteds)-o.TrimEnd]
+
 	sourceDelays = sourceDelays[o.TrimStart:]
 	sourceDelays = sourceDelays[:len(sourceDelays)-o.TrimEnd]
+
 	cloneDisposals := disposals[o.TrimStart:]
-	cloneDisposals = cloneDisposals[:len(clonePaletteds)-o.TrimEnd]
+	cloneDisposals = cloneDisposals[:len(cloneDisposals)-o.TrimEnd]
 
 	if window != 0 {
 		clonePaletteds = clonePaletteds[:window]
