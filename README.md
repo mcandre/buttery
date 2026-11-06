@@ -85,7 +85,7 @@ Prior art and personal plugs.
 
 * [ffmpeg](https://ffmpeg.org/) edits and converts videos
 * [gifenc.sh](https://github.com/thevangelist/FFMPEG-gif-script-for-bash) converts numerous video formats to animated GIF's
-* [ImageMagick](https://imagemagick.org/) converts between multimedia formats, including GIF and WEBP
+* [ImageMagick](https://imagemagick.org/#gsc.tab=0) converts between multimedia formats, including GIF and WEBP
 * [mcandre/harmonica](https://github.com/mcandre/harmonica) repackages comic archives
 * [mcandre/tigris](https://github.com/mcandre/tigris) provides (Kindle) comic book archival utilities
 * [mkvtools](https://emmgunn.com/wp/mkvtools-home/) edits MKV videos
