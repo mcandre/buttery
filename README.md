@@ -1,6 +1,6 @@
 # buttery: a video editor with manual motion smoothing
 
-[![CloudFlare R2 Downloads](https://badgen.net/static/download/Packages/f38020)](#download) [![API Docs](https://badgen.net/static/docs/API/007d9c?icon=go)](https://pkg.go.dev/github.com/mcandre/buttery) [![CI/CD](https://badgen.net/github/checks/mcandre/buttery?icon=github)](https://github.com/mcandre/buttery/actions) [![License](https://badgen.net/static/license/BSD/ab2b29)](LICENSE.md) [![Donate](https://badgen.net/static/sponsor/%E2%99%A5?color=bf3988)](https://github.com/sponsors/mcandre)
+[![CloudFlare R2 Downloads](https://badgen.net/static/download/Packages/f38020?icon=cloudflare)](#download) [![API Docs](https://badgen.net/static/docs/API/007d9c?icon=go)](https://pkg.go.dev/github.com/mcandre/buttery) [![CI/CD](https://badgen.net/github/checks/mcandre/buttery?icon=github)](https://github.com/mcandre/buttery/actions) [![License](https://badgen.net/static/license/BSD/ab2b29?icon=freebsd)](LICENSE.md) [![Donate](https://badgen.net/static/sponsor/%E2%99%A5?color=bf3988&icon=github)](https://github.com/sponsors/mcandre)
 
 # SUMMARY
 
