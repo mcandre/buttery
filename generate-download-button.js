@@ -86,8 +86,8 @@ new UAParser().getResult().withClientHints().then(result => {
         a.classList.add(
             'btn',
             'btn-lg',
-            'btn-outline-warning',
-            'btn-no-hover',
+            'btn-warning',
+            // 'btn-no-hover',
         );
         a.role = 'button';
         a.innerHTML = 'Download<i class="bi bi-download ms-2">';
