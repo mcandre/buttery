@@ -93,7 +93,5 @@ new UAParser().getResult().withClientHints().then(result => {
         a.innerHTML = 'Download<i class="bi bi-download ms-2">';
         supportedDownloadP.appendChild(a);
         document.getElementById('platform').textContent = `For ${chipset} ${os}`;
-    } else {
-        supportedDownloadP.textContent = 'Limited platform support';
     }
 });
