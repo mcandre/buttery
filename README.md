@@ -2,6 +2,8 @@
 
 [![CloudFlare R2 Downloads](https://badgen.net/static/download/Packages/f38020?icon=cloudflare)](#download) [![API Docs](https://badgen.net/static/docs/API/007d9c?icon=go)](https://pkg.go.dev/github.com/mcandre/buttery) [![CI/CD](https://badgen.net/github/checks/mcandre/buttery?icon=github)](https://github.com/mcandre/buttery/actions) [![License](https://badgen.net/static/license/BSD/ab2b29?icon=freebsd)](LICENSE.md) [![AI](https://badgen.net/static/ai/Gemini|hint?color=886fbf&icon=google-gemini)](AI-DECLARATION.md) [![Donate](https://badgen.net/static/sponsor/%E2%99%A5?color=bf3988&icon=github)](https://github.com/sponsors/mcandre)
 
+![stick 'o butter man](buttery.png)
+
 # SUMMARY
 
 `buttery` smoothes out transitions at the ends of animated GIFs.
@@ -9,22 +11,26 @@
 # DOWNLOAD
 
 <table>
-  <thead>
-    <tr>
-      <th>OS</th>
-      <th colspan=2>Package</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
-      <td>macOS 26 Tahoe+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/macos/buttery-arm64-0.0.33-1.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/macos/buttery-x86_64-0.0.33-1.pkg">Intel</a></td>
+      <td>AppImage</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/appimage/buttery-0.0.34-aarch64.AppImage">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/appimage/buttery-0.0.34-x86_64.AppImage">Intel</a></td>
     </tr>
     <tr>
-      <td>Ubuntu / WSL 2+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/ubuntu/buttery_0.0.33-1_arm64.deb">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.33/ubuntu/buttery_0.0.33-1_amd64.deb">Intel</a></td>
+      <td>FreeBSD</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/freebsd-aarch64/buttery-0.0.34.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/freebsd-amd64/buttery-0.0.34.pkg">Intel</a></td>
+    </tr>
+    <tr>
+      <td>macOS</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/macos/buttery-arm64-0.0.34.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/macos/buttery-x86_64-0.0.34.pkg">Intel</a></td>
+    </tr>
+    <tr>
+      <td>Windows</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/windows/buttery-0.0.34-Arm64.msi">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/windows/buttery-0.0.34-x64.msi">Intel</a></td>
     </tr>
   </tbody>
 </table>

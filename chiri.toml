@@ -1,0 +1,63 @@
+# debug = true
+
+[petal]
+name = "buttery"
+identifier = "com.github.mcandre.buttery"
+version = "0.0.34"
+maintainer = "Andrew Pennebaker <n4jm4@pm.me>"
+manufacturer = "YelloSoft"
+summary = "GIF editor"
+description = "a video editor with manual motion smoothing"
+product_code = "F270B14B-A353-40C6-84F6-1C3C1835634B"
+upgrade_code = "A0BC5C32-CA39-4B6B-9AD7-6D385224606C"
+copyright = "Copyright (C) 2023 Andrew Pennebaker"
+license = "0BSD"
+url = "https://github.com/mcandre/buttery"
+
+[[pkg]]
+kind = "appimage"
+petal.categories = "Graphics"
+petal.chipset = "x86_64"
+petal.executable = "usr/bin/buttery"
+petal.icon = "buttery.png"
+dest."usr/bin" = "bin/buttery/linux/amd64"
+
+[[pkg]]
+kind = "appimage"
+petal.categories = "Graphics"
+petal.chipset = "aarch64"
+petal.executable = "usr/bin/buttery"
+petal.icon = "buttery.png"
+dest."usr/bin" = "bin/buttery/linux/arm64"
+
+[[pkg]]
+kind = "freebsd"
+petal.origin = "local/buttery"
+petal.chipset = "freebsd:*:amd64"
+dest."usr/bin" = "bin/buttery/freebsd/amd64"
+
+[[pkg]]
+kind = "freebsd"
+petal.origin = "local/buttery"
+petal.chipset = "freebsd:*:aarch64"
+dest."usr/bin" = "bin/buttery/freebsd/arm64"
+
+[[pkg]]
+kind = "macos"
+petal.chipset = "x86_64"
+dest."usr/bin" = "bin/buttery/darwin/amd64"
+
+[[pkg]]
+kind = "macos"
+petal.chipset = "arm64"
+dest."usr/bin" = "bin/buttery/darwin/arm64"
+
+[[pkg]]
+kind = "msi"
+petal.chipset = "x64"
+dest."usr/bin" = "bin/buttery/windows/amd64"
+
+[[pkg]]
+kind = "msi"
+petal.chipset = "Arm64"
+dest."usr/bin" = "bin/buttery/windows/arm64"

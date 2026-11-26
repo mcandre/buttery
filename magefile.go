@@ -28,7 +28,7 @@ func Clean() error { mg.Deps(CleanPackages); return CleanArtifacts() }
 func CleanArtifacts() error { return sh.RunV("tuco", "-clean") }
 
 // CleanPackages removes OS package artifacts.
-func CleanPackages() error { return sh.RunV("rockhopper", "-c") }
+func CleanPackages() error { return sh.RunV("chiri", "-c") }
 
 // Deadcode runs deadcode.
 func Deadcode() error { return sh.RunV("deadcode", "./...") }
@@ -67,7 +67,7 @@ func Lint() error {
 func Nakedret() error { return mx.Nakedret("-l", "0") }
 
 // Package generates OS packages.
-func Package() error { return sh.RunV("rockhopper", "-r", fmt.Sprintf("version=%s", buttery.Version)) }
+func Package() error { return sh.RunV("chiri") }
 
 // Shadow runs go vet with shadow checks enabled.
 func Shadow() error { return mx.GoVetShadow() }
@@ -88,7 +88,7 @@ func Uninstall() error { return mx.Uninstall("buttery") }
 const Bucket = "s3://buttery"
 
 // Artifacts contains precompiled binaries
-var Artifacts = path.Join(".rockhopper", "artifacts")
+var Artifacts = path.Join(".chiri", "artifacts")
 
 // Banner identifies the application version.
 var Banner = fmt.Sprintf("buttery-%s", buttery.Version)
