@@ -1,0 +1,12 @@
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Fallback for older browsers */
+    height: 100lvh; /* Prevents jumping when iOS Safari's address bar hides/shows */
+    background: url('ducks.webp') center / cover no-repeat;
+    z-index: -1;
+    pointer-events: none;
+}
