@@ -8,35 +8,6 @@
 
 `buttery` smoothes out transitions at the ends of animated GIFs.
 
-# DOWNLOAD
-
-<table>
-  <tbody>
-    <tr>
-      <td>AppImage</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/appimage/buttery-0.0.34-aarch64.AppImage">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/appimage/buttery-0.0.34-x86_64.AppImage">Intel</a></td>
-    </tr>
-    <tr>
-      <td>FreeBSD</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/freebsd-aarch64/buttery-0.0.34.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/freebsd-amd64/buttery-0.0.34.pkg">Intel</a></td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/macos/buttery-arm64-0.0.34.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/macos/buttery-x86_64-0.0.34.pkg">Intel</a></td>
-    </tr>
-    <tr>
-      <td>Windows</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/windows/buttery-0.0.34-Arm64.msi">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/buttery-0.0.34/windows/buttery-0.0.34-x64.msi">Intel</a></td>
-    </tr>
-  </tbody>
-</table>
-
-For more platforms and installation methods, see [INSTALL](INSTALL.md).
-
 For details on tuning buttery, see [CONFIGURATION](CONFIGURATION.md).
 
 For details on building from source, see [DEVELOPMENT](DEVELOPMENT.md).
