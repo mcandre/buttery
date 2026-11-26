@@ -1,0 +1,60 @@
+[data-bs-theme="dark"] {
+    /* Soft Charcoal / Deep Indigo Surfaces */
+    --bs-body-bg: #181818;
+    --bs-body-bg-rgb: 24, 24, 24;
+    --bs-body-color: #cdd6f4;
+    --bs-body-color-rgb: 205, 214, 244;
+
+    --bs-secondary-bg: #1e1e1e;
+    --bs-tertiary-bg: #313131;
+    --bs-border-color: #45475a;
+
+    /* Pastel Theme Colors */
+    --bs-primary: #b4befe;       /* Pastel Periwinkle */
+    --bs-primary-rgb: 180, 190, 254;
+
+    --bs-secondary: #bac2de;     /* Soft Slate */
+    --bs-secondary-rgb: 186, 194, 222;
+
+    --bs-success: #a6e3a1;       /* Pastel Mint */
+    --bs-success-rgb: 166, 227, 161;
+
+    --bs-info: #89dceb;          /* Pastel Sky */
+    --bs-info-rgb: 137, 220, 235;
+
+    --bs-warning: #f9e2af;       /* Pastel Butter */
+    --bs-warning-rgb: 249, 226, 175;
+
+    --bs-danger: #f38ba8;        /* Pastel Rose */
+    --bs-danger-rgb: 243, 139, 168;
+
+    /* Links */
+    --bs-link-color: #b4befe;
+    --bs-link-color-rgb: 180, 190, 254;
+    --bs-link-hover-color: #cba6f7;
+}
+
+[data-bs-theme="dark"] .btn-primary,
+[data-bs-theme="dark"] .btn-secondary,
+[data-bs-theme="dark"] .btn-success,
+[data-bs-theme="dark"] .btn-danger {
+    --bs-btn-color: #11111b;
+    --bs-btn-bg: var(--bs-primary); /* Repeat per class or map individually */
+    --bs-btn-border-color: transparent;
+    --bs-btn-hover-color: #11111b;
+    --bs-btn-active-color: #11111b;
+}
+
+/* Map individual button backgrounds */
+[data-bs-theme="dark"] .btn-primary { --bs-btn-bg: #b4befe; --bs-btn-hover-bg: #cba6f7; }
+[data-bs-theme="dark"] .btn-secondary { --bs-btn-bg: #bac2de; --bs-btn-hover-bg: #cdd6f4; }
+[data-bs-theme="dark"] .btn-success { --bs-btn-bg: #a6e3a1; --bs-btn-hover-bg: #94e2d5; }
+[data-bs-theme="dark"] .btn-danger { --bs-btn-bg: #f38ba8; --bs-btn-hover-bg: #eba0ac; }
+
+/* Update outline buttons to match */
+[data-bs-theme="dark"] .btn-outline-primary {
+    --bs-btn-color: #b4befe;
+    --bs-btn-border-color: #b4befe;
+    --bs-btn-hover-bg: #b4befe;
+    --bs-btn-hover-color: #11111b;
+}

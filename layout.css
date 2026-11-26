@@ -1,0 +1,58 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: Play, monospace;
+}
+
+h1 a {
+    font-size: 100% !important;
+    text-decoration: underline !important;
+    --bs-btn-active-bg: transparent !important;
+    --bs-btn-active-color: var(--bs-btn-border-color) !important;
+}
+
+img {
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+pre {
+    background-color: #1c1c1c;
+    color: #dcdcdc;
+    font-family: "Atkinson Hyperlegible Mono", "Courier New", monospace;
+    padding: 1em;
+    position: relative;
+}
+
+.btn {
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+.btn-outline-warning {
+    border-color: var(--bs-warning);
+    color: var(--bs-warning);
+}
+
+.btn-no-hover {
+    --bs-btn-hover-bg: var(--bs-btn-bg);
+    --bs-btn-hover-border-color: var(--bs-btn-border-color);
+    --bs-btn-hover-color: var(--bs-btn-color);
+}
+
+.pre-wrapper {
+    position: relative;
+}
+
+.copy-btn {
+    cursor: pointer;
+    font-size: 0.75rem;
+    opacity: 0.9;
+    padding: 0.25rem 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    z-index: 1;
+}
+
+.copy-btn:hover {
+    opacity: 1;
+}
