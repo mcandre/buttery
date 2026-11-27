@@ -3,7 +3,7 @@
 .PHONY: all
 
 all:
-	cargo install --force chiri@0.0.8
+	cargo install --force chiri@0.0.9
 	go install golang.org/x/tools/cmd/deadcode@latest
 	go install golang.org/x/tools/cmd/goimports@latest
 	go install golang.org/x/tools/cmd/stringer@latest
