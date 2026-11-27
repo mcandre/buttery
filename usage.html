@@ -21,8 +21,8 @@
         </div>
         <div class="mt-4 mx-auto w-75">
             <h2>Usage</h2>
+            <p>Many GIFs suddenly come to a jarring halt at the end of the animation. buttery provides tools for smoothing out transitions, creating infinite animation reels.</p>
             <h3>Example</h3>
-            <p>Many source GIFs suddenly come to a jarring halt at the end of the animation. buttery provides tools for smoothing out transitions, creating infinite animation reels.</p>
             <table class="table table-borderless" style="width: 20em;">
                 <thead>
                     <tr>
@@ -42,8 +42,9 @@
             <p>buttery provides command line flags to manipulate GIFs.</p>
             <h3>Stitches</h3>
             <h4><tt>-stitch Mirror</tt></h4>
-            <p>By default, buttery smoothes out animations by copying frames in reverse.</p>
+            <p>The Mirror stitch smoothes out animations by copying frames in reverse. This is the default mode.</p>
             <p>As well, the GIF loop count flag is set to infinite.</p>
+            <pre>buttery -stitch Mirror homer.gif</pre>
             <h4><tt>-stitch Fade</tt></h4>
             <p>The classic fade-to-black (or orange!) transition. Dream-like.</p>
             <p><tt>-fadeColor &lt;#RRGGBB&gt;</tt> customizes the transition color.</p>
