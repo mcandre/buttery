@@ -22,6 +22,15 @@ pre {
     position: relative;
 }
 
+tt {
+    color: #dcdcdc;
+    font-family: "Atkinson Hyperlegible Mono", "Courier New", monospace;
+}
+
+h4 tt:has(+ tt) {
+    margin-right: 0.2em;
+}
+
 .btn {
     border-radius: 2px;
     text-decoration: none;
@@ -55,4 +64,9 @@ pre {
 
 .copy-btn:hover {
     opacity: 1;
+}
+
+.anime {
+    max-height: 200px;
+    max-width: 200px;
 }

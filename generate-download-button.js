@@ -90,7 +90,7 @@ new UAParser().getResult().withClientHints().then(result => {
             // 'btn-no-hover',
         );
         a.role = 'button';
-        a.innerHTML = 'Download<i class="bi bi-download ms-2">';
+        a.innerHTML = 'Download<i class="bi bi-download ms-2"></i>';
         supportedDownloadP.appendChild(a);
         document.getElementById('platform').textContent = `For ${chipset} ${os}`;
     }

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <title>Buttery</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="pastel.css">
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <div class="p-2 mt-4">
+        <div class="text-center">
+            <h1><a class="btn btn-lg border-0 btn-outline-warning btn-no-hover" href="./" id="logo">Buttery</a></h1>
+            <p><a href="usage.html" class="me-3"><i class="bi bi-terminal me-2"></i>Usage</a><a href="https://github.com/mcandre/buttery"><i class="bi bi-github me-2"></i>GitHub</a></p>
+            <p><em>a video editor with manual motion smoothing</em></p>
+        </div>
+        <div class="mt-4 mx-auto w-75">
+            <h2>Usage</h2>
+            <h3>Example</h3>
+            <p>Many source GIFs suddenly come to a jarring halt at the end of the animation. buttery provides tools for smoothing out transitions, creating infinite animation reels.</p>
+            <table class="table table-borderless" style="width: 20em;">
+                <thead>
+                    <tr>
+                    <th>Before</th>
+                    <th>After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img class="anime" alt="homer simpson smash cut entering bush" src="examples/homer.gif" /></td>
+                        <td><img class="anime" alt="homer simpson repeatedly entering and leaving bush" src="examples/homer.buttery.gif" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre>buttery homer.gif</pre>
+            <h2>Flags</h2>
+            <p>buttery provides command line flags to manipulate GIFs.</p>
+            <h3>Stitches</h3>
+            <h4><tt>-stitch Mirror</tt></h4>
+            <p>By default, buttery smoothes out animations by copying frames in reverse.</p>
+            <p>As well, the GIF loop count flag is set to infinite.</p>
+            <h4><tt>-stitch Fade</tt></h4>
+            <p>The classic fade-to-black (or orange!) transition. Dream-like.</p>
+            <p><tt>-fadeColor &lt;#RRGGBB&gt;</tt> customizes the transition color.</p>
+            <p><tt>-fadeRate &lt;float&gt;</tt> customizes the transition rate.</p>
+            <table class="table table-borderless" style="width: 20em;">
+                <thead>
+                    <tr>
+                    <th>Before</th>
+                    <th>After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img class="anime" alt="red panda raising up in fright" src="examples/red-panda.gif" /></td>
+                        <td><img class="anime" alt="red panda fading to orange" src="examples/red-panda.buttery.gif" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre>buttery -stitch Fade -fadeColor "#CC5500" red-panda.gif</pre>
+            <h4><tt>-stitch FlipH</tt> / <tt>-stitch FlipV</tt></h4>
+            <p>Reflecting frames around a horizontal or vertical axis, starting at the animation halfway point in time, is another great way to smooth out transitions.</p>
+            <table class="table table-borderless" style="width: 20em;">
+                <thead>
+                    <tr>
+                    <th>Before</th>
+                    <th>After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img class="anime" alt="pestering cinnamoroll in a teacup" src="examples/cinnamoroll.gif" /></td>
+                        <td><img class="anime" alt="cinnamoroll spinning back and forth" src="examples/cinnamoroll.buttery.gif" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre>buttery -transparent -stitch FlipH cinnamoroll.gif</pre>
+            <pre>buttery -transparent -stitch FlipV cinnamoroll.gif</pre>
+            <h4><tt>-stitch PanH</tt> / <tt>-stitch PanV</tt></h4>
+            <p>Move the camera sideways, wrapping around.</p>
+            <p><tt>-panVelocity &lt;float&gt;</tt> customizes the pixel pan rate.</p>
+            <pre>buttery -stitch PanH red-panda.gif</pre>
+            <pre>buttery -stitch PanV red-panda.gif</pre>
+            <h4><tt>-stitch Shuffle</tt></h4>
+            <p>Rearrange frames at random, for a chaotic visual flow.</p>
+            <pre>buttery -stitch Shuffle homer.gif</pre>
+            <h4><tt>-stitch None</tt></h4>
+            <p>Disable transition stitches.</p>
+            <pre>buttery -stitch None homer.gif</pre>
+            <h3>Main sequence Edits</h3>
+            <p>Manipulate frame order.</p>
+            <h4><tt>-loopCount &lt;int&gt;</tt></h4>
+            <p>Set how many times to play the animation.</p>
+            <table class="table table-borderless" style="width: 20em;">
+                <thead>
+                    <tr>
+                    <th>Loop Count</th>
+                    <th>Animation Plays</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>∞</td>
+                    </tr>
+                    <tr>
+                        <td><tt>N</tt></td>
+                        <td><tt>N + 1</tt></td>
+                    </tr>
+                    <tr>
+                        <td>-1</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre>buttery -stitch None -loopCount 0 homer.gif</pre>
+            <h4><tt>-trimStart &lt;n&gt;</tt> / <tt>-trimEnd &lt;m&gt;</tt></h4>
+            <p>Drop <em>n</em> frames from the start of the animation.</p>
+            <p>Drop <em>m</em> frames from the end of the animation.</p>
+            <pre>buttery -trimStart 3 -trimEnd 3 red-panda.gif</pre>
+            <h4><tt>-trimEdges &lt;n&gt;</tt></h4>
+            <p>Drop <em>n</em> frames from both the start and the end of the animation.</p>
+            <pre>buttery -trimEdges 3 red-panda.gif</pre>
+            <h4><tt>-window &lt;n&gt;</tt></h4>
+            <p>Truncate frames beyond the <em>n</em>th.</p>
+            <pre>buttery -window 16 red-panda.gif</pre>
+            <h4><tt>-shift &lt;n&gt;</tt></h4>
+            <p>Rotate sequence <em>n</em> frames left.</p>
+            <p>Negative values shift <em>n</em> frames right.</p>
+            <pre>buttery -stitch None -shift 10 homer.gif</pre>
+            <pre>buttery -stitch None -shift -10 homer.gif</pre>
+            <h4><tt>-cutInterval &lt;n&gt;</tt></h4>
+            <p>Drop every <em>n</em>th frame of a GIF.</p>
+            <pre>buttery -cutInterval 2 homer.gif</pre>
+            <h4><tt>-scaleDelay &lt;float&gt;</tt></h4>
+            <p>Multiply each frame delay by a factor (default 1).</p>
+            <pre>buttery -scaleDelay 2.0 homer.gif</pre>
+            <h4><tt>-transparent</tt></h4>
+            <p>Preserve alpha channel.</p>
+            <pre>buttery -transparent cinnamoroll.gif</pre>
+            <h3>Metadata</h3>
+            <p>buttery includes metadata query operations.</p>
+            <h4><tt>-check</tt></h4>
+            <p>Validate a GIF for basic file integrity.</p>
+            <pre>buttery -check homer.gif</pre>
+            <h4><tt>-getFrames</tt></h4>
+            <p>Get the number of frames in a GIF.</p>
+            <pre>buttery -getFrames homer.gif</pre>
+            <h4><tt>-version</tt></h4>
+            <p>Print version identifier.</p>
+            <pre>buttery -version</pre>
+            <h4><tt>-help</tt></h4>
+            <p>Print usage menu.</p>
+            <pre>buttery -help</pre>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
+    <script src="clipboard.js"></script>
+</body>
+</html>
